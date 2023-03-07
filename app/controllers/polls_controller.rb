@@ -23,7 +23,7 @@ class PollsController < ApplicationController
   def show
     @comment = Comment.new
     @vote = Vote.new
-    @save = Save.new
+    @bookmark = Bookmark.new
   end
 
   def destroy
