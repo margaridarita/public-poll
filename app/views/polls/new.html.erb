@@ -2,10 +2,11 @@
 
 <div class="h-100 green-bg">
   <%= simple_form_for @poll do |f| %>
-    <%= f.input :question, placeholder: 'Your poll question' %>
+    <%= f.label :category_id %>
+    <%= f.collection_select :category_id, @categories, :id, :name, prompt: "Select a category" %>
+    <%= f.input :question, placeholder: 'Your question' %>
     <%= f.input :first_option, placeholder: 'Option 1' %>
     <%= f.input :second_option, placeholder: 'Option 2' %>
-    <%= f.input :category, placeholder: 'E.g. Food' %>
     <%= f.submit class: 'button-green' %>
   <% end %>
 </div>
