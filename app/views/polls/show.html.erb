@@ -1,0 +1,5 @@
+<%= link_to "< Back", :back %>
+<h1><%= @poll.question %></h1>
+<% if @poll.user == current_user %>
+  <%= link_to "Delete", poll_path(@poll), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} %>
+<% end %>
