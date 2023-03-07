@@ -4,8 +4,19 @@
   <%= link_to "Delete", poll_path(@poll), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} %>
 <% end %>
 
+<div>
+<% unless @poll.votes.pluck(:user_id).include?(current_user.id) %>
+  <p><%= link_to @poll.first_option%></p>
+  <p><%= link_to @poll.second_option%></p>
+<% end %>
+</div>
+
 
 <% if @poll.votes.pluck(:user_id).include?(current_user.id) %>
+  <h2>Results</h2>
+  <p><%= @poll.first_option %></p>
+  <p><%= @poll.second_option %></p>
+
   <h2>Comments</h2>
   <ul>
     <% @poll.votes.each do |v| %>

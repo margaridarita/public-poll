@@ -22,6 +22,10 @@ class VotesController < ApplicationController
 
   def show; end
 
+  def option_1_votes
+    
+  end
+
   private
 
   def set_vote
