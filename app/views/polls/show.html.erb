@@ -3,4 +3,3 @@
 <% if @poll.user == current_user %>
   <%= link_to "Delete", poll_path(@poll), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} %>
 <% end %>
-<h1>please work</h1>
