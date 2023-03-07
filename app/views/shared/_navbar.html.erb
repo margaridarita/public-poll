@@ -18,18 +18,6 @@
             <p><%= link_to "Categories", "#", class: "nav-link" %></p>
           </li>
 
-          <li class="nav-item dropdown">
-            <%= image_tag "https://kitt.lewagon.com/placeholder/users/ssaunier", class: "avatar dropdown-toggle", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
-            <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-              <%= link_to "My Profile", "dashboard_path", class: "dropdown-item" %>
-              <%= link_to "Favourite Polls", "dashboard_path", class: "dropdown-item" %>
-              <%= link_to "Voted Polls", "dashboard_path", class: "dropdown-item" %>
-              <%= link_to "FAQ", "#", class: "dropdown-item" %>
-              <%= link_to "Terms & Conditions", "#", class: "dropdown-item" %>
-              <%= link_to "Log out", destroy_user_session_path, data: {turbo_method: :delete}, class: "dropdown-item" %>
-            </div>
-          </li>
-
         <% else %>
           <li class="nav-item active">
             <%= link_to "Home", "polls_path", class: "nav-link" %>
@@ -40,24 +28,21 @@
           <li class="nav-item">
             <%= link_to "Categories", "#", class: "nav-link" %>
           </li>
-
-          <li class="nav-item dropdown">
-            <%= image_tag "https://kitt.lewagon.com/placeholder/users/ssaunier", class: "avatar dropdown-toggle", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
-            <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-              <%= link_to "Sign up / Log in", new_user_session_path, class: "dropdown-item" %>
-              <%= link_to "My Profile", new_user_session_path, class: "dropdown-item" %>
-              <%= link_to "Favourite Polls", new_user_session_path, class: "dropdown-item" %>
-              <%= link_to "Voted Polls", new_user_session_path, class: "dropdown-item" %>
-              <%= link_to "FAQ", "#", class: "dropdown-item" %>
-              <%= link_to "Terms & Conditions", "#", class: "dropdown-item" %>
-            </div>
-          </li>
         <% end %>
       </ul>
     </div>
 
-    <%= link_to "#", class: "navbar-brand" do %>
-      <%= image_tag "https://www.pinclipart.com/picdir/middle/62-625029_ajcc-pool-swimming-dive-cartoon-clipart.png" %>
-    <% end %>
+    <div class="nav-item dropdown">
+      <%= image_tag "https://kitt.lewagon.com/placeholder/users/ssaunier", class: "avatar dropdown-toggle", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
+      <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+        <%= link_to "My Profile", "dashboard_path", class: "dropdown-item" %>
+        <%= link_to "Favourite Polls", "dashboard_path", class: "dropdown-item" %>
+        <%= link_to "Voted Polls", "dashboard_path", class: "dropdown-item" %>
+        <%= link_to "FAQ", "#", class: "dropdown-item" %>
+        <%= link_to "Terms & Conditions", "#", class: "dropdown-item" %>
+        <%= link_to "Log out", destroy_user_session_path, data: {turbo_method: :delete}, class: "dropdown-item" %>
+      </div>
+    </div>
+
   </div>
 </div>
