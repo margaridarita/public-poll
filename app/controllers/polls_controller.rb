@@ -5,6 +5,7 @@ class PollsController < ApplicationController
   end
 
   def new
+    @categories = Category.all
     @poll = Poll.new
   end
 
