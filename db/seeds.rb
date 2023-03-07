@@ -7,4 +7,5 @@
 User.destroy_all
 
 user = User.create(email: "test@gmail.com", password: "pombinho222", first_name: "test", last_name: "test", username: "test")
+user = User.create(email: "mariatest@gmail.com", password: "pombinho222", first_name: "maria", last_name: "test", username: "mariatest")
 Poll.create(question: "?", user_id: user.id)
