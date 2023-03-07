@@ -1,6 +1,7 @@
 class Poll < ApplicationRecord
   belongs_to :user
-  has_many :saves, :votes, dependent: :destroy
+  has_many :saves, dependent: :destroy
+  has_many :votes, dependent: :destroy
   has_many :categories_polls
   has_many :categories, through: :categories_polls
 
