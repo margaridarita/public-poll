@@ -32,6 +32,6 @@ class SavesController < ApplicationController
   end
 
   def save_params
-    params.require(:save).permit()
+    params.require(:save).permit(:poll, :user)
   end
 end
