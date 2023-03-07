@@ -1,0 +1,4 @@
+<h1>Index</h1>
+<% @polls.each do |poll| %>
+  <%= link_to poll.question, poll_path(poll) %>
+<% end %>
