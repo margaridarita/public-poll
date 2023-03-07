@@ -10,3 +10,46 @@
 // Your CSS partials
 @import "components/index";
 @import "pages/index";
+
+html, body {
+  background: linear-gradient(180deg, #FFFFFF 0%, #0C8BD2 94.27%);
+  height: 100%;
+}
+
+.page-container {
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  margin-left: 20px;
+  margin-right: 20px;
+  min-height: 100vh;
+}
+
+h1 {
+  font-size: 25px;
+  font-weight: bolder;
+}
+
+h2 {
+  font-size: 20px;
+}
+
+h3 {
+  font-size: 12px;
+}
+
+
+h4 {
+  font-size: 10px;
+}
+
+p {
+  font-size: 15px;
+}
+
+
+a {
+  font-size: 15px;
+  font-weight: bolder;
+  text-decoration: none;
+  color: white;
+}
