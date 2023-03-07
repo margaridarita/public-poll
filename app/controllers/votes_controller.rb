@@ -29,6 +29,6 @@ class VotesController < ApplicationController
   end
 
   def vote_params
-    params.require(:vote).permit()
+    params.require(:vote).permit(:user, :poll, :chosen_option)
   end
 end
