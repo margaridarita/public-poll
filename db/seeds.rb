@@ -8,9 +8,12 @@ clarissa = User.create(email: "clarissa@gmail.com", password: "pombinho222", fir
 sofia = User.create(email: "sofia@gmail.com", password: "pombinho222", first_name: "sofia", last_name: "clara", username: "sclara")
 
 users = [maria, margarida, clarissa, sofia]
+
 # categories = ['Animals', 'Food', 'Fantasy', 'Drinks']
 
 polls = []
+
+# category = Category.create(title: "Food")
 
 categories = ["Arts", "Business", "Entertainment", "Food", "Games", "Health", "Music", "News", "Politics", "Science", "Sports", "Technology", "Travel", "Fashion", "Humor", "Relationships", "Education", "History", "Nature", "Books"]
 
@@ -23,17 +26,19 @@ end
   second_option = Faker::Creature::Animal.name
   question = "Would you rather #{Faker::Hacker.verb} a #{first_option} or #{Faker::Hacker.verb} a #{second_option}?"
   user = users.sample
-  category = categories.sample
 
-  poll = {
-    question: question,
-    user: user,
-    first_option: first_option,
-    second_option: second_option,
-    category: category
-  }
+  poll = Poll.create(
+    question:,
+    user:,
+    first_option:,
+    second_option:,
+    category:
+  )
 
-  polls << poll
+  3.times do
+    voter = users.reject { |u| u == user }.sample
+    vote = Vote.create(user: voter, chosen_option: first_option, poll:)
+    Comment.create(user: voter, content: Faker::TvShows::RickAndMorty.quote, vote:)
+  end
 end
-
-puts polls
+puts Poll.all
