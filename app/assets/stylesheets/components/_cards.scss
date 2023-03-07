@@ -1,0 +1,43 @@
+.card-container {
+  width: 324px;
+  height: 325px;
+  left: 26px;
+  top: 132px;
+
+  .answers-card {
+    margin-top: 18px;
+  }
+
+  .poll-card {
+  padding-left: 22px;
+  padding-right: 22px;
+  background-color: white;
+  width: 322px;
+  top: 185px;
+  left: 28px;
+  border-radius: 20px;
+  padding-bottom: 40px;
+ }
+
+  .answer-card-1 {
+  width: 278px;
+  height: 55px;
+  top: 251px;
+  left: 50px;
+  border-radius: 20px;
+  background-color: yellow;
+  padding: 21px 12px 20px 20px;
+  margin-top: 24px;
+ }
+
+ .answer-card-2 {
+  width: 278px;
+  height: 55px;
+  top: 251px;
+  left: 50px;
+  border-radius: 20px;
+  background-color: yellow;
+  padding: 21px 0px 20px 20px;
+  margin-top: 12px;
+ }
+}
