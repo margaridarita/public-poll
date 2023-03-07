@@ -1,7 +1,7 @@
 class Poll < ApplicationRecord
   belongs_to :user
   belongs_to :category
-  has_many :saves, dependent: :destroy
+  has_many :bookmarks, dependent: :destroy
   has_many :votes, dependent: :destroy
 
   validates :question, length: { maximum: 150 }, presence: true

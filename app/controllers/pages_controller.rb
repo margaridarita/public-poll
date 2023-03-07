@@ -1,6 +1,6 @@
 class PagesController < ApplicationController
   skip_before_action :authenticate_user!, only: :home
-  before_action :set_user, only: %i[dashboard my_polls my_saves my_account]
+  before_action :set_user, only: %i[dashboard my_polls my_bookmarks my_account]
 
   def home
     @action_name = "home"
@@ -12,7 +12,7 @@ class PagesController < ApplicationController
   def my_polls
   end
 
-  def my_saves
+  def my_bookmarks
   end
 
   private
