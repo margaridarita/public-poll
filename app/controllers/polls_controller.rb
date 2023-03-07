@@ -22,6 +22,7 @@ class PollsController < ApplicationController
 
   def show
     @comment = Comment.new
+    @your_vote = Vote.find_by(user: current_user, poll: @poll) if @poll.votes.pluck(:user_id).include?(current_user.id)
     @vote = Vote.new
     @bookmark = Bookmark.new
   end

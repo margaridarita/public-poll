@@ -3,3 +3,22 @@
 <% if @poll.user == current_user %>
   <%= link_to "Delete", poll_path(@poll), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} %>
 <% end %>
+
+
+<% if @poll.votes.pluck(:user_id).include?(current_user.id) %>
+  <h2>Comments</h2>
+  <ul>
+    <% @poll.votes.each do |v| %>
+        <% v.comments.each do |c| %>
+          <li><%= c.content %></li>
+      <% end %>
+    <% end %>
+  </ul>
+
+
+  <h2>Add a Comment</h2>
+  <%= simple_form_for [@your_vote, @comment] do |f| %>
+      <strong><%= f.input :content %></strong>
+      <%= f.submit %>
+  <% end %>
+<% end %>

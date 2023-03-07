@@ -6,8 +6,10 @@ Rails.application.routes.draw do
   get "/my_account", to: "pages#my_account"
   # Defines the root path route ("/")
   # root "articles#index"
-  resources :polls do
-    resources :comments, only: %i[index new create]
+  resources :polls
+
+  resources :votes, only: [] do
+    resources :comments, only: %i[create]
   end
-  resources :comments, only: %i[edit update show destroy]
+  #resources :comments, only: %i[edit update show destroy]
 end
