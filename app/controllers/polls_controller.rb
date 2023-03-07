@@ -33,6 +33,6 @@ class PollsController < ApplicationController
   end
 
   def poll_params
-    params.require(:poll).permit(:name, :description, :available, :price_per_day, :category)
+    params.require(:poll).permit()
   end
 end

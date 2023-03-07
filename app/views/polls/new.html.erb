@@ -1,0 +1,11 @@
+<h1>New poll</h1>
+
+<div class="h-100 green-bg">
+  <%= simple_form_for @poll do |f| %>
+    <%= f.input :question, placeholder: 'Your poll question' %>
+    <%= f.input :first_option, placeholder: 'Option 1' %>
+    <%= f.input :second_option, placeholder: 'Option 2' %>
+    <%= f.input :category, placeholder: 'E.g. Food' %>
+    <%= f.submit class: 'button-green' %>
+  <% end %>
+</div>
