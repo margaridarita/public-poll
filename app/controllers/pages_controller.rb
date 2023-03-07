@@ -6,11 +6,14 @@ class PagesController < ApplicationController
     @action_name = "home"
   end
 
-  def my_account; end
+  def my_account
+  end
 
-  def my_polls; end
+  def my_polls
+  end
 
-  def my_saves; end
+  def my_saves
+  end
 
   private
 
