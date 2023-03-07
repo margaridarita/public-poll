@@ -1,6 +1,6 @@
 require 'faker'
 
-User.destroy_all
+# User.destroy_all
 
 margarida = User.create(email: "margarida@gmail.com", password: "pombinho222", first_name: "margarida", last_name: "rita", username: "mrita")
 maria = User.create(email: "maria@gmail.com", password: "pombinho222", first_name: "maria", last_name: "salgado", username: "msalgado")
@@ -8,7 +8,18 @@ clarissa = User.create(email: "clarissa@gmail.com", password: "pombinho222", fir
 sofia = User.create(email: "sofia@gmail.com", password: "pombinho222", first_name: "sofia", last_name: "clara", username: "sclara")
 
 users = [maria, margarida, clarissa, sofia]
-category = Category.create(title: "Food")
+
+# categories = ['Animals', 'Food', 'Fantasy', 'Drinks']
+
+polls = []
+
+# category = Category.create(title: "Food")
+
+categories = ["Arts", "Business", "Entertainment", "Food", "Games", "Health", "Music", "News", "Politics", "Science", "Sports", "Technology", "Travel", "Fashion", "Humor", "Relationships", "Education", "History", "Nature", "Books"]
+
+categories.each do |category_title|
+  Category.create(title: category_title)
+end
 
 20.times do
   first_option = Faker::Creature::Animal.name

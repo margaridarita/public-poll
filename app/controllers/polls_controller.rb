@@ -1,11 +1,12 @@
 class PollsController < ApplicationController
   before_action :set_poll, only: %i[show destroy]
+
+
   def index
     @polls = Poll.all
   end
 
   def new
-    @categories = Category.all
     @poll = Poll.new
   end
 
@@ -38,6 +39,6 @@ class PollsController < ApplicationController
   end
 
   def poll_params
-    params.require(:poll).permit(:question, :first_option, :second_option, :user, :category)
+    params.require(:poll).permit(:question, :first_option, :second_option, :category_id)
   end
 end
