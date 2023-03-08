@@ -1,38 +1,15 @@
 class VotesController < ApplicationController
-  before_action :set_vote, only: %i[show]
-
-  def index
-    @votes = Vote.all
-  end
-
-  def new
-    @vote = Vote.new
-  end
 
   def create
-    @vote = Vote.new(vote_params)
+    @poll = Poll.find(params[:poll_id])
+    @vote = Vote.new(chosen_option: params[:chosen_option])
     @vote.user = current_user
+    @vote.poll = @poll
     if @vote.save
-      redirect_to poll_path(@vote)
+      redirect_to poll_path(@vote.poll), notice: "you voted in #{@vote.chosen_option}"
       # path to the poll page that was just created
     else
       render :new, status: :unprocessable_entity
     end
-  end
-
-  def show; end
-
-  def option_1_votes
-    
-  end
-
-  private
-
-  def set_vote
-    @vote = Vote.find(params[:id])
-  end
-
-  def vote_params
-    params.require(:vote).permit(:user, :poll, :chosen_option)
   end
 end

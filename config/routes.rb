@@ -6,7 +6,9 @@ Rails.application.routes.draw do
   get "/my_account", to: "pages#my_account"
   # Defines the root path route ("/")
   # root "articles#index"
-  resources :polls
+  resources :polls do
+    resources :votes, only: :create
+  end
 
   resources :votes, only: [] do
     resources :comments, only: %i[create]
