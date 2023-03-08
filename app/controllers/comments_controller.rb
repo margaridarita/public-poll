@@ -18,8 +18,6 @@ class CommentsController < ApplicationController
     end
   end
 
-
-
   def destroy
     @comment.destroy
     redirect_to comment_path, status: :see_other
