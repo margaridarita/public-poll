@@ -13,5 +13,28 @@
 
 .button-circle {
   width: 32px;
+  height: 32px;
   border-radius: 50%;
+  background-color: #0D8BD3;
+  color: white;
+  border: none;
+ }
+
+.button-answer {
+  display: flex;
+  margin: 5px 0px;
+  width: 278px;
+  height: 55px;
+  top: 251px;
+  left: 50px;
+  border-radius: 20px;
+  background-color: #0D8BD3;
+  padding: 21px 12px 20px 20px;
+  border: none;
+  color: white;
+ }
+
+.button-answer:hover {
+  color: white;
+  transform: scale(1.1);
  }

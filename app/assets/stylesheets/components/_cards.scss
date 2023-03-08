@@ -1,10 +1,13 @@
 .card-container {
   align-items: center;
+  margin-top: 22px;
+  margin-bottom: 22px;
 
   .answers-card {
     display: flex;
     flex-direction: column;
     margin-top: 18px;
+    align-items: center;
   }
 
   .poll-avatar {
@@ -33,15 +36,10 @@
   padding-top: 24px;
  }
 
-  .button-answer {
+ .button-section {
+  margin-top: 12px;
   display: flex;
-  margin: 5px 0px;
-  width: 278px;
-  height: 55px;
-  top: 251px;
-  left: 50px;
-  border-radius: 20px;
-  background-color: #0D8BD3;
-  padding: 21px 12px 20px 20px;
+  justify-content: flex-end;
  }
+
 }
