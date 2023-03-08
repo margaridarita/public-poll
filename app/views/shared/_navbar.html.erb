@@ -1,37 +1,12 @@
 <div class="navbar navbar-expand-sm navbar-light navbar-lewagon">
   <div class="container-fluid">
 
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+  <div class="sidebar">
+    <button class="navbar-toggler" type="button" onclick="openNav()">
       <span class="navbar-toggler-icon"></span>
     </button>
-
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav me-auto">
-        <% if user_signed_in? %>
-          <li class="nav-item active">
-            <p><%= link_to "Home", "new_poll_path", class: "nav-link" %></p>
-          </li>
-          <li class="nav-item active">
-            <p><%= link_to "New poll", "new_poll_path", class: "nav-link" %></p>
-          </li>
-          <li class="nav-item">
-            <p><%= link_to "Categories", "#", class: "nav-link" %></p>
-          </li>
-
-        <% else %>
-          <li class="nav-item active">
-            <%= link_to "Home", "polls_path", class: "nav-link" %>
-          </li>
-          <li class="nav-item active">
-             <%= link_to "New Poll", new_user_session_path, class: "nav-link" %>
-          </li>
-          <li class="nav-item">
-            <%= link_to "Categories", "#", class: "nav-link" %>
-          </li>
-        <% end %>
-      </ul>
-    </div>
-
+    <%= render "shared/sidebar" %>
+  </div>
     <div class="nav-item dropdown">
       <%= image_tag "https://kitt.lewagon.com/placeholder/users/ssaunier", class: "avatar dropdown-toggle", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
       <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
@@ -46,14 +21,3 @@
 
   </div>
 </div>
-
-<%# <div id="mySidenav" class="sidenav"> %>
-  <%# <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a> %>
-  <%# <a href="#">About</a> %>
-  <%# <a href="#">Services</a> %>
-  <%# <a href="#">Clients</a> %>
- <%# <a href="#">Contact</a> %>
-<%# </div> %>
-<%#  %>
-<%# <!-- Use any element to open the sidenav --> %>
-<%# <span onclick="openNav()">open</span> %>
