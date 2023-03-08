@@ -11,8 +11,8 @@
 
 <% if @poll.votes.pluck(:user_id).include?(current_user.id) %>
   <h2>Results</h2>
-  <p><%= @poll.first_option %></p>
-  <p><%= @poll.second_option %></p>
+  <p><%= @poll.first_option %> <%= @first_votes_count.to_i %> votes <%= @first_percentage %>%</p>
+  <p><%= @poll.second_option %> <%= @second_votes_count.to_i %> votes <%= @second_percentage %>%</p>
 
   <h2>Comments</h2>
   <ul>
