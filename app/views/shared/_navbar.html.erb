@@ -7,14 +7,14 @@
     </button>
     <%= render "shared/sidebar" %>
   </div>
-  
+
     <div class="nav-item dropdown">
       <%= image_tag "https://kitt.lewagon.com/placeholder/users/ssaunier", class: "avatar dropdown-toggle", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
       <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
         <%= link_to "My Profile", dashboard_path, class: "dropdown-item" %>
         <%= link_to "Favourite Polls", dashboard_path, class: "dropdown-item" %>
         <%= link_to "Voted Polls", dashboard_path, class: "dropdown-item" %>
-        <%= link_to "FAQ", "#", class: dropdown-item %>
+        <%= link_to "FAQ", "#", class: "dropdown-item" %>
         <%= link_to "Terms & Conditions", "#", class: "dropdown-item" %>
         <%= link_to "Log out", destroy_user_session_path, data: {turbo_method: :delete}, class: "dropdown-item" %>
       </div>
