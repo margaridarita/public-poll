@@ -6,3 +6,6 @@ import { application } from "./application"
 
 import HelloController from "./hello_controller"
 application.register("hello", HelloController)
+
+import SetVoteController from "./set_vote_controller"
+application.register("set-vote", SetVoteController)

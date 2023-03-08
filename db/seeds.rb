@@ -1,11 +1,44 @@
+require 'faker'
 
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the bin/rails db:seed command (or created alongside the database with db:setup).
-#
+# User.destroy_all
 
+margarida = User.create(email: "margarida@gmail.com", password: "pombinho222", first_name: "margarida", last_name: "rita", username: "mrita")
+maria = User.create(email: "maria@gmail.com", password: "pombinho222", first_name: "maria", last_name: "salgado", username: "msalgado")
+clarissa = User.create(email: "clarissa@gmail.com", password: "pombinho222", first_name: "clarissa", last_name: "batista", username: "cbatista")
+sofia = User.create(email: "sofia@gmail.com", password: "pombinho222", first_name: "sofia", last_name: "clara", username: "sclara")
 
-User.destroy_all
-user2 = User.create(email: "test2@gmail.com", password: "pombinho222", first_name: "test", last_name: "test", username: "test")
+users = [maria, margarida, clarissa, sofia]
 
-user = User.create(email: "test@gmail.com", password: "pombinho222", first_name: "test", last_name: "test", username: "test")
-Poll.create(question: "?", user_id: user.id)
+# categories = ['Animals', 'Food', 'Fantasy', 'Drinks']
+
+polls = []
+
+# category = Category.create(title: "Food")
+
+categories = ["Arts", "Business", "Entertainment", "Food", "Games", "Health", "Music", "News", "Politics", "Science", "Sports", "Technology", "Travel", "Fashion", "Humor", "Relationships", "Education", "History", "Nature", "Books"]
+
+categories.each do |category_title|
+  Category.create(title: category_title)
+end
+
+20.times do
+  first_option = Faker::Creature::Animal.name
+  second_option = Faker::Creature::Animal.name
+  question = "Would you rather #{Faker::Hacker.verb} a #{first_option} or #{Faker::Hacker.verb} a #{second_option}?"
+  user = users.sample
+
+  poll = Poll.create(
+    question:,
+    user:,
+    first_option:,
+    second_option:,
+    category:
+  )
+
+  3.times do
+    voter = users.reject { |u| u == user }.sample
+    vote = Vote.create(user: voter, chosen_option: first_option, poll:)
+    Comment.create(user: voter, content: Faker::TvShows::RickAndMorty.quote, vote:)
+  end
+end
+puts Poll.all
