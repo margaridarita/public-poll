@@ -12,10 +12,10 @@
     <%= text_field_tag :query,
       params[:query],
       class: "form-control",
-      placeholder: "Search by category..."
+      placeholder: "Category, keyword..."
     %>
-      <%= button_tag( :class => "bnt") do %>
-        <i class="fa-solid fa-magnifying-glass"></i>
+      <%= button_tag( :class => "button-search-bar") do %>
+        <i class="fas fa-search"></i>
       <% end %>
   <% end %>
 

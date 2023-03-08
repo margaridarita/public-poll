@@ -57,8 +57,22 @@
   padding: 10px 15px 10px 15px;
 }
 
+#search-form {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 #search-form .form-control {
   border: 1px solid F4F4F4;
-  border-radius: 3px;
-  padding: 5px 10px;
+  background-color: white;
+  padding: 0 20px;
+  height: 30px;
+  border-radius: 20px;
+}
+
+#search-form .button-search-bar {
+  border: none;
+  margin-left: 5px;
+  background-color: transparent;
 }
