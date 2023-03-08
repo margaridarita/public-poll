@@ -1,4 +1,22 @@
-<h1>Index</h1>
+
 <% @polls.each do |poll| %>
   <%= link_to poll.question, poll_path(poll) %>
 <% end %>
+
+<div class="card-container">
+  <div class="user-card">
+   <img class="poll-avatar" src="https://kitt.lewagon.com/placeholder/users/sarahlafer"/>
+   <h4 class="poll-username">Username</h4>
+  </div>
+    <div class="poll-card">
+    <div class="card-header"><p>Public Poll is the best?</p></div>
+    <div class="answers-card">
+       <button class="button-answer">
+        <p style="margin-top: -5px;">Option 1</p>
+       </button >
+       <button class="button-answer">
+        <p style="margin-top: -5px;">Option 2</p>
+      </button>
+    </div>
+  </div>
+</div>
