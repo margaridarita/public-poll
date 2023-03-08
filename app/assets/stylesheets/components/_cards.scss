@@ -2,6 +2,8 @@
   align-items: center;
 
   .answers-card {
+    display: flex;
+    flex-direction: column;
     margin-top: 18px;
   }
 
@@ -31,7 +33,9 @@
   padding-top: 24px;
  }
 
-  .answer-card-1 {
+  .button-answer {
+  display: flex;
+  margin: 5px 0px;
   width: 278px;
   height: 55px;
   top: 251px;
@@ -39,17 +43,5 @@
   border-radius: 20px;
   background-color: #0D8BD3;
   padding: 21px 12px 20px 20px;
-  margin-top: 24px;
- }
-
- .answer-card-2 {
-  width: 278px;
-  height: 55px;
-  top: 251px;
-  left: 50px;
-  border-radius: 20px;
-  background-color: #0D8BD3;
-  padding: 21px 0px 20px 20px;
-  margin-top: 12px;
  }
 }
