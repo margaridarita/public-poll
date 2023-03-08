@@ -1,5 +1,7 @@
 class PollsController < ApplicationController
   before_action :set_poll, only: %i[show destroy]
+
+
   def index
     @polls = Poll.all
   end
@@ -19,7 +21,12 @@ class PollsController < ApplicationController
     end
   end
 
-  def show; end
+  def show
+    @comment = Comment.new
+    @your_vote = Vote.find_by(user: current_user, poll: @poll) if @poll.votes.pluck(:user_id).include?(current_user.id)
+    @vote = Vote.new
+    @bookmark = Bookmark.new
+  end
 
   def destroy
     @poll.destroy
@@ -33,6 +40,6 @@ class PollsController < ApplicationController
   end
 
   def poll_params
-    params.require(:poll).permit()
+    params.require(:poll).permit(:question, :first_option, :second_option, :category_id)
   end
 end

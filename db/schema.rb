@@ -10,9 +10,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_03_07_145441) do
+
+ActiveRecord::Schema[7.0].define(version: 2023_03_07_155152) do
+
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "bookmarks", force: :cascade do |t|
+    t.bigint "poll_id", null: false
+    t.bigint "user_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["poll_id"], name: "index_bookmarks_on_poll_id"
+    t.index ["user_id"], name: "index_bookmarks_on_user_id"
+  end
 
   create_table "categories", force: :cascade do |t|
     t.string "title"
@@ -37,17 +48,9 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_07_145441) do
     t.datetime "updated_at", null: false
     t.string "first_option"
     t.string "second_option"
-    t.string "category"
+    t.bigint "category_id", null: false
+    t.index ["category_id"], name: "index_polls_on_category_id"
     t.index ["user_id"], name: "index_polls_on_user_id"
-  end
-
-  create_table "saves", force: :cascade do |t|
-    t.bigint "poll_id", null: false
-    t.bigint "user_id", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["poll_id"], name: "index_saves_on_poll_id"
-    t.index ["user_id"], name: "index_saves_on_user_id"
   end
 
   create_table "user_categories", force: :cascade do |t|
@@ -84,11 +87,12 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_07_145441) do
     t.index ["user_id"], name: "index_votes_on_user_id"
   end
 
+  add_foreign_key "bookmarks", "polls"
+  add_foreign_key "bookmarks", "users"
   add_foreign_key "comments", "users"
   add_foreign_key "comments", "votes"
+  add_foreign_key "polls", "categories"
   add_foreign_key "polls", "users"
-  add_foreign_key "saves", "polls"
-  add_foreign_key "saves", "users"
   add_foreign_key "user_categories", "categories"
   add_foreign_key "user_categories", "users"
   add_foreign_key "votes", "polls"

@@ -7,7 +7,11 @@ Rails.application.routes.draw do
   # Defines the root path route ("/")
   # root "articles#index"
   resources :polls do
-    resources :comments, only: %i[index new create]
+    resources :votes, only: :create
   end
-  resources :comments, only: %i[edit update show destroy]
+
+  resources :votes, only: [] do
+    resources :comments, only: %i[create]
+  end
+  #resources :comments, only: %i[edit update show destroy]
 end
