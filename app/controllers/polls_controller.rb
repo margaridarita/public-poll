@@ -8,8 +8,6 @@ class PollsController < ApplicationController
     else
       @polls = Poll.all
     end
-    #   sql_query = "category.title @@ :query OR question @@ :query OR first_option @@ :query OR second_option @@ :query"
-    #   @polls = Poll.where(sql_query, query: "%#{params[:query]}%")
   end
 
   def new

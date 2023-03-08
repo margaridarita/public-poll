@@ -8,13 +8,15 @@
     <%= render "shared/sidebar" %>
   </div>
 
-  <%= form_with url: polls_path, method: :get, class: "d-flex" do %>
+  <%= form_with url: polls_path, method: :get, class: "d-flex", id: "search-form" do %>
     <%= text_field_tag :query,
       params[:query],
       class: "form-control",
       placeholder: "Search by category..."
     %>
-    <%= submit_tag "Search", class: "btn btn-primary" %>
+      <%= button_tag( :class => "bnt") do %>
+        <i class="fa-solid fa-magnifying-glass"></i>
+      <% end %>
   <% end %>
 
     <div class="nav-item dropdown">
