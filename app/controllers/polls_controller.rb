@@ -3,7 +3,11 @@ class PollsController < ApplicationController
 
 
   def index
-    @polls = Poll.all
+    if params[:query].present?
+      @polls = Poll.search_by_category_and_question(params[:query])
+    else
+      @polls = Poll.all
+    end
   end
 
   def new
