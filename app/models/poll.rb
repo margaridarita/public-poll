@@ -8,4 +8,13 @@ class Poll < ApplicationRecord
   validates :first_option, length: { maximum: 100 }, presence: true
   validates :second_option, length: { maximum: 100 }, presence: true
 
+  include PgSearch::Model
+  pg_search_scope :search_by_category_and_question,
+  against: [:question, :first_option, :second_option],
+  associated_against: {
+  category: [ :title ]
+  },
+  using: {
+    tsearch: { prefix: true }
+  }
 end
