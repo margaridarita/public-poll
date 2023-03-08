@@ -1,4 +1,25 @@
-<h1>Index</h1>
+
 <% @polls.each do |poll| %>
-  <%= link_to poll.question, poll_path(poll) %>
+  <div class="card-container">
+    <div class="user-card">
+    <img class="poll-avatar" src="https://avatarfiles.alphacoders.com/266/266629.jpg"/>
+    <h4 class="poll-username"><%= poll.user.username %></h4>
+    </div>
+      <div class="poll-card">
+      <div class="card-header"><p style="margin-left: 12px"><%= poll.question %></p></div>
+      <div class="answers-card">
+        <button class="button-answer">
+          <p style="margin-top: -5px"><%= poll.first_option%></p>
+        </button >
+        <button class="button-answer">
+          <p style="margin-top: -5px"><%= poll.second_option %></p>
+        </button>
+      </div>
+    </div>
+    <div class="button-section">
+      <button class="button-circle fa-solid fa-star" style=" margin-right: 19px"></button>
+      <button class="button-circle fa-solid fa-share" style=" margin-right: 19px"></button>
+      <button class="button-circle fa-solid fa-comment-dots"></button>
+    </div>
+  </div>
 <% end %>

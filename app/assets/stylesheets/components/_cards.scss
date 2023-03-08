@@ -1,0 +1,45 @@
+.card-container {
+  align-items: center;
+  margin-top: 22px;
+  margin-bottom: 22px;
+
+  .answers-card {
+    display: flex;
+    flex-direction: column;
+    margin-top: 18px;
+    align-items: center;
+  }
+
+  .poll-avatar {
+    width: 32px;
+    border-radius: 50%;
+  }
+
+  .user-card {
+    padding-bottom: 14px;
+    display: flex;
+  }
+
+  .poll-username {
+    padding-left: 12px;
+    padding-top: 8px;
+  }
+
+  .poll-card {
+  padding-left: 22px;
+  padding-right: 22px;
+  background-color: white;
+  top: 185px;
+  left: 28px;
+  border-radius: 20px;
+  padding-bottom: 40px;
+  padding-top: 24px;
+ }
+
+ .button-section {
+  margin-top: 12px;
+  display: flex;
+  justify-content: flex-end;
+ }
+
+}
