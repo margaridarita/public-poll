@@ -1,5 +1,4 @@
 <h1>Trending</h1>
-
 <% @polls.each do |poll| %>
   <div class="card-container">
     <div class="user-card">
@@ -24,11 +23,11 @@
       <% else %>
        <%= link_to poll_path(poll) do %>
           <div>
-            <p class="ms-3" style="color: blue">See Results</p>
+            <p class="ms-2" style="color: #0075FF">See Results</p>
           </div>
         <% end %>
       <% end %>
-      <p><%= poll.votes.count %> votes</p>
+      <p class="ms-2" ><%= poll.votes.count %> votes</p>
     </div>
     <div class="button-section">
       <button class="button-circle fa-solid fa-star" style=" margin-right: 19px"></button>
