@@ -1,19 +1,35 @@
 <%= link_to "< Back", :back %>
-<h1><%= @poll.question %></h1>
-<% if @poll.user == current_user %>
-  <%= link_to "Delete", poll_path(@poll), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} %>
-<% end %>
+<div class="card-container">
+    <div class="user-card">
+      <img class="poll-avatar" src="https://avatarfiles.alphacoders.com/266/266629.jpg"/>
+      <h4 class="poll-username"><%= @poll.user.username %></h4>
+    </div>
+  <div class="poll-card">
+    <div class="card-header">
+      <p style="margin-left: 12px"><%= @poll.question %></p>
+    </div>
+     <% if @poll.user == current_user %>
+       <%= link_to "Delete", poll_path(@poll), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} %>
+     <% end %>
 
-<% unless @poll.votes.pluck(:user_id).include?(current_user.id) %>
-  <%= link_to @poll.first_option, poll_votes_path(@poll,chosen_option: @poll.first_option), data: {turbo_method: :post}  %>
-  <%= link_to @poll.second_option, poll_votes_path(@poll,chosen_option: @poll.second_option), data: {turbo_method: :post}  %>
-<% end %>
+      <% unless @poll.votes.pluck(:user_id).include?(current_user.id) %>
+        <%= link_to @poll.first_option, poll_votes_path(@poll,chosen_option: @poll.first_option), data: {turbo_method: :post}  %>
+        <%= link_to @poll.second_option, poll_votes_path(@poll,chosen_option: @poll.second_option), data: {turbo_method: :post}  %>
+      <% end %>
 
-<% if @poll.votes.pluck(:user_id).include?(current_user.id) %>
-  <h2>Results</h2>
-  <p><%= @poll.first_option %> <%= @first_votes_count.to_i %> votes <%= @first_percentage %>%</p>
-  <p><%= @poll.second_option %> <%= @second_votes_count.to_i %> votes <%= @second_percentage %>%</p>
+    <div class="answers-card">
+      <div class="button-answer">
+        <% if @poll.votes.pluck(:user_id).include?(current_user.id) %>
+        <p style="margin-top: -5px"><%= @poll.first_option %> <%= @first_votes_count.to_i %> votes <%= @first_percentage %>%</p>
+      </div>
+      <div class="button-answer">
+        <p style="margin-top: -5px"><%= @poll.second_option %> <%= @second_votes_count.to_i %> votes <%= @second_percentage %>%</p>
+      </div>
+    </div>
+  </div>
+</div>
 
+<%# Comments Section %>
   <h2>Comments</h2>
   <ul>
     <% @poll.votes.each do |v| %>
