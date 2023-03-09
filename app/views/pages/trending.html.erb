@@ -7,26 +7,43 @@
     </div>
       <div class="poll-card">
       <div class="card-header"><p style="margin-left: 12px"><%= poll.question %></p></div>
-      <% unless poll.votes.pluck(:user_id).include?(current_user.id)%>
-      <div class="answers-card">
-        <%= link_to poll_votes_path(poll,chosen_option:poll.first_option ), data: {turbo_method: :post} do %>
-          <div class="button-answer">
-            <p style="margin-top: -5px"><%= poll.first_option%></p>
-          </div >
+      <% if user_signed_in? %>
+        <% unless poll.votes.pluck(:user_id).include?(current_user.id)%>
+        <div class="answers-card">
+          <%= link_to poll_votes_path(poll,chosen_option:poll.first_option ), data: {turbo_method: :post} do %>
+            <div class="button-answer">
+              <p style="margin-top: -5px"><%= poll.first_option%></p>
+            </div >
+          <% end %>
+          <%= link_to poll_votes_path(poll,chosen_option:poll.second_option), data: {turbo_method: :post} do %>
+            <div class="button-answer">
+              <p style="margin-top: -5px"><%= poll.second_option %></p>
+            </div>
+          <% end %>
+        </div>
+        <% else %>
+        <%= link_to poll_path(poll) do %>
+            <div>
+              <p class="ms-2" style="color: #0075FF">See Results</p>
+            </div>
+          <% end %>
         <% end %>
-        <%= link_to poll_votes_path(poll,chosen_option:poll.second_option), data: {turbo_method: :post} do %>
-          <div class="button-answer">
-            <p style="margin-top: -5px"><%= poll.second_option %></p>
-          </div>
-        <% end %>
-      </div>
       <% else %>
-       <%= link_to poll_path(poll) do %>
-          <div>
-            <p class="ms-2" style="color: #0075FF">See Results</p>
+          <div class="answers-card">
+            <%= link_to new_user_session_path do %>
+              <div class="button-answer">
+                <p style="margin-top: -5px"><%= poll.first_option%></p>
+              </div >
+            <% end %>
+            <%= link_to new_user_session_path do %>
+              <div class="button-answer">
+                <p style="margin-top: -5px"><%= poll.second_option %></p>
+              </div>
+            <% end %>
           </div>
-        <% end %>
       <% end %>
+
+
       <p class="ms-2" ><%= poll.votes.count %> votes</p>
     </div>
     <div class="button-section">
