@@ -15,6 +15,10 @@ class PagesController < ApplicationController
   def my_bookmarks
   end
 
+  def trending
+    @polls = Poll.all.last_week.sort_by { |p| p.votes.count }.reverse.first(20)
+  end
+
   private
 
   def set_user
