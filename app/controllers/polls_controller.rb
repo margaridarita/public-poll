@@ -36,8 +36,8 @@ class PollsController < ApplicationController
 
     @total_votes_count = Vote.where(poll_id: @poll.id).count.to_f
 
-    @first_percentage = (@first_votes_count / @total_votes_count) * 100
-    @second_percentage = (@second_votes_count / @total_votes_count) * 100
+    @first_percentage = ((@first_votes_count / @total_votes_count) * 100).round
+    @second_percentage = ((@second_votes_count / @total_votes_count) * 100).round
 
     @user_votes = Vote.find_by(poll_id: @poll.id, user_id: current_user).chosen_option
 
