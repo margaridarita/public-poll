@@ -8,6 +8,17 @@
     <%= render "shared/sidebar" %>
   </div>
 
+  <%= form_with url: polls_path, method: :get, class: "d-flex", id: "search-form" do %>
+    <%= text_field_tag :query,
+      params[:query],
+      class: "form-control",
+      placeholder: "Category, keyword..."
+    %>
+      <%= button_tag( :class => "button-search-bar") do %>
+        <i class="fas fa-search"></i>
+      <% end %>
+  <% end %>
+
     <div class="nav-item dropdown">
       <%= image_tag "https://avatarfiles.alphacoders.com/266/266629.jpg", class: "avatar dropdown-toggle", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
       <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">

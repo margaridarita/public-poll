@@ -56,3 +56,24 @@
   color: #0D8BD3;
   padding: 10px 15px 10px 15px;
 }
+
+#search-form {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#search-form .form-control {
+  border: 1px solid F4F4F4;
+  background-color: white;
+  padding: 0 20px;
+  height: 30px;
+  border-radius: 20px;
+  font-size: 15px;
+}
+
+#search-form .button-search-bar {
+  border: none;
+  margin-left: 5px;
+  background-color: transparent;
+}
