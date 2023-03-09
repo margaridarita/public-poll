@@ -5,34 +5,66 @@
   z-index: 1; /* Stay on top */
   top: 0; /* Stay at the top */
   left: 0;
-  background-color: white;
+  background-color: #0075FF;
   overflow-x: hidden; /* Disable horizontal scroll */
   padding-top: 60px; /* Place content 60px from the top */
   transition: 0.5s; /* 0.5 second transition effect to slide in the sidenav */
 }
 
 /* The navigation menu links */
-.sidenav a {
+.sidenav .sidenav-item {
   padding: 8px 8px 8px 32px;
   text-decoration: none;
   font-size: 25px;
-  color: #0D8BD3;
+  color: white;
   display: block;
   transition: 0.3s;
 }
 
 /* When you mouse over the navigation links, change their color */
-.sidenav a:hover {
+.sidenav .sidenav-item:hover {
   color: #f1f1f1;
+}
+
+.sidenav .log-out {
+  padding: 100px 8px 8px 32px;
+  text-decoration: none;
+  font-weight: lighter;
+  color: white;
+  display: block;
+  transition: 0.3s;
 }
 
 /* Position and style the close button (top right corner) */
 .sidenav .closebtn {
   position: absolute;
-  top: 0;
+  top: 8px;
   right: 25px;
-  font-size: 36px;
-  margin-left: 50px;
+  font-size: 35px;
+  margin-left: 60px;
+  font-weight: 300;
+}
+
+.sidenav .avatar {
+  padding: 0;
+  margin-left: 32px;
+  border-radius: 50%;
+  width: 50px;
+  object-fit: cover;
+}
+
+.sidenav .side-nav-user-info {
+  color: white;
+  margin-left: 32px;
+  margin-bottom: 32px;
+  margin-top: 12px;
+}
+
+.sidenav .visitor-avatar {
+  color: white;
+  opacity: 0.5;
+  font-size: 50px;
+  margin-left: 32px;
 }
 
 @media screen and (max-height: 450px) {
