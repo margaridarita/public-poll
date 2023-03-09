@@ -1,5 +1,5 @@
 class PagesController < ApplicationController
-  skip_before_action :authenticate_user!, only: :home
+  skip_before_action :authenticate_user!, only: %i[home trending]
   before_action :set_user, only: %i[dashboard my_polls my_bookmarks my_account]
 
   def home
