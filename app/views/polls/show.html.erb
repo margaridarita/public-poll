@@ -1,5 +1,5 @@
 <%= link_to "< Back", :back %>
-<h1><%= @poll.question %></h1>
+<h1 class="pb-4"><%= @poll.question %></h1>
 <% if @poll.user == current_user %>
   <%= link_to "Delete", poll_path(@poll), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} %>
 <% end %>
@@ -10,22 +10,26 @@
 <% end %>
 
 <% if @poll.votes.pluck(:user_id).include?(current_user.id) %>
-  <h2>Results</h2>
   <%= bar_chart [[@poll.first_option,@first_percentage],[@poll.second_option,@second_percentage]], min: "0", max: "100", colors: ["#0075FF", "#0075FF"], title: "You voted #{@user_votes} like #{@same}% of people", library: { scales: { x: { ticks: { display: false } } } } %>
-  <p>Total votes: <%= @total_votes_count.to_i %></p>
+  <p class="d-flex justify-content-end pe-3">Total votes: <%= @total_votes_count.to_i %></p>
 
-  <h2>Comments</h2>
-  <ul>
+  <h2 class="pt-4">Comments</h2>
     <% @poll.votes.each do |v| %>
         <% v.comments.each do |c| %>
-          <li><%= c.content %></li>
+          <div class="card-container">
+            <div class="user-card">
+              <img class="poll-avatar" src="https://avatarfiles.alphacoders.com/266/266629.jpg"/>
+              <h4 class="poll-username"><%= c.user.username %></h4>
+            </div>
+              <div class="card-header"><p style="margin-left: 12px"><%= c.content %></p></div>
+          </div>
       <% end %>
     <% end %>
-  </ul>
 
-  <h2>Add a Comment</h2>
-  <%= simple_form_for [@your_vote, @comment] do |f| %>
-      <strong><%= f.input :content %></strong>
-      <%= f.submit %>
+  <div class="pb-5">
+    <%= simple_form_for [@your_vote, @comment] do |f| %>
+        <strong><%= f.input_field :content, placeholder: 'Write a comment' %></strong>
+        <%= f.submit %>
+    <% end %>
+  </div>
   <% end %>
-<% end %>
