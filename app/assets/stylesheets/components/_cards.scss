@@ -43,4 +43,28 @@
   justify-content: flex-end;
  }
 
+ .my-poll-card {
+  padding-right: 22px;
+  background-color: white;
+  top: 185px;
+  left: 28px;
+  border-radius: 20px;
+  padding-bottom: 40px;
+  padding-top: 24px;
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+  text-align: center;
+ }
+
+ .my-poll-show {
+  background-color: #0075FF;
+  color: white;
+  padding: 2px;
+  padding-left: 5px;
+  width: 33%;
+  border-top-right-radius: 5px;
+  border-bottom-right-radius: 5px;
+  font-size: 12px;
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+ }
+
 }

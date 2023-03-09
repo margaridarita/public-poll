@@ -6,17 +6,11 @@ class PagesController < ApplicationController
     @action_name = "home"
   end
 
-  def my_account
-  end
-
-  def my_polls
-  end
-
-  def my_bookmarks
-  end
-
   def trending
     @polls = Poll.all.last_week.sort_by { |p| p.votes.count }.reverse.first(20)
+  end
+
+  def dashboard
   end
 
   private
