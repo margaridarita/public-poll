@@ -17,6 +17,7 @@
         <%= link_to @poll.second_option, poll_votes_path(@poll,chosen_option: @poll.second_option), data: {turbo_method: :post}  %>
       <% end %>
 
+
     <div class="answers-card">
       <div class="button-answer">
         <% if @poll.votes.pluck(:user_id).include?(current_user.id) %>
@@ -28,6 +29,12 @@
     </div>
   </div>
 </div>
+
+<% if @poll.votes.pluck(:user_id).include?(current_user.id) %>
+  <h2>Results</h2>
+  <%= bar_chart [[@poll.first_option,@first_percentage],[@poll.second_option,@second_percentage]], min: "0", max: "100", colors: ["#0075FF", "#0075FF"], title: "You voted #{@user_votes} like #{@same}% of people", library: { scales: { x: { ticks: { display: false } } } } %>
+  <p>Total votes: <%= @total_votes_count.to_i %></p>
+
 
 <%# Comments Section %>
   <h2>Comments</h2>
