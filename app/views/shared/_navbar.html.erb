@@ -3,7 +3,7 @@
 
   <div class="sidebar">
     <button class="navbar-toggler" type="button" onclick="openNav()">
-      <span class="navbar-toggler-icon"></span>
+      <i class="navbar-icon fa-solid fa-bars"></i>
     </button>
     <%= render "shared/sidebar" %>
   </div>
@@ -15,21 +15,16 @@
       placeholder: "Category, keyword..."
     %>
       <%= button_tag( :class => "button-search-bar") do %>
-        <i class="fas fa-search"></i>
+        <i class="navbar-icon fas fa-search"></i>
       <% end %>
   <% end %>
 
-    <div class="nav-item dropdown">
-      <%= image_tag "https://avatarfiles.alphacoders.com/266/266629.jpg", class: "avatar dropdown-toggle", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
-      <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-        <%= link_to "My Profile", dashboard_path, class: "dropdown-item" %>
-        <%= link_to "Favourite Polls", dashboard_path, class: "dropdown-item" %>
-        <%= link_to "Voted Polls", dashboard_path, class: "dropdown-item" %>
-        <%= link_to "FAQ", "#", class: "dropdown-item" %>
-        <%= link_to "Terms & Conditions", "#", class: "dropdown-item" %>
-        <%= link_to "Log out", destroy_user_session_path, data: {turbo_method: :delete}, class: "dropdown-item" %>
-      </div>
-    </div>
+      <% if user_signed_in? %>
+        <a href="/polls.html">  <i class="navbar-icon fa-solid fa-house"></i></a>
+      <% else %>
+        <a href="/trending.html">  <i class="navbar-icon fa-solid fa-house"></i></a>
+      <% end %>
+
 
   </div>
 </div>
