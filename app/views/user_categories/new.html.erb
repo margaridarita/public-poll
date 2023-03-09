@@ -1,6 +1,6 @@
 <h1>USER CATEGORIES</h1>
 
 <%= simple_form_for @user_category do |f| %>
-<%= f.input :category, collection: Category.all %>
+<%= f.input :category, collection: Category.all, include_blank: false %>
 <%= f.submit %>
 <% end %>
