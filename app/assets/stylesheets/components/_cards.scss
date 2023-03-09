@@ -42,5 +42,27 @@
   display: flex;
   justify-content: flex-end;
  }
+}
 
+.category-card {
+  width: 150px;
+  height: 104px;
+  left: 200px;
+  top: 516px;
+  background-color: white;
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+  border-radius: 20px;
+  text-align: center;
+  color: #0047FE;
+}
+
+.categories-container {
+  display: grid;
+  grid-template-columns: auto auto;
+  column-gap: 24px;
+  row-gap: 24px;
+}
+
+.category-text {
+  margin-top: 50px;
 }
