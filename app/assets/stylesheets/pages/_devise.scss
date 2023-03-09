@@ -1,5 +1,9 @@
-.log-in-page {
-  font-size: 15px;
+#main-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 100px;
+  margin-bottom: 0;
 }
 
 .log-in-email {
@@ -12,7 +16,6 @@
 .log-in .form-control {
   border-radius: 20px;
   border-color: #0075FF;
-  // flex-grow: 1;
 }
 
 .log-in-email i, .log-in-password i {
@@ -25,6 +28,25 @@
 
 #user_remember_me {
   border-radius: 20px;
-  border-color: #0075FF;
+  border-color: #D9D9D9;
+  margin-bottom: 40px;
 }
 
+#log-in-button {
+  width: 120px;
+  padding: 0;
+  text-align: center;
+}
+
+.account-prompts {
+  margin: 70px 0;
+}
+
+.account-prompt {
+  color: #D9D9D9;
+  width: 200px;
+}
+
+.account-prompt a {
+  color: #063D5C;
+}

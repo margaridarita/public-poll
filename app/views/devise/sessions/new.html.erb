@@ -1,12 +1,11 @@
-<div id="log-in-page d-flex flex-column justify-content-center">
+<div id="log-in-page">
 
-  <h2>Avatar</h2>
-
+<div>
   <%= simple_form_for(resource, as: resource_name, url: session_path(resource_name), data: { turbo: :false }) do |f| %>
     <div class="log-in">
 
       <div class="log-in-email d-flex align-items-center">
-        <i class="fa-sharp fa-solid fa-envelope"></i>
+        <i class="fa-sharp fa-solid fa-envelope mb-3"></i>
         <div class="email-field">
           <%= f.input :email,
                     required: false,
@@ -17,7 +16,7 @@
       </div>
 
       <div class="log-in-password d-flex align-items-center">
-        <i class="fa-sharp fa-solid fa-lock"></i>
+        <i class="fa-sharp fa-solid fa-lock mb-3"></i>
         <div class="password-field">
           <%= f.input :password,
                     required: false,
@@ -32,12 +31,15 @@
       <%= f.input :remember_me, as: :boolean if devise_mapping.rememberable? %>
     </div>
 
-    <div class="form-actions">
-      <%= f.button :submit, "Log in" %>
+    <div class="form-actions" id="log-in-button">
+      <%= f.button :submit, "Log in", class: "button-blue" %>
     </div>
 
   <% end %>
+  <div class="account-prompts">
+    <%= render "devise/shared/links" %>
+  </div>
+</div>
 
-  <%= render "devise/shared/links" %>
 
 </div>
