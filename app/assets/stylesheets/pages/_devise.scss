@@ -1,0 +1,30 @@
+.log-in-page {
+  font-size: 15px;
+}
+
+.log-in-email {
+  // position: relative;
+  display: flex;
+  align-items: center;
+
+}
+
+.log-in .form-control {
+  border-radius: 20px;
+  border-color: #0075FF;
+  // flex-grow: 1;
+}
+
+.log-in-email i, .log-in-password i {
+  margin-right: 10px;
+  color: #0075FF;
+  // position: absolute;
+  // left: 14px;
+  // top: 7px;
+}
+
+#user_remember_me {
+  border-radius: 20px;
+  border-color: #0075FF;
+}
+
