@@ -52,8 +52,16 @@
   background-color: white;
   box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
   border-radius: 20px;
-  text-align: center;
   color: #0047FE;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  border: none;
+}
+
+#category-card:focus {
+  background-color:yellow;
 }
 
 .categories-container {
@@ -64,5 +72,6 @@
 }
 
 .category-text {
-  margin-top: 50px;
+  margin-top: 11px;
+  margin-bottom: 0px;
 }
