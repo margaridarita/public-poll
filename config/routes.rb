@@ -5,7 +5,9 @@ Rails.application.routes.draw do
   get "/dashboard", to: "pages#dashboard"
   get "/trending", to: "pages#trending"
   get "/my_account", to: "pages#my_account"
+  get "/search", to: "pages#search"
   get "/categories", to: "pages#categories"
+
   # Defines the root path route ("/")
   # root "articles#index"
   resources :polls do

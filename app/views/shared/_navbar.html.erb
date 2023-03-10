@@ -1,30 +1,24 @@
-<div class="navbar navbar-expand-sm navbar-light navbar-lewagon">
-  <div class="container-fluid">
 
-  <div class="sidebar">
-    <button class="navbar-toggler" type="button" onclick="openNav()">
-      <i class="navbar-icon fa-solid fa-bars"></i>
-    </button>
-    <%= render "shared/sidebar" %>
+<div class="navbar navbar-expand-sm navbar-light navbar-lewagon">
+  <div class="icons-container">
+  <div class="icons-left">
+    <div class="sidebar">
+      <button class="navbar-toggler" type="button" onclick="openNav()">
+        <i class="navbar-icon fa-solid fa-bars"></i>
+      </button>
+      <%= render "shared/sidebar" %>
+    </div>
   </div>
 
-  <%= form_with url: polls_path, method: :get, class: "d-flex", id: "search-form" do %>
-    <%= text_field_tag :query,
-      params[:query],
-      class: "form-control",
-      placeholder: "Category, keyword..."
-    %>
-      <%= button_tag( :class => "button-search-bar") do %>
-        <i class="navbar-icon fas fa-search"></i>
-      <% end %>
-  <% end %>
+    <div class="icons-right">
+      <a href="/search.html">  <i class="navbar-icon fas fa-search"></i></a>
 
       <% if user_signed_in? %>
         <a href="/polls.html">  <i class="navbar-icon fa-solid fa-house"></i></a>
       <% else %>
         <a href="/trending.html">  <i class="navbar-icon fa-solid fa-house"></i></a>
       <% end %>
-
+    </div>
 
   </div>
 </div>
