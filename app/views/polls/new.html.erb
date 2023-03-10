@@ -1,12 +1,16 @@
-<h1>New poll</h1>
+<div class="new-poll-page">
 
-<div class="h-100 green-bg">
-  <%= simple_form_for @poll do |f| %>
-    <%= f.label :"Category *" %>
-    <%= f.collection_select :category_id, Category.all, :id, :title, { prompt: 'Select category',  }, { class: 'form-control' } %>
-    <%= f.input :question, placeholder: 'Your question' %>
-    <%= f.input :first_option, placeholder: 'Option 1' %>
-    <%= f.input :second_option, placeholder: 'Option 2' %>
-    <%= f.submit class: 'button-green' %>
-  <% end %>
-</div>
+  <h2 class="text-align-center">New poll</h2>
+
+  <div class="d-flex justify-content-center align-items-center">
+    <%= simple_form_for @poll do |f| %>
+      <%= f.label :"Category *", class: "category-label" %>
+      <%= f.collection_select :category_id, Category.all, :id, :title, { prompt: 'Select category',  }, { class: 'form-control category-field' } %>
+      <%= f.input :question, placeholder: 'Your question' %>
+      <%= f.input :first_option, placeholder: 'Option 1' %>
+      <%= f.input :second_option, placeholder: 'Option 2' %>
+      <%= f.submit class: 'button-blue' %>
+    <% end %>
+  </div>
+
+<div>
