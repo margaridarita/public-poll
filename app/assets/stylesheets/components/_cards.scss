@@ -96,13 +96,14 @@
  }
 
  .my-poll-show {
-  background-color: #0075FF;
+  background-color: #80BAFF;
   color: white;
+  font-weight: bolder;
+  text-align: center;
   padding: 2px;
-  padding-left: 5px;
-  width: 33%;
-  border-top-right-radius: 5px;
-  border-bottom-right-radius: 5px;
+  margin-bottom: 10px;
+  width: 20%;
+  border-radius: 5px;
   font-size: 12px;
   box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
  }

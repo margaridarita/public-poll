@@ -9,7 +9,6 @@ Rails.application.routes.draw do
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
   get "/dashboard", to: "pages#dashboard"
   get "/trending", to: "pages#trending"
-  get "/my_account", to: "pages#my_account"
   get "/search", to: "pages#search"
   get "/categories", to: "pages#categories"
   get '/categories/:title', to: 'categories#show'

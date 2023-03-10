@@ -19,6 +19,7 @@ class PagesController < ApplicationController
     #dash
   end
 
+
   private
 
   def set_user
