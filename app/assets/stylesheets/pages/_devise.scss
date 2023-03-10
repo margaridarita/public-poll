@@ -1,5 +1,11 @@
-.log-in-page {
-  font-size: 15px;
+// ----- LOG-IN ------
+
+#log-in-page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 100px;
+  margin-bottom: 0;
 }
 
 .log-in-email {
@@ -9,22 +15,72 @@
 
 }
 
-.log-in .form-control {
+.log-in .form-control, .form-inputs .form-control {
   border-radius: 20px;
   border-color: #0075FF;
-  // flex-grow: 1;
 }
 
 .log-in-email i, .log-in-password i {
-  margin-right: 10px;
   color: #0075FF;
   // position: absolute;
   // left: 14px;
   // top: 7px;
 }
 
-#user_remember_me {
-  border-radius: 20px;
-  border-color: #0075FF;
+// TO FIND BETTER SOLUTION (SEE DOWN)
+
+.log-in-email i {
+  margin-right: 10px;
 }
 
+.log-in-password i {
+  margin-right: 12px;
+}
+
+// TO FIND BETTER SOLUTION (SEE UP)
+
+#user_remember_me {
+  border-radius: 20px;
+  border-color: #D9D9D9;
+  margin-bottom: 40px;
+}
+
+#log-in-button {
+  width: 120px;
+  padding: 0;
+  text-align: center;
+  margin: 0 auto;
+}
+
+.account-prompts {
+  margin: 70px 0;
+}
+
+.account-prompt {
+  color: #80BAFF;
+  width: 200px;
+  margin: 0 auto;
+}
+
+.account-prompt a {
+  color: #063D5C;
+  margin: 0;
+}
+
+// ----- SIGN UP ------
+
+#sign-up-page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 30px;
+  color: #0075FF;
+
+  h2 {
+    margin-bottom: 20px;
+  }
+}
+
+#sign-up-page .form-actions {
+  margin: 0 auto;
+}

@@ -12,9 +12,7 @@
 @import "pages/index";
 
 html, body {
-  background: linear-gradient(180deg, #FFFFFF 0%, #0C8BD2 94.27%);
-  height: 100%;
-  background-attachment: fixed;
+  background: #FFFFFF;
 }
 
 body {
@@ -32,6 +30,7 @@ body {
 h1 {
   font-size: 30px;
   font-weight: bolder;
+  text-align: center;
 }
 
 h2 {
@@ -53,11 +52,9 @@ h5 {
 
 p {
   font-size: 15px;
+  margin-bottom: 0;
 }
 
 a {
-  font-size: 15px;
-  font-weight: bolder;
   text-decoration: none;
-  color: white;
 }

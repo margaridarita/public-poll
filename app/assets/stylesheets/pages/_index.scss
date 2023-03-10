@@ -1,3 +1,22 @@
 // Import page-specific CSS files here.
 @import "home";
-@import "devise"
+@import "devise";
+
+
+.results {
+  display: flex;
+  color: #80BAFF;
+  text-align: center;
+  justify-content: flex-start;
+}
+
+.results-back {
+  margin-right: 10px;
+  font-size: 20px;
+  align-items: center;
+}
+
+.display-result {
+  display: flex;
+  align-items: center;
+}

@@ -1,10 +1,36 @@
 
 <div id="mySidenav" class="sidenav">
-  <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-  <a href="#">About</a>
-  <a href="#">Services</a>
-  <a href="#">Clients</a>
-  <a href="#">Contact</a>
+  <div class="sidenav-items">
+    <% if user_signed_in? %>
+      <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+      <%= image_tag "https://avatarfiles.alphacoders.com/266/266629.jpg", class: "avatar" %>
+
+      <div class="side-nav-user-info">
+        <h2><%= current_user.first_name.capitalize %><h2>
+        <h6><%= '@' + current_user.username %><h6>
+      </div>
+
+      <a href="/dashboard" class="sidenav-item"><p><i class="fa-solid fa-user me-2"></i> My Profile</p></a>
+      <a href="/polls/new" class="sidenav-item"><p><i class="fa-solid fa-circle-plus me-2"></i> New Poll</p></a>
+      <a href="/trending" class="sidenav-item"><p><i class="fa-solid fa-arrow-trend-up"></i> Trending</p></a>
+      <a href="/categories" class="sidenav-item"><p><i class="fa-solid fa-list-ul me-2"></i> Categories</p></a>
+
+      <div class="log-out">
+        <p><%= link_to "Log out", destroy_user_session_path, data: {turbo_method: :delete}%></p>
+      </div>
+
+    <% else %>
+      <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+      <i class="visitor-avatar fa-solid fa-circle-user"></i>
+
+      <div class="side-nav-user-info">
+        <h3><%= link_to "Log in / Sign up", new_user_session_path %></h3>
+      </div>
+
+      <a href="/trending.html" class="sidenav-item"><p><i class="fa-solid fa-arrow-trend-up"></i> Trending</p></a>
+
+    <% end %>
+  </div>
 </div>
 
 <script>

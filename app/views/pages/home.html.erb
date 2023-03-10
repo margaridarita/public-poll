@@ -1,13 +1,16 @@
+<%= stylesheet_link_tag 'home' %>
 
+<div class="home">
   <div class="welcome-message">
-    <h1>Hello</h1>
-    <p>Welcome to Public Poll,<br> a pool of opinions</p>
-  </div>
-  <div class="homebutton">
-    <button class="button-blue" style="width: 122px; height: 48px; top: 309px;  left: 126px">
-      <%= link_to 'Dive in!', polls_path %>
-    </button>
-  </div>
-  <div class="signup-home">
-    <h4>Sign up</h4>
-  </div>
+      <h1>Hello</h1>
+      <p class="pt-2">Welcome to Public Poll,<br> a pool of opinions</p>
+    </div>
+    <div class="homebutton">
+      <button class="button-blue" style="width: 122px; height: 48px; top: 309px;  left: 126px; background-color: white;">
+        <%= link_to 'Dive in!', trending_path, style: 'color: #0075FF;' %>
+      </button>
+    </div>
+    <div class="signup-home">
+      <h3><%= link_to 'Log in/ Sign up', new_user_session_path %></h3>
+    </div>
+</div>

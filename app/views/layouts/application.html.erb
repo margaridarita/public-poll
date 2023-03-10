@@ -13,12 +13,13 @@
 
   <body>
     <div class="page-container">
-      <%= render "shared/navbar" %>
+      <% if @action_name.nil? %>
+        <%= render "shared/navbar" %>
+      <% end %>
       <%= render "shared/flashes" %>
       <div id="main-content">
         <%= yield %>
       </div>
-      <%= render "shared/footer" %>
     </div>
   </body>
 </html>

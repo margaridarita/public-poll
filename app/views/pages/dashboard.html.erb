@@ -1,1 +1,9 @@
-<h1>Pages#dashboard</h1>
+<%= stylesheet_link_tag 'dashboard' %>
+<div class="center">
+    <%= image_tag "https://avatarfiles.alphacoders.com/266/266629.jpg", class: "avatar" %>
+    <h2><%= @user.username %></h2>
+    <button class="but-white"><%= link_to "Edit Profile", edit_user_registration_path %></button>
+</div>
+  <%= render "my_polls" %>
+  <%= render "favorite_polls" %>
+  <%= render "voted_polls" %>

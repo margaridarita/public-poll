@@ -78,7 +78,7 @@ group :test do
 end
 
 gem 'faker', :git => 'https://github.com/faker-ruby/faker.git', :branch => 'main'
-
+gem "chartkick"
 gem "pg_search"
 
 gem "dotenv-rails", groups: [:development, :test]

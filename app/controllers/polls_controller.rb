@@ -27,17 +27,25 @@ class PollsController < ApplicationController
 
   def show
     @comment = Comment.new
-    @your_vote = Vote.find_by(user: current_user, poll: @poll) if @poll.votes.pluck(:user_id).include?(current_user.id)
     @vote = Vote.new
     @bookmark = Bookmark.new
+    @your_vote = Vote.find_by(user: current_user, poll: @poll) if @poll.votes.pluck(:user_id).include?(current_user.id)
 
     @first_votes_count = Vote.where(poll_id: @poll.id, chosen_option: @poll.first_option).count.to_f
     @second_votes_count = Vote.where(poll_id: @poll.id, chosen_option: @poll.second_option).count.to_f
 
     @total_votes_count = Vote.where(poll_id: @poll.id).count.to_f
 
-    @first_percentage = (@first_votes_count / @total_votes_count) * 100
-    @second_percentage = (@second_votes_count / @total_votes_count) * 100
+    @first_percentage = ((@first_votes_count / @total_votes_count) * 100).round
+    @second_percentage = ((@second_votes_count / @total_votes_count) * 100).round
+
+    @user_votes = Vote.find_by(poll_id: @poll.id, user_id: current_user).chosen_option
+
+    if Vote.find_by(poll_id: @poll.id, user_id: current_user).chosen_option == @poll.first_option
+      @same = @first_percentage
+    else
+      @same = @second_percentage
+    end
   end
 
   def destroy
