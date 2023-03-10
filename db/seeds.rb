@@ -11,6 +11,8 @@ sofia = User.create(email: "sofia@gmail.com", password: "pombinho222", first_nam
 
 users = [maria, margarida, clarissa, sofia]
 
+Categories.destroy_all
+
 categories = ["Arts", "Animals", "Business", "Movies", "Food", "Games", "Health", "Music", "News", "Politics", "Science", "Sports", "Technology", "Travel", "Fashion", "Humor", "Relationships", "Education", "History", "Nature", "Books", "Horror"]
 
 categories.each do |category_title|
