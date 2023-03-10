@@ -9,13 +9,13 @@
             <%= image_tag "https://avatarfiles.alphacoders.com/266/266629.jpg", class: "avatar" %>
             <% end %>
       <div class="side-nav-user-info">
-        <h2><%= current_user.first_name.capitalize %><h2>
-        <h6><%= '@' + current_user.username %><h6>
+        <h6><%= current_user.first_name.capitalize %><h6>
+        <p><%= '@' + current_user.username %><p>
       </div>
 
       <a href="/dashboard" class="sidenav-item"><p><i class="fa-solid fa-user me-2"></i> My Profile</p></a>
       <a href="/polls/new" class="sidenav-item"><p><i class="fa-solid fa-circle-plus me-2"></i> New Poll</p></a>
-      <a href="/trending" class="sidenav-item"><p><i class="fa-solid fa-arrow-trend-up"></i> Trending</p></a>
+      <a href="/trending" class="sidenav-item"><p><i class="fa-solid fa-arrow-trend-up me-2"></i> Trending</p></a>
       <a href="/categories" class="sidenav-item"><p><i class="fa-solid fa-list-ul me-2"></i> Categories</p></a>
 
       <div class="log-out">
@@ -27,7 +27,7 @@
       <i class="visitor-avatar fa-solid fa-circle-user"></i>
 
       <div class="side-nav-user-info">
-        <h3><%= link_to "Log in / Sign up", new_user_session_path %></h3>
+        <p><%= link_to "Log in / Sign up", new_user_session_path %></p>
       </div>
 
       <a href="/trending.html" class="sidenav-item"><p><i class="fa-solid fa-arrow-trend-up"></i> Trending</p></a>
