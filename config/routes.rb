@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   get "/trending", to: "pages#trending"
   get "/my_account", to: "pages#my_account"
   get "/categories", to: "pages#categories"
+  get '/categories/:title', to: 'categories#show'
   # Defines the root path route ("/")
   # root "articles#index"
   resources :polls do
@@ -17,5 +18,5 @@ Rails.application.routes.draw do
   end
 
   resources :user_categories, only: %i[new create]
-  #resources :comments, only: %i[edit update show destroy]
+  resources :categories, only: [:show]
 end
