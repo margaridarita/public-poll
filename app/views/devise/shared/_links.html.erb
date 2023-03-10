@@ -10,7 +10,7 @@
 <% end %>
 
 <%- if devise_mapping.recoverable? && controller_name != 'passwords' && controller_name != 'registrations' %>
-  <div class="account-prompt mb-4 text-center" id="restore-pass">
+  <div class="account-prompt mb-4 text-center">
     <%= link_to "Restore password", new_password_path(resource_name) %>
   </div>
 <% end %>

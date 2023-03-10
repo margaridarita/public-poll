@@ -1,3 +1,5 @@
+// ----- LOG-IN ------
+
 #log-in-page {
   display: flex;
   flex-direction: column;
@@ -13,7 +15,7 @@
 
 }
 
-.log-in .form-control {
+.log-in .form-control, .form-inputs .form-control {
   border-radius: 20px;
   border-color: #0075FF;
 }
@@ -63,4 +65,22 @@
 .account-prompt a {
   color: #063D5C;
   margin: 0;
+}
+
+// ----- SIGN UP ------
+
+#sign-up-page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 30px;
+  color: #0075FF;
+
+  h2 {
+    margin-bottom: 20px;
+  }
+}
+
+#sign-up-page .form-actions {
+  margin: 0 auto;
 }
