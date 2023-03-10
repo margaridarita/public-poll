@@ -60,8 +60,9 @@
   border: none;
 }
 
-#category-card:focus {
-  background-color:yellow;
+.category-card:focus {
+  background-color:#0047FE;
+  color: white;
 }
 
 .categories-container {
@@ -98,3 +99,4 @@
   font-size: 12px;
   box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
  }
+}
