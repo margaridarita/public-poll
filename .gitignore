@@ -40,7 +40,4 @@
 *.swp
 .DS_Store
 .env*
-<<<<<<< HEAD
-=======
-.env*
->>>>>>> 9757b8976e463cde4777753719ec7b70d43ebc8b
+
