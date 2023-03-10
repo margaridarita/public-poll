@@ -1,5 +1,6 @@
 
 <div class="center">
+
   <% if current_user.photo.attached? %>
               <%= cl_image_tag current_user.photo.key, class: "avatar" %>
   <% else %>

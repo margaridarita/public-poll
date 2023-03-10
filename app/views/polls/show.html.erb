@@ -10,8 +10,10 @@
 <% end %>
 
 <% if @poll.votes.pluck(:user_id).include?(current_user.id) %>
-  <%= bar_chart [[@poll.first_option,@first_percentage],[@poll.second_option,@second_percentage]], min: "0", max: "100", colors: ["#0075FF", "#0075FF"], title: "You voted #{@user_votes} like #{@same}% of people", library: { scales: { x: { ticks: { display: false } } } } %>
-  <p class="d-flex justify-content-end pe-3">Total votes: <%= @total_votes_count.to_i %></p>
+  <div class="category-text my-poll-card">
+    <%= bar_chart [[@poll.first_option,@first_percentage],[@poll.second_option,@second_percentage]], min: "0", max: "100", colors: ["#0075FF", "#0075FF"], title: "You voted #{@user_votes} like #{@same}% of people", library: { scales: { x: { ticks: { display: false } } } } %>
+    <p class="d-flex justify-content-end pe-3">Total votes: <%= @total_votes_count.to_i %></p>
+  </div>
 
   <h2 class="pt-4">Comments</h2>
     <% @poll.votes.each do |v| %>
