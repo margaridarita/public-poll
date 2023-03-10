@@ -1,6 +1,6 @@
 <div class="new-poll-page">
 
-  <h2 class="text-align-center">New poll</h2>
+  <h2>New poll</h2>
 
   <div class="d-flex justify-content-center align-items-center">
     <%= simple_form_for @poll do |f| %>
@@ -9,7 +9,9 @@
       <%= f.input :question, placeholder: 'Your question' %>
       <%= f.input :first_option, placeholder: 'Option 1' %>
       <%= f.input :second_option, placeholder: 'Option 2' %>
-      <%= f.submit class: 'button-blue' %>
+      <div class="d-flex justify-content-center">
+        <%= f.submit class: 'button-blue' %>
+      </div>
     <% end %>
   </div>
 
