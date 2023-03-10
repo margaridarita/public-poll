@@ -19,6 +19,10 @@ class PagesController < ApplicationController
     @polls = Poll.all.last_week.sort_by { |p| p.votes.count }.reverse.first(20)
   end
 
+  def search
+    @action_name = "search"
+  end
+
   private
 
   def set_user

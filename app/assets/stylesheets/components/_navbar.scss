@@ -1,15 +1,22 @@
 
 .navbar-lewagon {
-  justify-content: space-between;
   padding-top: 20px;
 }
-.navbar .container-fluid {
-  padding-left: 0;
-  padding-right: 0;
+.navbar .icons-container {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.navbar .icons-right {
+  display: flex;
+  align-items: center;
+  width: 20%;
+  justify-content: space-between;
 }
 
 .navbar .navbar-icon {
-  color: #D9D9D9;
+  color: #80BAFF;
   font-size: 20px;
   background-image: none;
 }
@@ -37,23 +44,4 @@
 .navbar-lewagon .avatar {
   padding: 5px 0 5px 0;
   width: 35px;
-}
-
-#search-form {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-#search-form .form-control {
-  border: none;
-  background-color: #D9D9D9;
-  padding: 0 20px;
-  height: 30px;
-  border-radius: 20px;
-  font-size: 15px;
-}
-#search-form .button-search-bar {
-  border: none;
-  margin-left: 5px;
-  background-color: transparent;
 }
