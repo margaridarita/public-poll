@@ -6,7 +6,7 @@ class PollsController < ApplicationController
     if params[:query].present?
       @polls = Poll.search_by_category_and_question(params[:query])
     else
-      @polls = Poll.all
+      @polls = Poll.all.reverse
     end
   end
 
@@ -18,7 +18,7 @@ class PollsController < ApplicationController
     @poll = Poll.new(poll_params)
     @poll.user = current_user
     if @poll.save
-      redirect_to poll_path(@poll)
+      redirect_to polls_path
       # path to the poll page that was just created
     else
       render :new, status: :unprocessable_entity
@@ -36,15 +36,18 @@ class PollsController < ApplicationController
 
     @total_votes_count = Vote.where(poll_id: @poll.id).count.to_f
 
-    @first_percentage = ((@first_votes_count / @total_votes_count) * 100).round
-    @second_percentage = ((@second_votes_count / @total_votes_count) * 100).round
+    @first_percentage = @total_votes_count.zero? ? 0.0 : ((@first_votes_count / @total_votes_count) * 100).round
+    @second_percentage = @total_votes_count.zero? ? 0.0 : ((@second_votes_count / @total_votes_count) * 100).round
 
-    @user_votes = Vote.find_by(poll_id: @poll.id, user_id: current_user).chosen_option
 
-    if Vote.find_by(poll_id: @poll.id, user_id: current_user).chosen_option == @poll.first_option
-      @same = @first_percentage
-    else
-      @same = @second_percentage
+    if Vote.find_by(poll_id: @poll.id, user_id: current_user)
+      @user_votes = Vote.find_by(poll_id: @poll.id, user_id: current_user).chosen_option
+
+      if Vote.find_by(poll_id: @poll.id, user_id: current_user).chosen_option == @poll.first_option
+        @same = @first_percentage
+      else
+        @same = @second_percentage
+      end
     end
   end
 
