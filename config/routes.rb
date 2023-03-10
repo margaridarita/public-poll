@@ -2,6 +2,9 @@ Rails.application.routes.draw do
   devise_for :users, controllers: {registrations: 'users/registrations'}
   root to: "pages#home"
 
+  as :user do
+    get '/dashboard', to: 'pages#dashboard', as: :user_root
+  end
 
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
   get "/dashboard", to: "pages#dashboard"
