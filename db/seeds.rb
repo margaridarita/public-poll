@@ -40,7 +40,7 @@ end
 
   3.times do
     voter = users.reject { |u| u == user }.sample
-    vote = Vote.create(user: voter, chosen_option: first_option, poll:)
+    vote = Vote.create(user: voter, chosen_option: first_option, poll: poll)
     Comment.create(user: voter, content: Faker::TvShows::RickAndMorty.quote, vote:)
   end
 end
