@@ -13,9 +13,10 @@ class PagesController < ApplicationController
 
   def search
     @action_name = "search"
-  end 
+  end
 
   def dashboard
+    #dash
   end
 
   private
