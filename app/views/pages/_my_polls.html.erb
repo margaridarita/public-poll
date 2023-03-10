@@ -1,11 +1,10 @@
 <% if @user.polls.exists? %>
-    <div class="grid-container">
       <% @user.polls.each do |poll| %>
         <div class="card-container">
-            <div class="my-poll-card">
+            <div class="poll-card">
             <p class="my-poll-show">My poll</p>
-            <div class="px-5 pt-3">
-              <div class="card-header"><p style="margin-left: 12px"><%= poll.question %></p></div>
+            <div>
+              <div class="card-header"><p><%= poll.question %></p></div>
               <% unless poll.votes.pluck(:user_id).include?(current_user.id)%>
               <div class="answers-card">
                 <%= link_to poll_votes_path(poll,chosen_option:poll.first_option ), data: {turbo_method: :post} do %>
@@ -28,7 +27,6 @@
               <% end %>
             </div>
           </div>
-    </div>
       <% end %>
     <% else %>
       <p>Make your first poll <%= link_to "here", new_poll_path %>.</p>

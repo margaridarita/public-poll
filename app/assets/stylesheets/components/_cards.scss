@@ -79,17 +79,18 @@
 .category-text {
   margin-top: 11px;
   margin-bottom: 0px;
+}
 
  .my-poll-card {
+  padding-left: 22px;
   padding-right: 22px;
   background-color: white;
   top: 185px;
   left: 28px;
   border-radius: 20px;
-  padding-bottom: 40px;
+  padding-bottom: 20px;
   padding-top: 24px;
   box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
-  text-align: center;
  }
 
  .my-poll-show {
@@ -103,4 +104,3 @@
   font-size: 12px;
   box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
  }
-}
