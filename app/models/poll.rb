@@ -7,6 +7,7 @@ class Poll < ApplicationRecord
   validates :question, length: { maximum: 150 }, presence: true
   validates :first_option, length: { maximum: 100 }, presence: true
   validates :second_option, length: { maximum: 100 }, presence: true
+  validate :fields_a_and_b_are_different
 
   scope :last_week, -> { where(created_at: (Date.today - 7)..Date.today ) }
 
@@ -19,4 +20,10 @@ class Poll < ApplicationRecord
   using: {
     tsearch: { prefix: true }
   }
+  def fields_a_and_b_are_different
+    if self.first_option == self.second_option
+      errors.add(:first_option, 'must be different')
+      errors.add(:second_option, 'must be different')
+    end
+  end
 end
