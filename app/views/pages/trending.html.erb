@@ -5,8 +5,8 @@
 <% @polls.each do |poll| %>
   <div class="card-container">
     <div class="user-card">
-      <% if current_user.photo.attached? %>
-        <%= cl_image_tag current_user.photo.key, class: "poll-avatar" %>
+      <% if poll.user.photo.attached? %>
+        <%= cl_image_tag poll.user.photo.key, class: "poll-avatar" %>
       <% else %>
         <%= image_tag "https://avatarfiles.alphacoders.com/266/266629.jpg", class: "poll-avatar" %>
       <% end %>
