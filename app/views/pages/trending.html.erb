@@ -1,4 +1,7 @@
-<h1>Trending</h1>
+<div class="title-trending">
+  <h2>Trending</h2>
+</div>
+
 <% @polls.each do |poll| %>
   <div class="card-container">
     <div class="user-card">
@@ -6,7 +9,7 @@
     <h4 class="poll-username"><%= poll.user.username %></h4>
     </div>
       <div class="poll-card">
-      <div class="card-header"><p style="margin-left: 12px"><%= poll.question %></p></div>
+      <div class="card-header"><p><%= poll.question %></p></div>
       <% if user_signed_in? %>
         <% unless poll.votes.pluck(:user_id).include?(current_user.id)%>
         <div class="answers-card">
@@ -24,7 +27,7 @@
         <% else %>
         <%= link_to poll_path(poll) do %>
             <div>
-              <p class="ms-2" style="color: #0075FF">See Results</p>
+              <p style="margin-top: 10px; color: #0075FF; font-weight: 600">See Results</p>
             </div>
           <% end %>
         <% end %>
@@ -44,7 +47,7 @@
       <% end %>
 
 
-      <p class="ms-2" ><%= poll.votes.count %> votes</p>
+      <h4 style="margin-top: 10px; color: #80BAFF; text-align: right"><%= poll.votes.count %> votes</h4>
     </div>
     <div class="button-section">
       <button class="button-circle fa-solid fa-star" style=" margin-right: 19px"></button>
