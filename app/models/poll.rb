@@ -9,7 +9,6 @@ class Poll < ApplicationRecord
   validates :second_option, length: { maximum: 100 }, presence: true
   validate :fields_a_and_b_are_different
 
-  scope :last_week, -> { where(created_at: (Date.today - 7)..Date.today ) }
 
   include PgSearch::Model
   pg_search_scope :search_by_category_and_question,

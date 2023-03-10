@@ -7,9 +7,9 @@ class PagesController < ApplicationController
   end
 
   def trending
-    @polls = Poll.all.last_week.sort_by { |p| p.votes.count }.reverse.first(20)
+    @polls = Poll.all
+    @polls.select { |poll| poll.created_at == ((Date.today - 7)..Date.today) }.sort_by { |p| p.votes.count }.reverse.first(20)
   end
-
 
   def search
     @action_name = "search"
