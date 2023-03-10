@@ -5,14 +5,14 @@
 <% @polls.each do |poll| %>
   <div class="card-container">
     <div class="user-card">
-    <% if @user.photo.attached? %>
-            <%= cl_image_tag @user.photo.key, class: "poll-avatar" %>
-    <% else %>
-            <%= image_tag "https://avatarfiles.alphacoders.com/266/266629.jpg", class: "poll-avatar" %>
-            <% end %>
-    <h4 class="poll-username"><%= poll.user.username %></h4>
+      <% if current_user.photo.attached? %>
+        <%= cl_image_tag current_user.photo.key, class: "poll-avatar" %>
+      <% else %>
+        <%= image_tag "https://avatarfiles.alphacoders.com/266/266629.jpg", class: "poll-avatar" %>
+      <% end %>
+      <h4 class="poll-username"><%= poll.user.username %></h4>
     </div>
-      <div class="poll-card">
+    <div class="poll-card">
       <div class="card-header"><p><%= poll.question %></p></div>
       <% if user_signed_in? %>
         <% unless poll.votes.pluck(:user_id).include?(current_user.id)%>
@@ -30,27 +30,25 @@
         </div>
         <% else %>
         <%= link_to poll_path(poll) do %>
-            <div>
-              <p style="margin-top: 10px; color: #0075FF; font-weight: 600">See Results</p>
-            </div>
+          <div>
+            <p style="margin-top: 10px; color: #0075FF; font-weight: 600">See Results</p>
+          </div>
           <% end %>
         <% end %>
       <% else %>
-          <div class="answers-card">
-            <%= link_to new_user_session_path do %>
-              <div class="button-answer">
-                <p style="margin-top: -5px"><%= poll.first_option%></p>
-              </div >
+        <div class="answers-card">
+          <%= link_to new_user_session_path do %>
+            <div class="button-answer">
+              <p style="margin-top: -5px"><%= poll.first_option%></p>
+            </div >
             <% end %>
             <%= link_to new_user_session_path do %>
-              <div class="button-answer">
-                <p style="margin-top: -5px"><%= poll.second_option %></p>
-              </div>
-            <% end %>
-          </div>
+            <div class="button-answer">
+              <p style="margin-top: -5px"><%= poll.second_option %></p>
+            </div>
+          <% end %>
+        </div>
       <% end %>
-
-
       <h4 style="margin-top: 10px; color: #80BAFF; text-align: right"><%= poll.votes.count %> votes</h4>
     </div>
     <div class="button-section">
