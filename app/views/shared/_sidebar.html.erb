@@ -3,8 +3,11 @@
   <div class="sidenav-items">
     <% if user_signed_in? %>
       <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-      <%= image_tag "https://avatarfiles.alphacoders.com/266/266629.jpg", class: "avatar" %>
-
+      <% if current_user.photo.attached? %>
+            <%= cl_image_tag current_user.photo.key, class: "avatar" %>
+<% else %>
+            <%= image_tag "https://avatarfiles.alphacoders.com/266/266629.jpg", class: "avatar" %>
+            <% end %>
       <div class="side-nav-user-info">
         <h2><%= current_user.first_name.capitalize %><h2>
         <h6><%= '@' + current_user.username %><h6>
