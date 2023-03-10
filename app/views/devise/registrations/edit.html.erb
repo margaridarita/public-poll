@@ -1,4 +1,14 @@
-<h2>Edit <%= resource_name.to_s.humanize %></h2>
+<%= link_to :back, title: "Back" do %>
+  <div class="results">
+    <div class="results-back">
+      <i class="fa-solid fa-angle-left"></i>
+    </div>
+    <div class="display-result">
+      <h2>Edit <%= resource_name.to_s.humanize %></h2>
+    </div>
+  </div>
+<% end %>
+
 
 <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
   <%= f.error_notification %>
