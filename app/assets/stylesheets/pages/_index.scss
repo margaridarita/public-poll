@@ -1,9 +1,9 @@
 // Import page-specific CSS files here.
 @import "home";
-@import "devise"
+@import "devise";
 
 
-.query-results {
+.results {
   display: flex;
   color: #80BAFF;
   text-align: center;
@@ -16,7 +16,7 @@
   align-items: center;
 }
 
-.display-query {
+.display-result {
   display: flex;
   align-items: center;
 }
