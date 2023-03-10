@@ -1,8 +1,12 @@
 
 <div class="center">
-    <%= image_tag "https://avatarfiles.alphacoders.com/266/266629.jpg", class: "avatar" %>
-    <h2><%= @user.username %></h2>
-    <button class="but-white"><%= link_to "Edit Profile", edit_user_registration_path %></button>
+  <% if current_user.photo.attached? %>
+              <%= cl_image_tag current_user.photo.key, class: "avatar" %>
+  <% else %>
+              <%= image_tag "https://avatarfiles.alphacoders.com/266/266629.jpg", class: "avatar" %>
+              <% end %>
+      <h2><%= @user.username %></h2>
+      <a ><%= link_to "Edit Profile", edit_user_registration_path %></a>
 </div>
   <%= render "my_polls" %>
   <%= render "favorite_polls" %>

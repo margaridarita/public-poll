@@ -18,24 +18,24 @@
     <h4 class="poll-username"><%= poll.user.username %></h4>
     </div>
       <div class="poll-card">
-      <div class="card-header"><p style="margin-left: 12px"><%= poll.question %></p></div>
+      <div class="card-header"><p><%= poll.question %></p></div>
       <% unless poll.votes.pluck(:user_id).include?(current_user.id)%>
       <div class="answers-card">
         <%= link_to poll_votes_path(poll,chosen_option:poll.first_option ), data: {turbo_method: :post} do %>
           <div class="button-answer">
-            <p style="margin-top: -5px"><%= poll.first_option%></p>
+            <p><%= poll.first_option%></p>
           </div >
         <% end %>
         <%= link_to poll_votes_path(poll,chosen_option:poll.second_option), data: {turbo_method: :post} do %>
           <div class="button-answer">
-            <p style="margin-top: -5px"><%= poll.second_option %></p>
+            <p><%= poll.second_option %></p>
           </div>
         <% end %>
       </div>
       <% else %>
        <%= link_to poll_path(poll) do %>
           <div>
-            <p class="ms-3" style="color: blue">See Results</p>
+            <p style="margin-top: 10px; color: #0075FF; font-weight: 600">See Results</p>
           </div>
         <% end %>
       <% end %>
