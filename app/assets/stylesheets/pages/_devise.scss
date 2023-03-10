@@ -73,14 +73,18 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-top: 30px;
   color: #0075FF;
-
-  h2 {
-    margin-bottom: 20px;
-  }
 }
 
 #sign-up-page .form-actions {
   margin: 0 auto;
+}
+
+
+.back-link {
+  margin-right: 10px;
+  font-size: 20px;
+  align-items: center;
+  color: #80BAFF;
+  font-size: 20px;
 }
