@@ -7,16 +7,16 @@
 
       <div class="side-nav-user-info">
         <h2><%= current_user.first_name.capitalize %><h2>
-        <h6><%= current_user.username %><h6>
+        <h6><%= '@' + current_user.username %><h6>
       </div>
 
-      <a href="/my_account.html" class="sidenav-item"><p><i class="fa-solid fa-user me-2"></i> My Profile</p></a>
+      <a href="/dashboard.html" class="sidenav-item"><p><i class="fa-solid fa-user me-2"></i> My Profile</p></a>
       <a href="/polls/new.html" class="sidenav-item"><p><i class="fa-solid fa-circle-plus me-2"></i> New Poll</p></a>
       <a href="/trending.html" class="sidenav-item"><p><i class="fa-solid fa-arrow-trend-up"></i> Trending</p></a>
       <a href="#" class="sidenav-item"><p><i class="fa-solid fa-list-ul me-2"></i> Categories</p></a>
-      <a href="/dashboard.html" class="sidenav-item"><p><i class="fa-solid fa-folder me-2"></i> My Polls</p></a>
+      <%# <a href="/dashboard.html" class="sidenav-item"><p><i class="fa-solid fa-folder me-2"></i> My Polls</p></a>
       <a href="/dashboard.html" class="sidenav-item"><p><i class="fa-solid fa-star me-2"></i> Favourite Polls</p></a>
-      <a href="/dashboard.html" class="sidenav-item"><p><i class="fa-solid fa-check-to-slot me-2"></i> Voted Polls</p></a>
+      <a href="/dashboard.html" class="sidenav-item"><p><i class="fa-solid fa-check-to-slot me-2"></i> Voted Polls</p></a> %>
 
       <div class="log-out">
         <p><%= link_to "Log out", destroy_user_session_path, data: {turbo_method: :delete}%></p>
