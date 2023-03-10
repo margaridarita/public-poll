@@ -1,13 +1,16 @@
 
+
 <div class="center">
   <% if current_user.photo.attached? %>
-              <%= cl_image_tag current_user.photo.key, class: "avatar" %>
+    <%= cl_image_tag current_user.photo.key, class: "avatar" %>
   <% else %>
-              <%= image_tag "https://avatarfiles.alphacoders.com/266/266629.jpg", class: "avatar" %>
-              <% end %>
-      <h2><%= @user.username %></h2>
-      <a ><%= link_to "Edit Profile", edit_user_registration_path %></a>
+    <%= image_tag "https://avatarfiles.alphacoders.com/266/266629.jpg", class: "avatar" %>
+  <% end %>
+
+  <h4><%= '@' + @user.username %></h4>
+  <a ><%= link_to "Edit Profile", edit_user_registration_path %></a>
 </div>
+
   <%= render "my_polls" %>
   <%= render "favorite_polls" %>
   <%= render "voted_polls" %>

@@ -2,8 +2,8 @@
 <div class="grid-container">
       <% @user.votes.each do |v| %>
           <div class="card-container">
-            <div class="my-poll-card">
-              <div class="px-5 pt-3">
+            <div class="poll-card">
+              <div>
                 <div class="card-header"><p style="margin-left: 12px"><%= v.poll.question %></p></div>
                 <% unless v.poll.votes.pluck(:user_id).include?(current_user.id)%>
                 <div class="answers-card">
