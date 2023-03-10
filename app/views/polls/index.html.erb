@@ -1,10 +1,10 @@
   <% if params[:query].present? %>
     <%= link_to :back, title: "Close" do %>
-      <div class="query-results">
+      <div class="results">
         <div class="results-back">
           <i class="fa-solid fa-angle-left"></i>
         </div>
-        <div class="display-query">
+        <div class="display-result">
           <p>results for <strong>" <%= params[:query]%> "</strong></p>
         </div>
       </div>

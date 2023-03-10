@@ -14,6 +14,11 @@
         <%= f.input :username,
                     required: true,
                     input_html: { autocomplete: "username" } %>
+        <%= f.input :photo,
+                    as: :file,
+                    required: false,
+                    autofocus: false,
+                    input_html: { autocomplete: "photo" }%>
         <%= f.input :email,
                     required: true,
                     autofocus: true,
