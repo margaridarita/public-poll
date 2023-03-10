@@ -1,6 +1,9 @@
 
 .navbar-lewagon {
   padding-top: 20px;
+  position: sticky;
+  top: 0;
+  background-color: white;
 }
 .navbar .icons-container {
   display: flex;
