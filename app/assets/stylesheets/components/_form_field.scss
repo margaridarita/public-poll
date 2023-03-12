@@ -5,12 +5,16 @@
 }
 
 .form-inputs {
+  color: #0075FF;
+
   i {
     color: #0075FF;
     margin-right: 10px;
   }
 
 }
+
+// specific to creating new poll
 
 .category-label {
   margin-bottom: 8px;
@@ -19,6 +23,9 @@
 .category-field {
   margin-bottom: 16px;
 }
+
+// specific to creating new poll
+
 
 // PAGES WITH FIELDS
 
