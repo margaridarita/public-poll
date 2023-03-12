@@ -25,31 +25,3 @@
 }
 
 // specific to creating new poll
-
-
-// PAGES WITH FIELDS
-
-.new-poll-page {
-  color: #0075FF;
-
-  h2 {
-    text-align: center;
-  }
-}
-
-.edit-account-page {
-  color: #0075FF;
-
-  h2 {
-    text-align: center;
-  }
-}
-
-// ----- EDIT ------
-
-#edit-account-page {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  color: #0075FF;
-}
