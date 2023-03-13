@@ -1,33 +1,39 @@
 <% if @user.polls.exists? %>
-      <% @user.polls.each do |poll| %>
-        <div class="card-container">
-            <div class="poll-card">
-            <p class="my-poll-show">My poll</p>
-            <div>
-              <div class="card-header"><p><%= poll.question %></p></div>
-              <% unless poll.votes.pluck(:user_id).include?(current_user.id)%>
-              <div class="answers-card">
-                <%= link_to poll_votes_path(poll,chosen_option:poll.first_option ), data: {turbo_method: :post} do %>
-                  <div class="button-answer">
-                    <p style="margin-top: -5px"><%= poll.first_option%></p>
-                  </div >
-                <% end %>
-                <%= link_to poll_votes_path(poll,chosen_option:poll.second_option), data: {turbo_method: :post} do %>
-                  <div class="button-answer">
-                    <p style="margin-top: -5px"><%= poll.second_option %></p>
-                  </div>
-                <% end %>
+  <% @user.polls.each do |poll| %>
+    <div class="card-container">
+      <div class="poll-card">
+        <div class="d-flex justify-content-end">
+          <%= link_to poll_path(poll), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} do %>
+            <i class="fa-solid fa-xmark" style="color: #D9D9D9"></i>
+          <% end %>
+        </div>
+
+        <div class="card-header"><p><%= poll.question %></p></div>
+
+        <% unless poll.votes.pluck(:user_id).include?(current_user.id) %>
+          <div class="answers-card">
+            <%= link_to poll_votes_path(poll,chosen_option:poll.first_option ), data: {turbo_method: :post} do %>
+              <div class="button-answer">
+                <p style="margin-top: -5px"><%= poll.first_option%></p>
+              </div >
+            <% end %>
+
+            <%= link_to poll_votes_path(poll,chosen_option:poll.second_option), data: {turbo_method: :post} do %>
+              <div class="button-answer">
+                <p style="margin-top: -5px"><%= poll.second_option %></p>
               </div>
-              <% else %>
-              <%= link_to poll_path(poll) do %>
-                  <div>
-                    <p class="ms-3" style="color: #0075FF">See Results</p>
-                  </div>
-                <% end %>
-              <% end %>
-            </div>
+            <% end %>
           </div>
-      <% end %>
-    <% else %>
-      <p>Make your first poll <%= link_to "here", new_poll_path %>.</p>
-    <% end %>
+        <% else %>
+          <%= link_to poll_path(poll) do %>
+            <div>
+              <p class="ms-3" style="color: #0075FF">See Results</p>
+            </div>
+          <% end %>
+        <% end %>
+      </div>
+    </div>
+  <% end %>
+<% else %>
+  <p>Make your first poll <%= link_to "here", new_poll_path, style: "color: #0075FF" %>.</p>
+<% end %>
