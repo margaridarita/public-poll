@@ -15,12 +15,32 @@ puts "Destroy Cat"
 
 Category.destroy_all
 
-
 puts "Create Cat"
-categories = ["Arts", "Animals", "Business", "Movies", "Food", "Games", "Health", "Music", "News", "Politics", "Science", "Sports", "Technology", "Travel", "Fashion", "Humor", "Relationships", "Education", "History", "Nature", "Books", "Horror"]
+categories = [{ title: "Arts", icon_class: "fa-solid fa-masks-theater" },
+              { title: "Animals", icon_class: "fa-solid fa-fish" },
+              { title:  "Business", icon_class: "fa-solid fa-briefcase" },
+              { title: "Movies", icon_class: "fa-solid fa-clapperboard" },
+              { title: "Food", icon_class: "fa-solid fa-burger" },
+              { title: "Games", icon_class: "fa-solid fa-gamepad" },
+              { title: "Health", icon_class:"fa-solid fa-suitcase-medical" },
+              { title: "Music", icon_class: "fa-solid fa-music" },
+              { title: "News", icon_class: "fa-solid fa-newspaper" },
+              { title: "Politics", icon_class: "fa-solid fa-landmark" },
+              { title: "Science", icon_class: "fa-solid fa-flask" },
+              { title: "Sports", icon_class: "fa-solid fa-volleyball" },
+              { title: "Technology", icon_class: "fa-solid fa-laptop" },
+              { title: "Travel", icon_class: "fa-solid fa-earth-americas" },
+              { title: "Fashion", icon_class: "fa-solid fa-shirt" },
+              { title: "Humor", icon_class: "fa-solid fa-face-laugh" },
+              { title: "Relationships", icon_class: "fa-solid fa-heart" },
+              { title: "Education", icon_class: "fa-solid fa-graduation-cap" },
+              { title: "History", icon_class: "fa-solid fa-book" },
+              { title: "Nature", icon_class: "fa-solid fa-tree" },
+              { title: "Books", icon_class: "fa-solid fa-book-open" },
+              { title: "Horror", icon_class: "fa-solid fa-ghost" }]
 
-categories.each do |category_title|
-  Category.create(title: category_title)
+categories.each do |category|
+  Category.create(title: category[:title], icon_class: category[:icon_class])
 end
 
 20.times do

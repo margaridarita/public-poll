@@ -1,1 +1,36 @@
+<% if @user.bookmarks.exists? %>
+  <div class="grid-container">
+    <% @user.bookmarks.each do |b| %>
+      <div class="card-container">
+        <div class="poll-card">
+          <div>
+            <div class="card-header"><p style="margin-left: 12px"><%= b.poll.question %></p></div>
+            <% unless b.poll.votes.pluck(:user_id).include?(current_user.id)%>
+              <div class="answers-card">
+                <%= link_to poll_votes_path(b.poll,chosen_option:poll.first_option ), data: {turbo_method: :post} do %>
+                  <div class="button-answer">
+                    <p style="margin-top: -5px"><%= poll.first_option%></p>
+                  </div >
+                <% end %>
 
+                <%= link_to poll_votes_path(b.poll,chosen_option:poll.second_option), data: {turbo_method: :post} do %>
+                  <div class="button-answer">
+                    <p style="margin-top: -5px"><%= b.poll.second_option %></p>
+                  </div>
+                <% end %>
+              </div>
+            <% else %>
+              <%= link_to poll_path(b.poll) do %>
+                <div>
+                  <p class="ms-3" style="color: #0075FF">See Results</p>
+                </div>
+              <% end %>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+<% else %>
+  <p>Get started with our <%= link_to "trending", trending_path, style: "color: #0075FF" %> polls.</p>
+<% end %>

@@ -8,11 +8,19 @@
       <% if poll.user.photo.attached? %>
         <%= cl_image_tag poll.user.photo.key, class: "poll-avatar" %>
       <% else %>
-        <%= image_tag "https://avatarfiles.alphacoders.com/266/266629.jpg", class: "poll-avatar" %>
+        <%= image_tag "https://cdn-icons-png.flaticon.com/512/2119/2119043.png", class: "poll-avatar" %>
       <% end %>
       <h4 class="poll-username"><%= poll.user.username %></h4>
     </div>
     <div class="poll-card">
+        <% if poll.user == current_user %>
+          <div class="d-flex justify-content-between">
+          <p class="my-poll-show">My poll</p>
+            <%= link_to poll_path(poll), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} do %>
+            <i class="fa-solid fa-xmark" style="color: #D9D9D9"></i>
+          <% end %>
+          </div>
+        <% end %>
       <div class="card-header"><p><%= poll.question %></p></div>
       <% if user_signed_in? %>
         <% unless poll.votes.pluck(:user_id).include?(current_user.id)%>
