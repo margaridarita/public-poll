@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'searches/create'
   devise_for :users, controllers: {registrations: 'users/registrations'}
   root to: "pages#home"
 
@@ -10,6 +11,9 @@ Rails.application.routes.draw do
   get "/dashboard", to: "pages#dashboard"
   get "/trending", to: "pages#trending"
   get "/search", to: "pages#search"
+  delete "/searches/:id", to: "pages#delete_search", as: :delete_search
+  get "/categories", to: "pages#categories"
+  get '/categories/:title', to: 'categories#show'
 
   # Defines the root path route ("/")
   # root "articles#index"
@@ -26,5 +30,6 @@ Rails.application.routes.draw do
 
   resources :users, only: :show
   resources :user_categories, only: %i[new create]
+
   resources :categories, only: [:index, :show]
 end
