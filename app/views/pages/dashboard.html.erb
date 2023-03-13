@@ -15,7 +15,7 @@
 </div>
 
 <div data-controller="dashboard">
-  <div class="pt-3 d-flex justify-content-around">
+  <div class="pt-3 d-flex justify-content-center">
     <button data-dashboard-target="createdBtn" class="center button-dash active" data-action="click->dashboard#showCreated">Created</button>
     <button data-dashboard-target="votedBtn" class="center button-dash" data-action="click->dashboard#showVoted">Voted</button>
     <button data-dashboard-target="savedBtn" class="center button-dash" data-action="click->dashboard#showSaved">Saved</button>
@@ -23,7 +23,7 @@
 
   <div>
     <div data-dashboard-target="created"><%= render "my_polls" %></div>
-    <div data-dashboard-target="voted" class="d-none"><%= render "voted_polls" %></div>
-    <div data-dashboard-target="saved" class="d-none"><%= render "favorite_polls" %></div>
+    <div data-dashboard-target="voted" class="d-none"><%= render "my_voted_polls" %></div>
+    <div data-dashboard-target="saved" class="d-none"><%= render "my_favorite_polls" %></div>
   </div>
 </div>

@@ -110,6 +110,7 @@
   padding-bottom: 5px;
 }
 
+
 .my-chart {
   display: flex;
   justify-content: space-around;
@@ -126,4 +127,25 @@
 
 .chart-title {
   text-align: center;
+=======
+.bookmark-removed {
+	animation: heartUnlike .25s cubic-bezier(.175, .885, .32, 1.275) both;
+}
+
+.bookmark-added {
+	animation: heartPulse .25s cubic-bezier(.175, .885, .32, 1.275) both;
+}
+
+@keyframes heartPulse {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.5);
+  }
+}
+
+@keyframes heartUnlike {
+  50% { transform: scale(.75) ; }
+
 }

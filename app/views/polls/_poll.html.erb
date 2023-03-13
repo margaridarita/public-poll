@@ -2,7 +2,7 @@
 <% show_buttons ||= false %>
 <% show_my_poll ||= false %>
 
-<div class="card-container">
+<div class="card-container" data-controller="poll" data-poll-add-url-value="<%= poll_bookmarks_path(poll) %>">
   <% if show_photo %>
     <div class="user-card">
       <% if poll.user.photo.attached? %>
@@ -10,27 +10,41 @@
       <% else %>
         <%= image_tag "https://cdn-icons-png.flaticon.com/512/2119/2119043.png", class: "poll-avatar" %>
       <% end %>
-      <h4 class="poll-username"><%= poll.user.username %></h4>
+      <h4 class="poll-username"><%= link_to poll.user.username, user_path(poll.user), class: "text-dark" %></h4>
     </div>
   <% end %>
   <div class="poll-card">
+
+    <% unless poll.user == current_user %>
+      <div class="card-favourite">
+        <% if poll.bookmarked_by_user?(current_user) %>
+          <%= link_to bookmark_path(poll.bookmark_by_user(current_user)), data: { turbo_method: :delete, action: "click->poll#toggleBookmark" }, class: "py-3 ps-3" do %>
+            <i class="text-primary bookmark-icon fa-solid fa-star"></i>
+          <% end %>
+        <% else %>
+          <%= link_to poll_bookmarks_path(poll), data: { turbo_method: :post, action: "click->poll#toggleBookmark" }, class: "py-3 ps-3" do %>
+            <i class="text-primary bookmark-icon fa-regular fa-star"></i>
+          <% end %>
+        <% end %>
+      </div>
+    <% end %>
 
     <% if poll.user == current_user %>
         <% if show_my_poll %>
       <div class="d-flex justify-content-between">
           <p class="my-poll-show">My poll</p>
-          <%= link_to poll_path(poll), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} do %>
-            <i class="fa-solid fa-xmark" style="color: #D9D9D9"></i>
-          <% end %>
-      </div>
-        <% else %>
-        <div class="d-flex justify-content-end">
-          <%= link_to poll_path(poll), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} do %>
+          <%= link_to poll_path(poll), data: { turbo_method: :delete, action: "click->poll#delete" } do %>
             <i class="fa-solid fa-xmark" style="color: #D9D9D9"></i>
           <% end %>
         </div>
+      <% else %>
+        <div class="d-flex justify-content-end">
+        <%= link_to poll_path(poll), data: { turbo_method: :delete, action: "click->poll#delete" } do %>
+          <i class="fa-solid fa-xmark" style="color: #D9D9D9"></i>
         <% end %>
+        </div>
       <% end %>
+    <% end %>
 
     <div class="card-header"><p style="margin-left: 12px"><%= poll.question %></p></div>
 
@@ -60,8 +74,7 @@
 
   <% if show_buttons %>
     <div class="button-section">
-      <button class="button-circle fa-solid fa-star" style=" margin-right: 19px"></button>
-      <a href="whatsapp://send?text=What do you think about this poll? www.publicpoll.me/polls/<%= poll.id %>" data-action="share/whatsapp/share"target="_blank"><button class="button-circle fa-solid fa-share" style=" margin-right: 19px"></button></a>
+      <a href="whatsapp://send?text=What do you think about this poll? www.publicpoll.me/polls/<%= poll.id %>" data-action="share/whatsapp/share"target="_blank"><button class="button-circle fa-solid fa-share" style=" margin-right: 10px"></button></a>
       <button class="button-circle fa-solid fa-comment-dots"></button>
     </div>
   <% end %>

@@ -9,3 +9,9 @@ application.register("dashboard", DashboardController)
 
 import HelloController from "./hello_controller"
 application.register("hello", HelloController)
+
+import PollController from "./poll_controller"
+application.register("poll", PollController)
+
+import UserController from "./user_controller"
+application.register("user", UserController)

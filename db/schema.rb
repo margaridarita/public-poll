@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_03_13_092736) do
+ActiveRecord::Schema[7.0].define(version: 2023_03_13_150333) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -76,8 +76,17 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_13_092736) do
     t.string "first_option"
     t.string "second_option"
     t.bigint "category_id", null: false
+    t.integer "votes_count", default: 0
     t.index ["category_id"], name: "index_polls_on_category_id"
     t.index ["user_id"], name: "index_polls_on_user_id"
+  end
+
+  create_table "searches", force: :cascade do |t|
+    t.string "query"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.bigint "user_id", null: false
+    t.index ["user_id"], name: "index_searches_on_user_id"
   end
 
   create_table "user_categories", force: :cascade do |t|
@@ -122,6 +131,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_13_092736) do
   add_foreign_key "comments", "votes"
   add_foreign_key "polls", "categories"
   add_foreign_key "polls", "users"
+  add_foreign_key "searches", "users"
   add_foreign_key "user_categories", "categories"
   add_foreign_key "user_categories", "users"
   add_foreign_key "votes", "polls"
