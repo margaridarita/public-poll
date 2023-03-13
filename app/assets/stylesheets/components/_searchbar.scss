@@ -2,15 +2,13 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-top: 30px;
-  padding: 0;
+  padding-top: 30px;
   caret-color: white;
   background: #0075FF;
   position: fixed;
   top: 0;
   left: 0;
   right: 0;
-  z-index: 9999;
 
   .form-control {
   border: none;
@@ -44,6 +42,7 @@
 
 #search-history {
   color: white;
+  margin-top: 100px;
 }
 
 #close-search {

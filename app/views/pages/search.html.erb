@@ -1,5 +1,6 @@
 <%= stylesheet_link_tag 'home' %>
 
+<div class="bg-blue">
 <%= form_with url: polls_path, method: :get, class: "d-flex", id: "search-form" do %>
   <%= text_field_tag :query,
     params[:query],
