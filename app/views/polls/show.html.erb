@@ -11,7 +11,9 @@
 
 <% if @poll.votes.pluck(:user_id).include?(current_user.id) %>
   <div class="category-text my-poll-card">
-    <%= bar_chart [[@poll.first_option,@first_percentage],[@poll.second_option,@second_percentage]], min: "0", max: "100", colors: ["#0075FF", "#0075FF"], title: "You voted #{@user_votes} like #{@same}% of people", library: { scales: { x: { ticks: { display: false } } } } %>
+    <%= bar_chart [[@poll.first_option,@first_percentage],[@poll.second_option,@second_percentage]], min: "0", max: "100", colors: ["#0075FF", "#0075FF"], title: "You voted #{@user_votes} like #{@same}% of people",
+    library: { scales: { x: { ticks: { display: false } } } } %>
+
     <p class="d-flex justify-content-end pe-3">Total votes: <%= @total_votes_count.to_i %></p>
   </div>
 
@@ -35,7 +37,7 @@
 
   <div class="pb-5">
     <%= simple_form_for [@your_vote, @comment] do |f| %>
-        <strong><%= f.input_field :content, placeholder: 'Write a comment' %></strong>
+        <strong><%= f.input_field :content, placeholder: 'Write a comment', class:"form-comment" %></strong>
         <%= f.submit %>
     <% end %>
   </div>
