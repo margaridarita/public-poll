@@ -5,5 +5,5 @@
     <% end%>
   </div>
 <% else %>
-  <p><%= @user.first_name %> hasn't voted on any polls yet.</p>
+  <p>Get started with our <%= link_to "trending", trending_path, style: "color: #0075FF" %> polls.</p>
 <% end %>
