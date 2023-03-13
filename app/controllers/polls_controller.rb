@@ -52,8 +52,7 @@ class PollsController < ApplicationController
   end
 
   def destroy
-    @poll.destroy
-    redirect_to polls_path, status: :see_other
+    @poll.destro
   end
 
   private
