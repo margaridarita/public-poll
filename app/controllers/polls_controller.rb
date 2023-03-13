@@ -8,7 +8,7 @@ class PollsController < ApplicationController
       @search = Search.where(query: params[:query], user: current_user).first_or_create
       @search.touch
     else
-      @polls = Poll.all.reverse
+      @polls = Poll.all.order(created_at: :desc)
     end
   end
 
@@ -55,7 +55,6 @@ class PollsController < ApplicationController
 
   def destroy
     @poll.destroy
-    redirect_to polls_path, status: :see_other
   end
 
   private

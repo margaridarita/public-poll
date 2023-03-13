@@ -9,6 +9,26 @@
   font-weight: 700;
 }
 
+.button-dash{
+  background: white;
+  border: none;
+  width: 75px;
+  height: 29.51px;
+  font-weight: 600;
+  font-size: 15px;
+  line-height: 24px;
+  display: flex;
+  align-items: center;
+  letter-spacing: 0.15px;
+  color: #0075FF;
+  border-radius: 30px;
+}
+
+.button-dash.active{
+  background: #0075FF;
+  color: #FFFFFF;
+}
+
 .button-blue:focus {
   color: white;
   transform: scale(1.1);
@@ -18,9 +38,10 @@
   width: 32px;
   height: 32px;
   border-radius: 50%;
-  background-color: #0075FF;
-  color: white;
+  background-color: white;
+  color: #0075FF;
   border: none;
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
  }
 
 .button-answer {

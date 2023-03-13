@@ -1,37 +1,29 @@
 class BookmarksController < ApplicationController
   before_action :set_bookmark, only: %i[destroy]
 
-  def index
-    @bookmarks = Bookmark.all
-  end
-
-  def new
-    @bookmark = Bookmark.new
-  end
-
+  # AJAX request
   def create
-    @bookmark = Bookmark.new(bookmark_params)
+    @poll = Poll.find(params[:poll_id])
+    @bookmark = Bookmark.new
     @bookmark.user = current_user
-    if @bookmark.bookmark
-      redirect_to poll_path(@bookmark)
-      # path to the poll page that was just created
+    @bookmark.poll = @poll
+
+    if @bookmark.save
+      render json: @bookmark.as_json.merge(url: bookmark_path(@bookmark))
     else
-      render :new, status: :unprocessable_entity
+      head :unprocessable_entity
     end
   end
 
+  # AJAX request
   def destroy
     @bookmark.destroy
-    redirect_to polls_path, status: :see_other
+    head :ok
   end
 
   private
 
   def set_bookmark
     @bookmark = Bookmark.find(params[:id])
-  end
-
-  def bookmark_params
-    params.require(:bookmark).permit(:poll, :user)
   end
 end

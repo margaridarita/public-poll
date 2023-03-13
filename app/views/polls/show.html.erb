@@ -11,7 +11,9 @@
 
 <% if @poll.votes.pluck(:user_id).include?(current_user.id) %>
   <div class="category-text my-poll-card">
-    <%= bar_chart [[@poll.first_option,@first_percentage],[@poll.second_option,@second_percentage]], min: "0", max: "100", colors: ["#0075FF", "#0075FF"], title: "You voted #{@user_votes} like #{@same}% of people", library: { scales: { x: { ticks: { display: false } } } } %>
+    <%= bar_chart [[@poll.first_option,@first_percentage],[@poll.second_option,@second_percentage]], min: "0", max: "100", colors: ["#0075FF", "#0075FF"], title: "You voted #{@user_votes} like #{@same}% of people",
+    library: { scales: { x: { ticks: { display: false } } } } %>
+
     <p class="d-flex justify-content-end pe-3">Total votes: <%= @total_votes_count.to_i %></p>
   </div>
 
@@ -20,7 +22,11 @@
         <% v.comments.each do |c| %>
           <div class="card-container">
             <div class="user-card">
-              <img class="poll-avatar" src="https://avatarfiles.alphacoders.com/266/266629.jpg"/>
+                    <% if c.user.photo.attached? %>
+                      <%= cl_image_tag c.user.photo.key, class: "poll-avatar" %>
+                    <% else %>
+                      <%= image_tag "https://cdn-icons-png.flaticon.com/512/2119/2119043.png", class: "poll-avatar" %>
+                    <% end %>
               <h4 class="poll-username"><%= c.user.username %></h4>
               <h4 class="poll-username"><%= c.created_at.strftime("%d %B, %Y") %></h4>
             </div>
@@ -31,7 +37,7 @@
 
   <div class="pb-5">
     <%= simple_form_for [@your_vote, @comment] do |f| %>
-        <strong><%= f.input_field :content, placeholder: 'Write a comment' %></strong>
+        <strong><%= f.input_field :content, placeholder: 'Write a comment', class:"form-comment" %></strong>
         <%= f.submit %>
     <% end %>
   </div>

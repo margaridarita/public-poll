@@ -1,0 +1,9 @@
+<% if @user.bookmarks.any? %>
+  <div class="grid-container">
+    <% @user.bookmarks.each do |bookmark| %>
+      <%= render partial: "polls/poll", locals: { poll: bookmark.poll } %>
+    <% end %>
+  </div>
+<% else %>
+  <p>Get started with our <%= link_to "trending", trending_path, style: "color: #0075FF" %> polls.</p>
+<% end %>
