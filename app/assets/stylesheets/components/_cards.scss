@@ -38,7 +38,7 @@
   top: 185px;
   left: 28px;
   border-radius: 20px;
-  padding-bottom: 20px;
+  padding-bottom: 10px;
   padding-top: 10px;
   box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
  }
@@ -106,9 +106,24 @@
   font-size: 12px;
   box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
 }
+
+.display-results {
+  color: #0075FF;
+}
+
+.count-votes {
+  color: #D9D9D9;
+  text-align: right;
+}
+
 .card-favourite {
   text-align: right;
   padding-bottom: 5px;
+}
+
+.icon-favourite {
+  color: #0075FF;
+  font-size: 18px;
 }
 
 .bookmark-removed {
