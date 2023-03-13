@@ -1,5 +1,6 @@
 <% show_photo ||= false %>
 <% show_buttons ||= false %>
+<% show_my_poll ||= false %>
 
 <div class="card-container">
   <% if show_photo %>
@@ -13,13 +14,24 @@
     </div>
   <% end %>
   <div class="poll-card">
+
     <% if poll.user == current_user %>
-      <div class="d-flex justify-content-end">
-        <%= link_to poll_path(poll), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} do %>
-          <i class="fa-solid fa-xmark" style="color: #D9D9D9"></i>
-        <% end %>
+        <% if show_my_poll %>
+      <div class="d-flex justify-content-between">
+          <p class="my-poll-show">My poll</p>
+          <%= link_to poll_path(poll), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} do %>
+            <i class="fa-solid fa-xmark" style="color: #D9D9D9"></i>
+          <% end %>
       </div>
-    <% end %>
+        <% else %>
+        <div class="d-flex justify-content-end">
+          <%= link_to poll_path(poll), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} do %>
+            <i class="fa-solid fa-xmark" style="color: #D9D9D9"></i>
+          <% end %>
+        </div>
+        <% end %>
+      <% end %>
+
     <div class="card-header"><p style="margin-left: 12px"><%= poll.question %></p></div>
 
     <% unless poll.votes.pluck(:user_id).include?(current_user.id)%>
