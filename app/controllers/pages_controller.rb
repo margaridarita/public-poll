@@ -11,14 +11,20 @@ class PagesController < ApplicationController
     @polls.select { |poll| poll.created_at == ((Date.today - 7)..Date.today) }.sort_by { |p| p.votes.count }.reverse.first(20)
   end
 
+  # seach model
+
   def search
     @action_name = "search"
-    @searches = Search.where(user_id: current_user.id).reverse
+    @searches = Search.where(user_id: current_user.id).order(updated_at: :desc)
   end
 
-  def search_delete
-    
+  def delete_search
+    @search = Search.find(params[:id])
+    @search.destroy
+    redirect_to search_path
   end
+
+  # seach model
 
   def dashboard
     #dash
@@ -29,4 +35,5 @@ class PagesController < ApplicationController
   def set_user
     @user = current_user
   end
+
 end

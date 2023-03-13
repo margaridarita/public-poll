@@ -11,6 +11,7 @@ Rails.application.routes.draw do
   get "/dashboard", to: "pages#dashboard"
   get "/trending", to: "pages#trending"
   get "/search", to: "pages#search"
+  delete "/searches/:id", to: "pages#delete_search", as: :delete_search
   get "/categories", to: "pages#categories"
   get '/categories/:title', to: 'categories#show'
 
@@ -26,4 +27,5 @@ Rails.application.routes.draw do
 
   resources :user_categories, only: %i[new create]
   resources :categories, only: [:show]
+
 end

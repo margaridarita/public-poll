@@ -7,7 +7,7 @@
     placeholder: "Category, keyword...",
     autocomplete: "off"
   %>
-  <%= button_tag( :class => "button-search-bar") do %>
+  <%= button_tag(class: "button-search-bar", name: nil) do %>
     <div class="button-container">
       <i class="navbar-icon fas fa-search"></i>
     </div>
@@ -15,14 +15,20 @@
 <% end %>
 
 <div class="px-5 py-3" id="search-history">
-<% @searches.each do |search| %>
-  <div class="row align-items-center">
-    <div class="col-10 p-2"> <%= search.query %> </div>
-    <i class="col-2 p-2 fa-solid fa-xmark text-center">
-      <%= link_to "", path: pages_search_delete_path(search.id), method: :delete, class: "btn btn-cancel", data: { turbo_method: :delete } %>
-    </i>
-  </div>
-<% end %>
+  <% @searches.each do |search| %>
+    <div class="row">
+      <div class="col-10 p-2">
+        <%= link_to search.query, polls_path(query: search.query)%>
+      </div>
+
+      <div class="col-2 p-2 text-center">
+        <%= link_to delete_search_path(search.id), data: { turbo_method: :delete } do %>
+          <i class="fa-solid fa-xmark"></i>
+        <% end %>
+      </div>
+    </div>
+  <% end %>
+</div>
 
 <div class="close-search">
   <%= link_to :back, title: "Close" do %>
