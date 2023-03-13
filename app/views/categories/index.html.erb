@@ -1,0 +1,8 @@
+<div class="categories-container">
+  <% @categories.each do |category| %>
+    <%= link_to category_path(category), class: "category-card" do %>
+      <i class="<%= category.icon_class%>"></i>
+      <p class="category-text"><%= category.title %></p>
+    <% end %>
+  <% end %>
+</div>

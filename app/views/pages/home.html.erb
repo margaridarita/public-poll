@@ -2,17 +2,23 @@
 
 <div class="home">
   <div class="welcome-message">
+  <% if user_signed_in? %>
+      <h1>Welcome back, <%= current_user.first_name %></h1>
+  <% else %>
       <h1>Hello</h1>
       <div class="welcome-paragraph">
         <h3 class="pt-3">Welcome to Public Poll,<br> a pool of opinions</h3>
       </div>
+  <% end %>
     </div>
     <div class="homebutton">
       <button class="button-blue" style="width: 122px; height: 48px; top: 309px;  left: 126px; background-color: white;">
         <%= link_to 'Dive in!', trending_path, style: 'color: #0075FF;' %>
       </button>
     </div>
+  <% unless user_signed_in? %>
     <div class="signup-home">
       <p><%= link_to 'Log in / Sign up', new_user_session_path %></p>
     </div>
+  <% end %>
 </div>
