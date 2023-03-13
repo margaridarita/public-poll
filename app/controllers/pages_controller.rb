@@ -7,8 +7,7 @@ class PagesController < ApplicationController
   end
 
   def trending
-    @polls = Poll.all
-    @polls.select { |poll| poll.created_at == ((Date.today - 7)..Date.today) }.sort_by { |p| p.votes.count }.reverse.first(20)
+    @polls = Poll.last_week.order(votes_count: :desc).limit(20)
   end
 
   def search
@@ -16,7 +15,6 @@ class PagesController < ApplicationController
   end
 
   def dashboard
-    #dash
   end
 
 
@@ -26,3 +24,7 @@ class PagesController < ApplicationController
     @user = current_user
   end
 end
+
+# Poll.all.each do |poll|
+#   Poll.update_counters(poll.id, votes_count: Vote.where(poll: poll).count)
+# end

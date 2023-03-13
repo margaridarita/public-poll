@@ -1,7 +1,7 @@
 <% show_photo ||= false %>
 <% show_buttons ||= false %>
 
-<div class="card-container">
+<div class="card-container" data-controller="poll">
   <% if show_photo %>
     <div class="user-card">
       <% if poll.user.photo.attached? %>
@@ -15,7 +15,7 @@
   <div class="poll-card">
     <% if poll.user == current_user %>
       <div class="d-flex justify-content-end">
-        <%= link_to poll_path(poll), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} do %>
+        <%= link_to poll_path(poll), data: { turbo_method: :delete, action: "click->poll#delete" } do %>
           <i class="fa-solid fa-xmark" style="color: #D9D9D9"></i>
         <% end %>
       </div>
