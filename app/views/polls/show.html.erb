@@ -22,11 +22,13 @@
     </div>
     <p class="total-votes d-flex justify-content-end pe-3">Total votes: <%= @total_votes_count.to_i %></p>
   </div>
-  <h2 class="pt-4">Comments</h2>
-    <div class="card-container">
+
+
+  <h3 class="pt-4" style="text-align: center">Comments</h3>
+    <div class="comments-container">
       <% @poll.votes.each do |v| %>
           <% v.comments.each do |c| %>
-          <div class="poll-card">
+          <div class="comment-card">
               <div class="user-card">
                       <% if c.user.photo.attached? %>
                         <%= cl_image_tag c.user.photo.key, class: "poll-avatar" %>
@@ -41,13 +43,12 @@
         <% end %>
     <% end %>
 
-    <div class="pb-5">
-      <%= simple_form_for [@your_vote, @comment] do |f| %>
-      <div class="comment-section">
-          <strong><%= f.input_field :content, placeholder: 'Write a comment', class:"form-comment" %></strong>
-          <%= f.submit %>
+<div class="pb-5">
+  <%= simple_form_for [@your_vote, @comment] do |f| %>
+    <div class="comment-section">
+        <strong><%= f.input_field :content, placeholder: 'Write a comment', class:"form-comment" %></strong>
+        <%= f.button :submit, "Comment", class:"button-comment" %>
       </div>
-      <% end %>
-    </div>
     <% end %>
+  <% end %>
 </div>
