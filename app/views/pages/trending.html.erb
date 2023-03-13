@@ -3,66 +3,6 @@
 </div>
 
 <% @polls.each do |poll| %>
-  <div class="card-container">
-    <div class="user-card">
-      <% if poll.user.photo.attached? %>
-        <%= cl_image_tag poll.user.photo.key, class: "poll-avatar" %>
-      <% else %>
-        <%= image_tag "https://cdn-icons-png.flaticon.com/512/2119/2119043.png", class: "poll-avatar" %>
-      <% end %>
-      <h4 class="poll-username"><%= poll.user.username %></h4>
-    </div>
-    <div class="poll-card">
-        <% if poll.user == current_user %>
-          <div class="d-flex justify-content-between">
-          <p class="my-poll-show">My poll</p>
-            <%= link_to poll_path(poll), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} do %>
-            <i class="fa-solid fa-xmark" style="color: #D9D9D9"></i>
-          <% end %>
-          </div>
-        <% end %>
-      <div class="card-header"><p><%= poll.question %></p></div>
-      <% if user_signed_in? %>
-        <% unless poll.votes.pluck(:user_id).include?(current_user.id)%>
-        <div class="answers-card">
-          <%= link_to poll_votes_path(poll,chosen_option:poll.first_option ), data: {turbo_method: :post} do %>
-            <div class="button-answer">
-              <p style="margin-top: -5px"><%= poll.first_option%></p>
-            </div >
-          <% end %>
-          <%= link_to poll_votes_path(poll,chosen_option:poll.second_option), data: {turbo_method: :post} do %>
-            <div class="button-answer">
-              <p style="margin-top: -5px"><%= poll.second_option %></p>
-            </div>
-          <% end %>
-        </div>
-        <% else %>
-        <%= link_to poll_path(poll) do %>
-          <div>
-            <p style="margin-top: 10px; color: #0075FF; font-weight: 600">See Results</p>
-          </div>
-          <% end %>
-        <% end %>
-      <% else %>
-        <div class="answers-card">
-          <%= link_to new_user_session_path do %>
-            <div class="button-answer">
-              <p style="margin-top: -5px"><%= poll.first_option%></p>
-            </div >
-            <% end %>
-            <%= link_to new_user_session_path do %>
-            <div class="button-answer">
-              <p style="margin-top: -5px"><%= poll.second_option %></p>
-            </div>
-          <% end %>
-        </div>
-      <% end %>
-      <h4 style="margin-top: 10px; color: #80BAFF; text-align: right"><%= poll.votes.count %> votes</h4>
-    </div>
-    <div class="button-section">
-      <button class="button-circle fa-solid fa-star" style=" margin-right: 19px"></button>
-      <a href="whatsapp://send?text=What do you think about this poll? www.publicpoll.me/polls/<%= poll.id %>" data-action="share/whatsapp/share"target="_blank"><button class="button-circle fa-solid fa-share" style=" margin-right: 19px"></button></a>
-      <button class="button-circle fa-solid fa-comment-dots"></button>
-    </div>
-  </div>
+  <%= render partial: "polls/poll",
+    locals: { poll: poll, show_photo: true, show_buttons: true } %>
 <% end %>
