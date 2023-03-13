@@ -1,0 +1,21 @@
+<div class="center">
+  <% if @user.photo.attached? %>
+    <%= cl_image_tag @user.photo.key, class: "avatar-dashboard" %>
+  <% else %>
+    <%= image_tag "https://cdn-icons-png.flaticon.com/512/2119/2119043.png", class: "avatar-dashboard" %>
+  <% end %>
+  <h1><%= @user.first_name %></h1>
+  <h5><%= '@' + @user.username %></h5>
+</div>
+
+<div data-controller="user">
+  <div class="pt-3 d-flex justify-content-center">
+    <button data-user-target="createdBtn" class="center button-dash active" data-action="click->user#showCreated">Created</button>
+    <button data-user-target="votedBtn" class="center button-dash" data-action="click->user#showVoted">Voted</button>
+  </div>
+
+  <div>
+    <div data-user-target="created"><%= render partial: "pages/created_polls" %></div>
+    <div data-user-target="voted" class="d-none"><%= render partial: "pages/voted_polls" %></div> %>
+  </div>
+</div>

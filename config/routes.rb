@@ -24,6 +24,7 @@ Rails.application.routes.draw do
     resources :comments, only: %i[create]
   end
 
+  resources :users, only: :show
   resources :user_categories, only: %i[new create]
   resources :categories, only: [:index, :show]
 end

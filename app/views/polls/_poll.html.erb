@@ -10,7 +10,7 @@
       <% else %>
         <%= image_tag "https://cdn-icons-png.flaticon.com/512/2119/2119043.png", class: "poll-avatar" %>
       <% end %>
-      <h4 class="poll-username"><%= poll.user.username %></h4>
+      <h4 class="poll-username"><%= link_to poll.user.username, user_path(poll.user), class: "text-dark" %></h4>
     </div>
   <% end %>
   <div class="poll-card">
