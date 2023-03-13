@@ -16,14 +16,16 @@
 
 <div class="px-5 py-3" id="search-history">
 <% @searches.each do |search| %>
-  <div class="row">
+  <div class="row align-items-center">
     <div class="col-10 p-2"> <%= search.query %> </div>
-    <i class="col-2 p-2 fa-solid fa-xmark text-center"></i>
+    <i class="col-2 p-2 fa-solid fa-xmark text-center">
+      <%= link_to "", path: pages_search_delete_path(search.id), method: :delete, class: "btn btn-cancel", data: { turbo_method: :delete } %>
+    </i>
   </div>
 <% end %>
 
 <div class="close-search">
   <%= link_to :back, title: "Close" do %>
-    <i class="fa-solid fa-xmark"></i>
+    <i class="fa-solid fa-xmark text-center"></i>
   <% end %>
 </div>

@@ -16,10 +16,13 @@ class PagesController < ApplicationController
     @searches = Search.where(user_id: current_user.id).reverse
   end
 
+  def search_delete
+    
+  end
+
   def dashboard
     #dash
   end
-
 
   private
 
