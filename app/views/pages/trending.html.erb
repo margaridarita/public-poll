@@ -4,5 +4,5 @@
 
 <% @polls.each do |poll| %>
   <%= render partial: "polls/poll",
-    locals: { poll: poll, show_photo: true, show_buttons: true } %>
+    locals: { poll: poll, show_photo: true, show_buttons: true, show_my_poll: true } %>
 <% end %>
