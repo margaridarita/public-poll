@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'searches/create'
   devise_for :users, controllers: {registrations: 'users/registrations'}
   root to: "pages#home"
 

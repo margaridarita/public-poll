@@ -1,26 +1,29 @@
 <%= stylesheet_link_tag 'home' %>
 
-<div class="search-page">
-
-  <%= form_with url: polls_path, method: :get, class: "d-flex", id: "search-form" do %>
-    <%= text_field_tag :query,
-      params[:query],
-      class: "form-control",
-      placeholder: "Category, keyword...",
-      autocomplete: "off"
-    %>
-      <%= button_tag( :class => "button-search-bar") do %>
-        <div class="button-container">
-          <i class="navbar-icon fas fa-search"></i>
-        </div>
-      <% end %>
+<%= form_with url: polls_path, method: :get, class: "d-flex", id: "search-form" do %>
+  <%= text_field_tag :query,
+    params[:query],
+    class: "form-control",
+    placeholder: "Category, keyword...",
+    autocomplete: "off"
+  %>
+  <%= button_tag( :class => "button-search-bar") do %>
+    <div class="button-container">
+      <i class="navbar-icon fas fa-search"></i>
+    </div>
   <% end %>
+<% end %>
 
-
-  <div class="close-search">
-    <%= link_to :back, title: "Close" do %>
-      <i class="fa-solid fa-xmark"></i>
-    <% end %>
+<div class="px-5 py-3" id="search-history">
+<% @searches.each do |search| %>
+  <div class="row">
+    <div class="col-10 p-2"> <%= search.query %> </div>
+    <i class="col-2 p-2 fa-solid fa-xmark text-center"></i>
   </div>
+<% end %>
 
+<div class="close-search">
+  <%= link_to :back, title: "Close" do %>
+    <i class="fa-solid fa-xmark"></i>
+  <% end %>
 </div>

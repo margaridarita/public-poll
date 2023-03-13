@@ -13,6 +13,7 @@ class PagesController < ApplicationController
 
   def search
     @action_name = "search"
+    @searches = Search.where(user_id: current_user.id).reverse
   end
 
   def dashboard

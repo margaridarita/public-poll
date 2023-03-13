@@ -5,6 +5,7 @@ class PollsController < ApplicationController
   def index
     if params[:query].present?
       @polls = Poll.search_by_category_and_question(params[:query])
+      Search.create(query: params[:query], user: current_user)
     else
       @polls = Poll.all.reverse
     end
