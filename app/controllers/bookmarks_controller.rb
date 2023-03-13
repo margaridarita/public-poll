@@ -17,4 +17,10 @@ class BookmarksController < ApplicationController
     @bookmark.destroy
     redirect_to polls_path, status: :see_other
   end
+
+  private
+
+  def set_bookmark
+    @bookmark = Bookmark.find(params[:id])
+  end
 end

@@ -15,23 +15,36 @@
   <% end %>
   <div class="poll-card">
 
-    <% if poll.user == current_user %>
+    <% unless poll.user == current_user %>
+      <div class="card-favourite">
+        <% if poll.bookmarked_by_user?(current_user) %>
+          <%= link_to bookmark_path(poll.bookmark_by_user(current_user)), data: { turbo_method: :delete } do %>
+            <i class="bookmark-icon fa-solid fa-star" style="color: #0075FF"></i>
+          <% end %>
+        <% else %>
+          <%= link_to poll_bookmarks_path(poll), data: { turbo_method: :post } do %>
+            <i class="bookmark-icon fa-regular fa-star" style="color: #0075FF"></i>
+          <% end %>
+        <% end %>
+      </div>
+    <% end %>
 
+    <% if poll.user == current_user %>
         <% if show_my_poll %>
       <div class="d-flex justify-content-between">
           <p class="my-poll-show">My poll</p>
           <%= link_to poll_path(poll), data: { turbo_method: :delete, action: "click->poll#delete" } do %>
             <i class="fa-solid fa-xmark" style="color: #D9D9D9"></i>
           <% end %>
-      </div>
-        <% else %>
+        </div>
+      <% else %>
         <div class="d-flex justify-content-end">
         <%= link_to poll_path(poll), data: { turbo_method: :delete, action: "click->poll#delete" } do %>
           <i class="fa-solid fa-xmark" style="color: #D9D9D9"></i>
         <% end %>
         </div>
-        <% end %>
       <% end %>
+    <% end %>
 
     <div class="card-header"><p style="margin-left: 12px"><%= poll.question %></p></div>
 

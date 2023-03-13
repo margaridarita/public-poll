@@ -28,4 +28,12 @@ class Poll < ApplicationRecord
       errors.add(:second_option, 'must be different')
     end
   end
+
+  def bookmarked_by_user?(user)
+    bookmark_by_user(user).present?
+  end
+
+  def bookmark_by_user(user)
+    Bookmark.find_by(user:, poll: self)
+  end
 end
