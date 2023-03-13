@@ -2,7 +2,7 @@
 <% show_buttons ||= false %>
 <% show_my_poll ||= false %>
 
-<div class="card-container" data-controller="poll">
+<div class="card-container" data-controller="poll" data-poll-add-url-value="<%= poll_bookmarks_path(poll) %>">
   <% if show_photo %>
     <div class="user-card">
       <% if poll.user.photo.attached? %>
@@ -18,12 +18,12 @@
     <% unless poll.user == current_user %>
       <div class="card-favourite">
         <% if poll.bookmarked_by_user?(current_user) %>
-          <%= link_to bookmark_path(poll.bookmark_by_user(current_user)), data: { turbo_method: :delete } do %>
-            <i class="bookmark-icon fa-solid fa-star" style="color: #0075FF"></i>
+          <%= link_to bookmark_path(poll.bookmark_by_user(current_user)), data: { turbo_method: :delete, action: "click->poll#toggleBookmark" }, class: "py-3 ps-3" do %>
+            <i class="text-primary bookmark-icon fa-solid fa-star"></i>
           <% end %>
         <% else %>
-          <%= link_to poll_bookmarks_path(poll), data: { turbo_method: :post } do %>
-            <i class="bookmark-icon fa-regular fa-star" style="color: #0075FF"></i>
+          <%= link_to poll_bookmarks_path(poll), data: { turbo_method: :post, action: "click->poll#toggleBookmark" }, class: "py-3 ps-3" do %>
+            <i class="text-primary bookmark-icon fa-regular fa-star"></i>
           <% end %>
         <% end %>
       </div>
@@ -74,8 +74,7 @@
 
   <% if show_buttons %>
     <div class="button-section">
-      <button class="button-circle fa-solid fa-star" style=" margin-right: 19px"></button>
-      <a href="whatsapp://send?text=What do you think about this poll? www.publicpoll.me/polls/<%= poll.id %>" data-action="share/whatsapp/share"target="_blank"><button class="button-circle fa-solid fa-share" style=" margin-right: 19px"></button></a>
+      <a href="whatsapp://send?text=What do you think about this poll? www.publicpoll.me/polls/<%= poll.id %>" data-action="share/whatsapp/share"target="_blank"><button class="button-circle fa-solid fa-share" style=" margin-right: 10px"></button></a>
       <button class="button-circle fa-solid fa-comment-dots"></button>
     </div>
   <% end %>
