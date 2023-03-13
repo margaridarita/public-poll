@@ -20,7 +20,11 @@
         <% v.comments.each do |c| %>
           <div class="card-container">
             <div class="user-card">
-              <img class="poll-avatar" src="https://avatarfiles.alphacoders.com/266/266629.jpg"/>
+                    <% if c.user.photo.attached? %>
+                      <%= cl_image_tag c.user.photo.key, class: "poll-avatar" %>
+                    <% else %>
+                      <%= image_tag "https://cdn-icons-png.flaticon.com/512/2119/2119043.png", class: "poll-avatar" %>
+                    <% end %>
               <h4 class="poll-username"><%= c.user.username %></h4>
               <h4 class="poll-username"><%= c.created_at.strftime("%d %B, %Y") %></h4>
             </div>
