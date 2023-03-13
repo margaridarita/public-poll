@@ -6,7 +6,7 @@ class PollsController < ApplicationController
     if params[:query].present?
       @polls = Poll.search_by_category_and_question(params[:query])
     else
-      @polls = Poll.all.reverse
+      @polls = Poll.all.order(created_at: :desc)
     end
   end
 
@@ -52,7 +52,7 @@ class PollsController < ApplicationController
   end
 
   def destroy
-    @poll.destro
+    @poll.destroy
   end
 
   private
