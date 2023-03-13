@@ -15,6 +15,7 @@ Rails.application.routes.draw do
   # root "articles#index"
   resources :polls do
     resources :votes, only: :create
+    resources :bookmarks, only: %i[create destroy]
   end
 
   resources :votes, only: [] do
