@@ -33,15 +33,22 @@
 }
 
 .poll-card {
-  padding-left: 22px;
-  padding-right: 22px;
+  padding: 15px 22px;
   background-color: white;
   top: 185px;
   left: 28px;
   border-radius: 20px;
-  padding-bottom: 20px;
-  padding-top: 10px;
   box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+}
+
+.card-small-info {
+  margin-bottom: 0;
+  color: #80BAFF;
+  text-align: right;
+}
+
+#time-ago {
+  color: #b9b9b9;
 }
 
 /* COMMENTS */
@@ -118,11 +125,9 @@
   font-weight: bolder;
   text-align: center;
   padding: 2px;
-  margin-bottom: 10px;
   width: 20%;
   border-radius: 5px;
   font-size: 12px;
-  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
 }
 .card-favourite {
   text-align: right;
