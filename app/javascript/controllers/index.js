@@ -15,3 +15,6 @@ application.register("poll", PollController)
 
 import TextareaAutogrow from 'stimulus-textarea-autogrow'
 application.register('textarea-autogrow', TextareaAutogrow)
+
+import UserController from './user_controller';
+application.register('user', UserController);

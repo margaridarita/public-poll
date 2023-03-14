@@ -1,7 +1,7 @@
 .card-container {
   align-items: center;
-  margin-top: 22px;
-  margin-bottom: 22px;
+  margin-top: 20px;
+  margin-bottom: 10px;
 }
 
 .answers-card {
@@ -19,11 +19,13 @@
 
 .poll-avatar {
   width: 32px;
+  height: 32px;
   border-radius: 50%;
+  object-fit:cover;
 }
 
 .user-card {
-  padding-bottom: 14px;
+  padding-bottom: 10px;
   display: flex;
 }
 
@@ -195,4 +197,8 @@
 @keyframes heartUnlike {
   50% { transform: scale(.75) ; }
 
+}
+
+.request-card {
+  background-color: red;
 }

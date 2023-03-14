@@ -1,28 +1,25 @@
 <%= stylesheet_link_tag 'home' %>
 
-<div class="bg-blue">
 <%= form_with url: polls_path, method: :get, class: "d-flex", id: "search-form" do %>
   <%= text_field_tag :query,
     params[:query],
-    class: "form-control",
+    class: "form-control pe-5",
     placeholder: "Category, keyword...",
     autocomplete: "off"
   %>
   <%= button_tag(class: "button-search-bar", name: nil) do %>
-    <div class="button-container">
-      <i class="navbar-icon fas fa-search"></i>
-    </div>
+    <i class="fas fa-search"></i>
   <% end %>
 <% end %>
 
-<div class="px-5 py-3" id="search-history">
+<div class="px-4 py-3" id="search-history">
   <% @searches.each do |search| %>
     <div class="row">
       <div class="col-10 p-2">
         <%= link_to search.query, polls_path(query: search.query)%>
       </div>
 
-      <div class="col-2 p-2 text-center">
+      <div class="col-2 p-2 text-far">
         <%= link_to delete_search_path(search.id), data: { turbo_method: :delete } do %>
           <i class="fa-solid fa-xmark"></i>
         <% end %>
@@ -33,6 +30,6 @@
 
 <div id="close-search">
   <%= link_to :back, title: "Close" do %>
-    <i class="fa-solid fa-xmark"></i>
+    <button class="btn button-white">Close</button>
   <% end %>
 </div>

@@ -1,11 +1,22 @@
 <div class="center">
   <% if @user.photo.attached? %>
-    <%= cl_image_tag @user.photo.key, class: "avatar-dashboard" %>
+    <%= cl_image_tag @user.photo.key, class: "avatar-dashboard mt-4" %>
   <% else %>
-    <%= image_tag "https://cdn-icons-png.flaticon.com/512/2119/2119043.png", class: "avatar-dashboard" %>
+    <%= image_tag "https://cdn-icons-png.flaticon.com/512/2119/2119043.png", class: "avatar-dashboard mt-4" %>
   <% end %>
   <h1><%= @user.first_name %></h1>
   <h5><%= '@' + @user.username %></h5>
+
+  <% if Friendship.between(current_user, @user).present? %>
+    <div class="pill">
+      <%= Friendship.between(current_user, @user).status %>
+    </div>
+  <% else %>
+    <%= simple_form_for Friendship.new do |f| %>
+      <%= f.input :to_user_id, as: :hidden, input_html: { value: @user.id } %>
+      <%= f.submit "Add friend" %>
+    <% end %>
+  <% end %>
 </div>
 
 <div data-controller="user">

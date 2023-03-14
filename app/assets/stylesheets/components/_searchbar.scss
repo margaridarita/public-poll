@@ -2,7 +2,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  padding-top: 30px;
+  padding: 30px 0;
   caret-color: white;
   background: #0075FF;
   position: fixed;
@@ -11,16 +11,17 @@
   right: 0;
 
   .form-control {
-    border: none;
-    background-color: #80BAFF;
-    height: 50px;
-    border-radius: 30px;
-    font-size: 15px;
-    position: relative;
-    color: white;
-    font-weight: bold;
-    position: relative;
-    caret-color: white;
+  border: none;
+  background-color: #80BAFF;
+  height: 50px;
+  width: 85%;
+  border-radius: 30px;
+  font-size: 15px;
+  position: relative;
+  color: white;
+  font-weight: bold;
+  position: relative;
+  caret-color: white;
   }
 
   input::placeholder {
@@ -29,13 +30,18 @@
   }
 
   .button-search-bar {
-    border: none;
-    font-size: 20px;
-    background-color: transparent;
-    position: absolute;
-    right: 70px;
-    color: #0075FF;
+  border: none;
+  font-size: 20px;
+  background-color: transparent;
+  position: absolute;
+  right: 45px;
+  color: white;
+  opacity: 0.8;
   }
+}
+
+.text-far {
+  text-align: right !important;
 }
 
 // search history

@@ -45,11 +45,14 @@
                   <% else %>
                     <%= image_tag "https://cdn-icons-png.flaticon.com/512/2119/2119043.png", class: "poll-avatar" %>
                   <% end %>
-                  <h4 class="poll-username"><%= c.user.username %></h4>
+                   <% if poll.user == current_user %>
+                  <h4 class="poll-username"><%= link_to poll.user.username, dashboard_path, class: "text-dark" %></h4>
+                <% else %>
                 </div>
                 <div class="comment-time">
-                  <h4 class="poll-username" style="color: #B9B9B9"><%= time_ago_in_words(c.created_at) %></h4>
+                  <h4 class="poll-username" style="color: #B9B9B9"><%= time_ago_in_words(c.created_at) %><%= link_to poll.user.username, user_path(poll.user), class: "text-dark" %></h4>
                 </div>
+
               </div>
                 <div class="card-header"><p><%= c.content %></p></div>
              <hr>
