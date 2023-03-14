@@ -38,11 +38,7 @@
       <% @poll.votes.each do |v| %>
           <% v.comments.each do |c| %>
               <div class="user-card">
-                      <% if c.user.photo.attached? %>
-                        <%= cl_image_tag c.user.photo.key, class: "poll-avatar" %>
-                      <% else %>
-                        <%= image_tag "https://cdn-icons-png.flaticon.com/512/2119/2119043.png", class: "poll-avatar" %>
-                      <% end %>
+                <%= user_photo(c.user, class: "avatar-dashboard mt-4") %>
                 <% if poll.user == current_user %>
                   <h4 class="poll-username"><%= link_to poll.user.username, dashboard_path, class: "text-dark" %></h4>
                 <% else %>

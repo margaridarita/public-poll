@@ -1,11 +1,6 @@
 
 <div class="center">
-  <% if current_user.photo.attached? %>
-    <%= cl_image_tag current_user.photo.key, class: "avatar-dashboard mt-1" %>
-  <% else %>
-    <%= image_tag "https://cdn-icons-png.flaticon.com/512/2119/2119043.png", class: "avatar-dashboard mt-1" %>
-  <% end %>
-
+  <%= user_photo(current_user, class: "avatar-dashboard mt-1") %>
   <h1><%= @user.first_name %></h1>
   <h5><%= '@' + @user.username %></h5>
   <%= link_to accepted_friendships_path do %>
