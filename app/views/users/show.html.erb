@@ -6,7 +6,17 @@
   <% end %>
   <h1><%= @user.first_name %></h1>
   <h5><%= '@' + @user.username %></h5>
-  <h5><%= link_to @user.friends.count,  %></h5>
+
+  <% if Friendship.between(current_user, @user).present? %>
+    <div class="pill">
+      <%= Friendship.between(current_user, @user).status %>
+    </div>
+  <% else %>
+    <%= simple_form_for Friendship.new do |f| %>
+      <%= f.input :to_user_id, as: :hidden, input_html: { value: @user.id } %>
+      <%= f.submit "Add friend" %>
+    <% end %>
+  <% end %>
 </div>
 
 <div data-controller="user">

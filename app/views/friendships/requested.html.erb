@@ -1,0 +1,31 @@
+<div class="title-trending">
+  <h2>Requested</h2>
+</div>
+<% if current_user.friendships_requested.any? %>
+  <% current_user.friendships_requested.each do |friendship| %>
+  <div class="d-flex justify-content-around">
+    <% if friendship.from_user.photo.attached? %>
+      <%= cl_image_tag friendship.from_user.photo.key, class: "avatar" %>
+    <% else %>
+      <%= image_tag "https://cdn-icons-png.flaticon.com/512/2119/2119043.png", class: "avatar" %>
+    <% end %>
+    <h4 class="poll-username">@<%= link_to friendship.from_user.username, user_path(friendship.from_user), class: "text-dark" %></h4>
+
+    <%= simple_form_for friendship do |f| %>
+      <%= f.input :status, as: :hidden, input_html: { value: :accepted } %>
+      <button type="submit" class="btn btn-primary">
+        <i class="fa-solid fa-check" style= "color: #80BAFF"></i>
+      </button>
+    <% end %>
+
+    <%= simple_form_for friendship do |f| %>
+      <%= f.input :status, as: :hidden, input_html: { value: :rejected } %>
+      <button type="submit" class="btn btn-outline-danger">
+        <i class="fa-solid fa-xmark"></i>
+      </button>
+    <% end %>
+  </div>
+  <% end %>
+<% else %>
+  <p>No requests yet.</p>
+<% end %>
