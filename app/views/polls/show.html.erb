@@ -1,5 +1,10 @@
 <%= link_to "< Back", :back %>
-<h1 class="pb-4"><%= @poll.question %></h1>
+<div class="chart-title">
+  <h3><%= @poll.question %></h3>
+</div>
+<div class="chart-text">
+  <p style="color: #D9D9D9"><%= "You voted #{@user_votes} like #{@same}% of people" %></p>
+</div>
 <% if @poll.user == current_user %>
   <%= link_to "Delete", poll_path(@poll), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} %>
 <% end %>
@@ -11,34 +16,39 @@
 
 <% if @poll.votes.pluck(:user_id).include?(current_user.id) %>
   <div class="category-text my-poll-card">
-    <%= bar_chart [[@poll.first_option,@first_percentage],[@poll.second_option,@second_percentage]], min: "0", max: "100", colors: ["#0075FF", "#0075FF"], title: "You voted #{@user_votes} like #{@same}% of people",
-    library: { scales: { x: { ticks: { display: false } } } } %>
-
-    <p class="d-flex justify-content-end pe-3">Total votes: <%= @total_votes_count.to_i %></p>
+    <div class="my-chart">
+      <%= bar_chart [[@poll.first_option,@first_percentage],[@poll.second_option,@second_percentage]], min: "0", max: "100", width: "270px", height: "150px", colors: ["rgba(0, 117, 255, 1)
+"], library: { scales: { x: { ticks: { display: false } } } }  %>
+    </div>
+    <p class="total-votes d-flex justify-content-end pe-3">Total votes: <%= @total_votes_count.to_i %></p>
   </div>
 
-  <h2 class="pt-4">Comments</h2>
-    <% @poll.votes.each do |v| %>
-        <% v.comments.each do |c| %>
-          <div class="card-container">
-            <div class="user-card">
-                    <% if c.user.photo.attached? %>
-                      <%= cl_image_tag c.user.photo.key, class: "poll-avatar" %>
-                    <% else %>
-                      <%= image_tag "https://cdn-icons-png.flaticon.com/512/2119/2119043.png", class: "poll-avatar" %>
-                    <% end %>
-              <h4 class="poll-username"><%= c.user.username %></h4>
-              <h4 class="poll-username"><%= c.created_at.strftime("%d %B, %Y") %></h4>
+
+  <h3 class="pt-4" style="text-align: center">Comments</h3>
+    <div class="comments-container">
+      <% @poll.votes.each do |v| %>
+          <% v.comments.each do |c| %>
+          <div class="comment-card">
+              <div class="user-card">
+                      <% if c.user.photo.attached? %>
+                        <%= cl_image_tag c.user.photo.key, class: "poll-avatar" %>
+                      <% else %>
+                        <%= image_tag "https://cdn-icons-png.flaticon.com/512/2119/2119043.png", class: "poll-avatar" %>
+                      <% end %>
+                <h4 class="poll-username"><%= c.user.username %></h4>
+                <h4 class="poll-username"><%= c.created_at.strftime("%d %B, %Y") %></h4>
+              </div>
+                <div class="card-header"><p style="margin-left: 12px"><%= c.content %></p></div>
             </div>
-              <div class="card-header"><p style="margin-left: 12px"><%= c.content %></p></div>
-          </div>
-      <% end %>
+        <% end %>
     <% end %>
 
-  <div class="pb-5">
-    <%= simple_form_for [@your_vote, @comment] do |f| %>
+<div class="pb-5">
+  <%= simple_form_for [@your_vote, @comment] do |f| %>
+    <div class="comment-section">
         <strong><%= f.input_field :content, placeholder: 'Write a comment', class:"form-comment" %></strong>
-        <%= f.submit %>
+        <%= f.button :submit, "Comment", class:"button-comment" %>
+      </div>
     <% end %>
-  </div>
   <% end %>
+</div>
