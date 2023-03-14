@@ -100,7 +100,6 @@
 }
 
 /* MY POLLS */
-
 .my-poll-card {
   padding-left: 22px;
   padding-right: 22px;
@@ -129,13 +128,8 @@
   color: #0075FF;
 }
 
-.count-votes {
-  color: #D9D9D9;
-  text-align: right;
-}
 
 /* CHART */
-
 .my-chart {
   display: flex;
   justify-content: space-around;
@@ -151,13 +145,12 @@
 }
 
 /* VOTES */
-
-.total-votes {
+.count-votes {
   color: #D9D9D9;
+  text-align: right;
 }
 
 /* BOOKMARKS */
-
 .bookmark-removed {
 	animation: heartUnlike .25s cubic-bezier(.175, .885, .32, 1.275) both;
 }
