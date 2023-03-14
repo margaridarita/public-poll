@@ -16,7 +16,7 @@
 <% if @poll.votes.pluck(:user_id).include?(current_user.id) %>
   <div class="category-text my-poll-card">
   <div class="chart-text">
-    <p style="color: #D9D9D9"><%= "You voted #{@user_votes} like #{@same}% of people" %></p>
+    <p style="color: #B9B9B9"><%= "You voted #{@user_votes} like #{@same}% of people" %></p>
   </div>
     <div class="bar-chart">
       <div class="bar-guide">
@@ -30,36 +30,40 @@
         </div>
       </div>
     </div>
-    <p class="total-votes d-flex justify-content-end pe-3">Total votes: <%= @total_votes_count.to_i %></p>
+    <p class="total-votes d-flex justify-content-end pe-3 mt-2" style="color: #B9B9B9">Total votes: <%= @total_votes_count.to_i %></p>
   </div>
 
-  <h3 class="pt-4" style="text-align: center">Comments</h3>
+
+  <h3 class="pt-4" style="text-align: center; color: #B9B9B9">Comments</h3>
     <div class="comments-container">
       <% @poll.votes.each do |v| %>
           <% v.comments.each do |c| %>
-              <div class="user-card">
-                      <% if c.user.photo.attached? %>
-                        <%= cl_image_tag c.user.photo.key, class: "poll-avatar" %>
-                      <% else %>
-                        <%= image_tag "https://cdn-icons-png.flaticon.com/512/2119/2119043.png", class: "poll-avatar" %>
-                      <% end %>
-                <% if poll.user == current_user %>
+              <div class="user-card d-flex justify-content-space-between">
+                <div class="d-flex">
+                  <% if c.user.photo.attached? %>
+                    <%= cl_image_tag c.user.photo.key, class: "poll-avatar" %>
+                  <% else %>
+                    <%= image_tag "https://cdn-icons-png.flaticon.com/512/2119/2119043.png", class: "poll-avatar" %>
+                  <% end %>
+                   <% if poll.user == current_user %>
                   <h4 class="poll-username"><%= link_to poll.user.username, dashboard_path, class: "text-dark" %></h4>
                 <% else %>
-                  <h4 class="poll-username"><%= link_to poll.user.username, user_path(poll.user), class: "text-dark" %></h4>
-                <% end %>
-                <h4 class="poll-username"><%= c.created_at.strftime("%d %B, %Y") %></h4>
+                </div>
+                <div class="comment-time">
+                  <h4 class="poll-username" style="color: #B9B9B9"><%= time_ago_in_words(c.created_at) %><%= link_to poll.user.username, user_path(poll.user), class: "text-dark" %></h4>
+                </div>
+
               </div>
-                <div class="card-header"><p style="margin-left: 12px"><%= c.content %></p></div>
+                <div class="card-header"><p><%= c.content %></p></div>
              <hr>
         <% end %>
     <% end %>
 
 <div class="pb-5">
   <%= simple_form_for [@your_vote, @comment] do |f| %>
-    <div class="comment-section">
-        <strong><%= f.input_field :content, placeholder: 'Write a comment', class:"form-comment" %></strong>
-        <%= f.button :submit, "Comment", class:"button-comment", id: "comments"  %>
+    <div class="comment-section d-flex flex-column mb-5">
+        <%= f.input :content, as: :text, placeholder: 'Write a comment', label: false, input_html: { class: "form-comment w-100", data: { controller: "textarea-autogrow" } } %>
+        <%= f.button :submit, "Comment", class:"button-comment align-self-end", id: "comments"  %>
       </div>
     <% end %>
   <% end %>
