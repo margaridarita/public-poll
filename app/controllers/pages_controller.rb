@@ -3,7 +3,6 @@ class PagesController < ApplicationController
   before_action :set_user, only: %i[dashboard my_polls my_bookmarks my_account]
 
   def home
-    @action_name = "home"
   end
 
   def trending
