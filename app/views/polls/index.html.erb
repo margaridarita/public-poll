@@ -4,6 +4,7 @@
       <div class="results-back">
         <i class="fa-solid fa-angle-left"></i>
       </div>
+
       <div class="display-result">
         <p>results for <strong>" <%= params[:query]%> "</strong></p>
       </div>
@@ -11,7 +12,7 @@
   <% end %>
 <% end %>
 
-<h2>For you</h2>
+<h2 class="mt-4" >For you</h2>
 
 <% @polls.each do |poll| %>
   <%= render partial: "polls/poll",

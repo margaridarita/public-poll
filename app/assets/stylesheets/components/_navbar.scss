@@ -4,47 +4,13 @@
   position: sticky;
   top: 0;
   background-color: white;
-}
-.navbar .icons-container {
   display: flex;
-  justify-content: space-between;
-  width: 100%;
+  justify-content: end;
 }
 
-.navbar .icons-right {
-  display: flex;
-  align-items: center;
-  width: 20%;
+.navbar-icon {
+  text-align: right;
   justify-content: space-between;
-}
-
-.navbar .navbar-icon {
-  color: #80BAFF;
+  color: #D9D9D9;
   font-size: 20px;
-  background-image: none;
-}
-
-.navbar-lewagon .navbar-toggler {
-  border: none;
-  padding: 5px 0 5px 0;
-}
-.navbar-lewagon .navbar-toggler:focus {
-  box-shadow: none !important;
-}
-.navbar-lewagon .navbar-collapse {
-  flex-grow: 0;
-  background: white;
-  border-radius: 10px;
-}
-.navbar-lewagon .nav-link {
-  color: #0D8BD3;
-  padding: 10px 15px 10px 15px;
-}
-.navbar-lewagon p{
-  margin-bottom: 0;
-}
-
-.navbar-lewagon .avatar {
-  padding: 5px 0 5px 0;
-  width: 35px;
 }
