@@ -105,3 +105,36 @@
   color: #80BAFF;
   font-size: 20px;
 }
+
+.button-white {
+  color: #0075FF;
+  padding: 8px 24px;
+  border-radius: 50px;
+  background-color: white;
+  transition: transform 0.3s ease;
+  border: none;
+  font-size: 20px;
+  font-weight: 700;
+
+  &.btn:active {
+    color: #0075FF;
+    padding: 8px 24px;
+    border-radius: 50px;
+    background: white;
+    transition: transform 0.3s ease;
+    border: none;
+    font-size: 20px;
+    font-weight: 700;
+  }
+
+  &.btn:hover {
+    color: #0075FF;
+    padding: 8px 24px;
+    border-radius: 50px;
+    background: white;
+    transition: transform 0.3s ease;
+    border: none;
+    font-size: 20px;
+    font-weight: 700;
+  }
+}
