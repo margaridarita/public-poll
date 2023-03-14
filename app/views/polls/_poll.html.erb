@@ -50,8 +50,7 @@
 
     <div class="card-header"><p><%= poll.question %></p></div>
 
-    <% unless poll.votes.pluck(:user_id).include?(current_user.id)%>
-
+    <% if Poll.includes(:votes).where(id: poll.id, votes: { user: current_user}).empty? %>
       <div class="answers-card">
         <%= link_to poll_votes_path(poll, chosen_option: poll.first_option ), data: {turbo_method: :post} do %>
           <div class="button-answer">
