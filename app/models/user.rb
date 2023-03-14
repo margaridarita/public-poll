@@ -24,4 +24,8 @@ class User < ApplicationRecord
   def friendships_requested
     Friendship.where(to_user: self).requested
   end
+
+  def voted?(poll)
+    poll.votes.pluck(:user_id).include?(self.id)
+  end
 end

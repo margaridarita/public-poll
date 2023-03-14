@@ -19,7 +19,7 @@
   <% end %>
 
   <div class="poll-card">
-    <% unless poll.user == current_user %>
+    <% unless poll.user == current_user || !user_signed_in? %>
       <div class="card-favourite">
         <% if poll.bookmarked_by_user?(current_user) %>
           <%= link_to bookmark_path(poll.bookmark_by_user(current_user)), data: { turbo_method: :delete, action: "click->poll#toggleBookmark" }, class: "py-2 ps-3" do %>
@@ -52,7 +52,7 @@
     <div class="card-header">
       <p><%= poll.question %></p>
     </div>
-    <% unless poll.votes.pluck(:user_id).include?(current_user.id)%>
+    <% unless user_signed_in? && current_user.voted?(poll) %>
       <div class="answers-card">
         <%= link_to poll_votes_path(poll, chosen_option: poll.first_option ), data: {turbo_method: :post} do %>
           <div class="button-answer">
