@@ -1,6 +1,6 @@
 .card-container {
   align-items: center;
-  margin-top: 20px;
+  margin-top: 30px;
   margin-bottom: 10px;
 }
 
@@ -35,7 +35,7 @@
 }
 
 .poll-card {
-  padding: 15px 22px;
+  padding: 12px 22px;
   background-color: white;
   top: 185px;
   left: 28px;
@@ -45,7 +45,7 @@
 
 .card-small-info {
   margin-bottom: 0;
-  color: #80BAFF;
+  color: #B9B9B9;
   text-align: right;
 }
 
@@ -130,6 +130,7 @@
 
 .display-results {
   color: #0075FF;
+
 }
 
 .bar-chart {
@@ -160,11 +161,6 @@
   text-align: center;
 }
 
-/* VOTES */
-.count-votes {
-  color: #D9D9D9;
-  text-align: right;
-}
 
 /* BOOKMARKS */
 .bookmark-removed {
