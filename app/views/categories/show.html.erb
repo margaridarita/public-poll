@@ -1,6 +1,6 @@
 <% show_buttons ||= false %>
 
-<h2><%= @category.title %></h2>
+<h2 class="mt-4"><%= @category.title %></h2>
 <%= link_to "< Back", :back, style: "color: #0075FF"%>
   <% @polls.each do |poll| %>
     <div class="card-container">
