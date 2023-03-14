@@ -81,6 +81,14 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_13_150333) do
     t.index ["user_id"], name: "index_polls_on_user_id"
   end
 
+  create_table "searches", force: :cascade do |t|
+    t.string "query"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.bigint "user_id", null: false
+    t.index ["user_id"], name: "index_searches_on_user_id"
+  end
+
   create_table "user_categories", force: :cascade do |t|
     t.bigint "user_id", null: false
     t.bigint "category_id", null: false
@@ -123,6 +131,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_13_150333) do
   add_foreign_key "comments", "votes"
   add_foreign_key "polls", "categories"
   add_foreign_key "polls", "users"
+  add_foreign_key "searches", "users"
   add_foreign_key "user_categories", "categories"
   add_foreign_key "user_categories", "users"
   add_foreign_key "votes", "polls"

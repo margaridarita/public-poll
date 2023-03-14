@@ -10,7 +10,7 @@
       <% else %>
         <%= image_tag "https://cdn-icons-png.flaticon.com/512/2119/2119043.png", class: "poll-avatar" %>
       <% end %>
-      <h4 class="poll-username"><%= poll.user.username %></h4>
+      <h4 class="poll-username"><%= link_to poll.user.username, user_path(poll.user), class: "text-dark" %></h4>
     </div>
   <% end %>
   <div class="poll-card">
@@ -70,10 +70,15 @@
       <% end %>
     <% end %>
 
+
     <div class="count-votes my-1">
       <h4><%= poll.votes.count %> votes</h4>
+      
+      <div class="d-flex justify-content-between align-items-center">
+        <%= time_ago_in_words(poll.created_at) %>
+        <h4 style="margin-top: 10px; color: #80BAFF; text-align: right"><%= poll.votes.count %> votes</h4>
+      </div>
     </div>
-  </div>
 
   <% if show_buttons %>
     <div class="button-section">

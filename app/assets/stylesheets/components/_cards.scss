@@ -2,36 +2,37 @@
   align-items: center;
   margin-top: 22px;
   margin-bottom: 22px;
+}
 
-  .answers-card {
-    display: flex;
-    flex-direction: column;
-    margin-top: 18px;
-    align-items: center;
-  }
+.answers-card {
+  display: flex;
+  flex-direction: column;
+  margin-top: 18px;
+  align-items: center;
+}
 
-  .button-answer {
-    width: 290px;
-    display: flex;
-    align-items: center;
-  }
+.button-answer {
+  width: 290px;
+  display: flex;
+  align-items: center;
+}
 
-  .poll-avatar {
-    width: 32px;
-    border-radius: 50%;
-  }
+.poll-avatar {
+  width: 32px;
+  border-radius: 50%;
+}
 
-  .user-card {
-    padding-bottom: 14px;
-    display: flex;
-  }
+.user-card {
+  padding-bottom: 14px;
+  display: flex;
+}
 
-  .poll-username {
-    padding-left: 12px;
-    padding-top: 8px;
-  }
+.poll-username {
+  padding-left: 12px;
+  padding-top: 8px;
+}
 
-  .poll-card {
+.poll-card {
   padding-left: 22px;
   padding-right: 22px;
   background-color: white;
@@ -41,14 +42,30 @@
   padding-bottom: 10px;
   padding-top: 10px;
   box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
- }
-
- .button-section {
-  margin-top: 12px;
-  display: flex;
-  justify-content: flex-end;
- }
 }
+
+/* COMMENTS */
+
+.comments-container {
+  align-items: center;
+  margin-top: 22px;
+  margin-bottom: 22px;
+}
+
+.comment-card {
+  padding-left: 22px;
+  padding-right: 22px;
+  background-color: white;
+  top: 185px;
+  left: 28px;
+  border-radius: 20px;
+  padding-bottom: 20px;
+  padding-top: 10px;
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+  margin-bottom: 15px;
+}
+
+/* CATEGORIES */
 
 .category-card {
   width: 150px;
@@ -79,9 +96,10 @@
 }
 
 .category-text {
-  margin-top: 11px;
   margin-bottom: 0px;
 }
+
+/* MY POLLS */
 
 .my-poll-card {
   padding-left: 22px;
@@ -116,6 +134,38 @@
   text-align: right;
 }
 
+/* CHART */
+
+.my-chart {
+  display: flex;
+  justify-content: space-around;
+}
+
+.chart-text {
+  display: flex;
+  justify-content: space-around;
+}
+
+.chart-title {
+  text-align: center;
+}
+
+/* VOTES */
+
+.total-votes {
+  color: #D9D9D9;
+}
+
+/* BOOKMARKS */
+
+.bookmark-removed {
+	animation: heartUnlike .25s cubic-bezier(.175, .885, .32, 1.275) both;
+}
+
+.bookmark-added {
+	animation: heartPulse .25s cubic-bezier(.175, .885, .32, 1.275) both;
+}
+
 .card-favourite {
   text-align: right;
   padding-bottom: 5px;
@@ -124,14 +174,6 @@
 .icon-favourite {
   color: #0075FF;
   font-size: 18px;
-}
-
-.bookmark-removed {
-	animation: heartUnlike .25s cubic-bezier(.175, .885, .32, 1.275) both;
-}
-
-.bookmark-added {
-	animation: heartPulse .25s cubic-bezier(.175, .885, .32, 1.275) both;
 }
 
 @keyframes heartPulse {
@@ -145,4 +187,5 @@
 
 @keyframes heartUnlike {
   50% { transform: scale(.75) ; }
+
 }
