@@ -6,6 +6,7 @@
   <% end %>
   <h1><%= @user.first_name %></h1>
   <h5><%= '@' + @user.username %></h5>
+  <h5><%= link_to @user.friends.count,  %></h5>
 </div>
 
 <div data-controller="user">
