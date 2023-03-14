@@ -1,5 +1,5 @@
 <% if @user.polls.exists? %>
   <%= render @user.polls %>
 <% else %>
-  <p>Make your first poll <%= link_to "here", new_poll_path, style: "color: #0075FF" %>.</p>
+  <p class="mt-4">Make your first poll <%= link_to "here", new_poll_path, style: "color: #0075FF" %>.</p>
 <% end %>
