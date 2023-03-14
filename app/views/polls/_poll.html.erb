@@ -7,12 +7,7 @@
 
   <% if show_photo %> <!-- being passed as a local to show username and photos on index, trending, categories -->
     <div class="user-card">
-
-      <% if poll.user.photo.attached? %> <!-- checking if user has a photo attached -->
-        <%= cl_image_tag poll.user.photo.key, class: "poll-avatar" %> <!-- user photo -->
-      <% else %>
-        <%= image_tag "https://cdn-icons-png.flaticon.com/512/2119/2119043.png", class: "poll-avatar" %> <!-- default photo -->
-      <% end %>
+      <%= user_photo(poll.user, class: "poll-avatar") %>
 
       <% if poll.user == current_user %> <!-- logic making the username a link to either the dashboard, if you press on your profile, or to the user's profile -->
         <h4 class="poll-username"><%= link_to poll.user.username, dashboard_path, class: "text-dark" %></h4>

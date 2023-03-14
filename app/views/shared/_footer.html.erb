@@ -7,15 +7,7 @@
       <a href="/polls/new"><i class="footer-icon fa-solid fa-plus"></i></a>
       <a href="/categories"><i class="footer-icon fa-solid fa-list-ul"></i></a>
 
-      <% if current_user.photo.attached? %>
-        <%= link_to dashboard_path do %>
-          <%= cl_image_tag current_user.photo.key, class: "avatar" %>
-        <% end %>
-      <% else %>
-        <%= link_to dashboard_path do %>
-          <%= image_tag "https://cdn-icons-png.flaticon.com/512/2119/2119043.png", class: "avatar" %>
-        <% end %>
-      <% end %>
+      <%= user_photo(current_user, class: "avatar") %>
     </div>
   </div>
 <% end %>
