@@ -1,4 +1,11 @@
-<h2 class="mt-4">Change your password</h2>
+
+<div class="back-link mt-4">
+  <%= link_to :back, title: "Back" do %>
+      <i class="back-icon fa-solid fa-angle-left"></i>
+  <% end %>
+  <h2 class="page-title mb-0">Change your password</h2>
+</div>
+
 
 <%= simple_form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :put }) do |f| %>
   <%= f.error_notification %>

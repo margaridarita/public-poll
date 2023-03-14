@@ -1,5 +1,11 @@
 <%= link_to "< Back", :back %>
 
+<div class="back-link mt-4">
+  <%= link_to :back, title: "Back" do %>
+      <i class="back-icon fa-solid fa-angle-left"></i>
+  <% end %>
+</div>
+
 <div class="chart-title">
   <h3><%= @poll.question %></h3>
 </div>

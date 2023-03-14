@@ -12,21 +12,17 @@
 
   .form-control {
   border: none;
-  background-color: #80BAFF;
+  background-color: #5F9FF8;
   height: 50px;
   width: 85%;
   border-radius: 30px;
-  font-size: 15px;
-  position: relative;
-  color: white;
-  font-weight: bold;
+  font-size: 16px;
   position: relative;
   caret-color: white;
   }
 
   input::placeholder {
     color: white;
-    opacity: 0.8;
   }
 
   .button-search-bar {
@@ -36,7 +32,6 @@
   position: absolute;
   right: 45px;
   color: white;
-  opacity: 0.8;
   }
 }
 

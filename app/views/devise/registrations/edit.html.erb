@@ -1,13 +1,10 @@
-<%= link_to :back, title: "Back" do %>
-  <div class="results">
-    <div class="results-back">
-      <i class="fa-solid fa-angle-left"></i>
-    </div>
-    <div class="display-result">
-      <h2>Edit <%= resource_name.to_s.humanize %></h2>
-    </div>
-  </div>
-<% end %>
+
+<div class="back-link mt-4">
+  <%= link_to :back, title: "Back" do %>
+      <i class="back-icon fa-solid fa-angle-left"></i>
+  <% end %>
+  <h2 class="page-title mb-0">Edit <%= resource_name.to_s.humanize %></h2>
+</div>
 
 <div class="d-flex flex-column align-items-center justify-content-center mt-3" >
 

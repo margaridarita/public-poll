@@ -38,13 +38,13 @@
         <div class="d-flex justify-content-between mb-3">
           <p class="my-poll-show">My poll</p>
           <%= link_to poll_path(poll), data: { turbo_method: :delete, action: "click->poll#delete" } do %>
-            <i class="fa-solid fa-xmark" style="color: #D9D9D9"></i>
+            <i class="fa-solid fa-xmark" style="color: #B9B9B9"></i>
           <% end %>
         </div>
       <% else %>
         <div class="d-flex justify-content-end">
           <%= link_to poll_path(poll), data: { turbo_method: :delete, action: "click->poll#delete" } do %>
-            <i class="fa-solid fa-xmark" style="color: #D9D9D9"></i>
+            <i class="fa-solid fa-xmark" style="color: #B9B9B9"></i>
           <% end %>
         </div>
       <% end %>
@@ -67,16 +67,15 @@
       </div>
     <% else %>
       <%= link_to poll_path(poll) do %>
-        <p class="display-results">See Results</p>
+        <p class="display-results mt-2">See Results</p>
       <% end %>
     <% end %>
-    <div class="count-votes my-1">
-      <div class="d-flex justify-content-between align-items-center mt-3">
-        <h4 class="card-small-info" id="time-ago">
-        <%= time_ago_in_words(poll.created_at) %>
-        </h4>
-        <h4 class="card-small-info"><%= poll.votes.count %> votes</h4>
-      </div>
+
+    <div class="d-flex justify-content-between align-items-center mt-2">
+      <h4 class="card-small-info" id="time-ago">
+      <%= time_ago_in_words(poll.created_at) %>
+      </h4>
+      <h4 class="card-small-info"><%= poll.votes.count %> votes</h4>
     </div>
   </div>
 </div>
