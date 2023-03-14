@@ -90,14 +90,14 @@
 }
 
 .categories-container {
-  display: grid;
-  grid-template-columns: auto auto;
-  column-gap: 24px;
-  row-gap: 24px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  gap: 15px;
 }
 
 .category-text {
-  margin-bottom: 0px;
+  margin: 0px;
 }
 
 /* MY POLLS */
@@ -130,9 +130,6 @@
   color: #0075FF;
 }
 
-
-/* CHART */
-
 .bar-chart {
   width: 100%;
   font-size: .8em;
@@ -153,8 +150,7 @@
 }
 
 .chart-text {
-  display: flex;
-  justify-content: space-around;
+  text-align: center;
   margin-bottom: 10px;
 }
 

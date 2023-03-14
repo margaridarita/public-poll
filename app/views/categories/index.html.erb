@@ -1,6 +1,8 @@
+<h2>All Categories</h2>
+<p style="text-align: center; margin-bottom: 32px;">select which category you want to see</p>
 <div class="categories-container">
   <% @categories.each do |category| %>
-    <%= link_to category_path(category), class: "category-card" do %>
+    <%= link_to category_path(category.id), class: "category-card" do %>
       <i class="<%= category.icon_class%>"></i>
       <p class="category-text"><%= category.title %></p>
     <% end %>

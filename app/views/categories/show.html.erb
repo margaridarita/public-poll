@@ -1,3 +1,5 @@
+<% show_buttons ||= false %>
+
 <h2><%= @category.title %></h2>
 <%= link_to "< Back", :back, style: "color: #0075FF"%>
   <% @polls.each do |poll| %>
@@ -41,10 +43,12 @@
             <% end %>
           <% end %>
         </div>
+    <% if show_buttons %>
       <div class="button-section">
-        <button class="button-circle fa-solid fa-star" style=" margin-right: 19px"></button>
-        <a href="whatsapp://send?text=What do you think about this poll? www.publicpoll.me/polls/<%= poll.id %>" data-action="share/whatsapp/share"target="_blank"><button class="button-circle fa-solid fa-share" style=" margin-right: 19px"></button></a>
-        <button class="button-circle fa-solid fa-comment-dots"></button>
+        <a href="whatsapp://send?text=What do you think about this poll? www.publicpoll.me/polls/<%= poll.id %>" data-action="share/whatsapp/share"target="_blank"><button class="button-circle fa-solid fa-share" style=" margin-right: 10px"></button></a>
+        <%= link_to poll_path(poll, anchor: :comments), class: "button-circle text-decoration-none d-flex justify-content-center align-items-center" do %>
+          <i class="fa-solid fa-comment-dots"></i>
+        <% end %>
       </div>
-    </div>
+    <% end %>
 <% end %>
