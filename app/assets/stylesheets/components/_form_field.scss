@@ -29,14 +29,16 @@
 .form-comment {
   border-radius: 20px;
   border-color: #0075FF;
-  width: 350px;
   margin-bottom: 5px;
-  padding: 10px;
   height: 40px;
 }
 
-.comment-section {
+.comment_content {
+  margin-bottom: 0px !important;
+}
+
+.comment-time {
   display: flex;
-  flex-direction: column;
-  align-items: flex-end;
+  flex-grow: 1;
+  justify-content: flex-end;
 }

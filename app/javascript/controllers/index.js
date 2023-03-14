@@ -12,3 +12,6 @@ application.register("hello", HelloController)
 
 import PollController from "./poll_controller"
 application.register("poll", PollController)
+
+import TextareaAutogrow from 'stimulus-textarea-autogrow'
+application.register('textarea-autogrow', TextareaAutogrow)

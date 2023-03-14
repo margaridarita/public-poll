@@ -11,16 +11,16 @@
   right: 0;
 
   .form-control {
-  border: none;
-  background-color: #80BAFF;
-  height: 50px;
-  border-radius: 30px;
-  font-size: 15px;
-  position: relative;
-  color: white;
-  font-weight: bold;
-  position: relative;
-  caret-color: white;
+    border: none;
+    background-color: #80BAFF;
+    height: 50px;
+    border-radius: 30px;
+    font-size: 15px;
+    position: relative;
+    color: white;
+    font-weight: bold;
+    position: relative;
+    caret-color: white;
   }
 
   input::placeholder {
@@ -29,12 +29,12 @@
   }
 
   .button-search-bar {
-  border: none;
-  font-size: 20px;
-  background-color: transparent;
-  position: absolute;
-  right: 70px;
-  color: #0075FF;
+    border: none;
+    font-size: 20px;
+    background-color: transparent;
+    position: absolute;
+    right: 70px;
+    color: #0075FF;
   }
 }
 
