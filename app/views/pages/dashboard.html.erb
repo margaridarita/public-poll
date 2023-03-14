@@ -1,9 +1,9 @@
 
 <div class="center">
   <% if current_user.photo.attached? %>
-    <%= cl_image_tag current_user.photo.key, class: "avatar-dashboard" %>
+    <%= cl_image_tag current_user.photo.key, class: "avatar-dashboard mt-1" %>
   <% else %>
-    <%= image_tag "https://cdn-icons-png.flaticon.com/512/2119/2119043.png", class: "avatar-dashboard" %>
+    <%= image_tag "https://cdn-icons-png.flaticon.com/512/2119/2119043.png", class: "avatar-dashboard mt-1" %>
   <% end %>
 
   <h1><%= @user.first_name %></h1>
