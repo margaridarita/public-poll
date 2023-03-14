@@ -26,6 +26,13 @@ Rails.application.routes.draw do
     resources :comments, only: %i[create]
   end
 
+  resources :friendships, only: %i[create update] do
+    collection do
+      get :requested
+      get :accepted
+    end
+  end
+
   resources :users, only: :show
   resources :user_categories, only: %i[new create]
 

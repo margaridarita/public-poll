@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_03_13_150333) do
+ActiveRecord::Schema[7.0].define(version: 2023_03_13_182009) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -66,6 +66,16 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_13_150333) do
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_comments_on_user_id"
     t.index ["vote_id"], name: "index_comments_on_vote_id"
+  end
+
+  create_table "friendships", force: :cascade do |t|
+    t.bigint "from_user_id", null: false
+    t.bigint "to_user_id", null: false
+    t.integer "status", default: 0
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["from_user_id"], name: "index_friendships_on_from_user_id"
+    t.index ["to_user_id"], name: "index_friendships_on_to_user_id"
   end
 
   create_table "polls", force: :cascade do |t|
@@ -129,6 +139,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_13_150333) do
   add_foreign_key "bookmarks", "users"
   add_foreign_key "comments", "users"
   add_foreign_key "comments", "votes"
+  add_foreign_key "friendships", "users", column: "from_user_id"
+  add_foreign_key "friendships", "users", column: "to_user_id"
   add_foreign_key "polls", "categories"
   add_foreign_key "polls", "users"
   add_foreign_key "searches", "users"

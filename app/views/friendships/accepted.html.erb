@@ -1,0 +1,23 @@
+<div class="title-trending">
+  <h2>Friends</h2>
+</div>
+<% if Friendship.where(to_user: current_user).any? %>
+  <%= link_to requested_friendships_path do %>
+    <i class="fa-solid fa-person-swimming", style= "color: #80BAFF" ></i>
+  <% end %>
+<% end %>
+
+<% if current_user.friendships.accepted.any? %>
+  <% current_user.friendships.accepted.each do |friendship| %>
+    <div class="request-card">
+      <% if friendship.from_user.photo.attached? %>
+        <%= cl_image_tag friendship.from_user.photo.key, class: "avatar" %>
+      <% else %>
+        <%= image_tag "https://cdn-icons-png.flaticon.com/512/2119/2119043.png", class: "avatar" %>
+      <% end %>
+      <h4 class="poll-username">@<%= link_to friendship.from_user.username, user_path(friendship.from_user), class: "text-dark" %></h4>
+    </div>
+  <% end %>
+<% else %>
+  <p>No friends yet.</p>
+<% end %>

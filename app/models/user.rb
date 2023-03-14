@@ -16,4 +16,12 @@ class User < ApplicationRecord
 
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
+
+  def friendships
+    Friendship.where(to_user: self).or(Friendship.where(from_user: self))
+  end
+
+  def friendships_requested
+    Friendship.where(to_user: self).requested
+  end
 end
