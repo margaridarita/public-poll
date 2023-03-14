@@ -16,8 +16,5 @@ application.register("poll", PollController)
 import UserController from "./user_controller"
 application.register("user", UserController)
 
-import { Application } from '@hotwired/stimulus'
-import ScrollTo from 'stimulus-scroll-to'
-
-const application = Application.start()
-application.register('scroll-to', ScrollTo)
+// import ScrollTo from 'stimulus-scroll-to'
+//application.register('scroll-to', ScrollTo)
