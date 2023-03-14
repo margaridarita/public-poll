@@ -1,19 +1,29 @@
 <div class="title-trending">
   <h2>Friends</h2>
 </div>
-<% if Friendship.where(to_user: current_user).any? %>
+<% if Friendship.where(to_user: current_user, status: 0).any? %>
   <%= link_to requested_friendships_path do %>
     <i class="fa-solid fa-person-swimming", style= "color: #80BAFF" ></i>
   <% end %>
 <% end %>
 
 <% if current_user.friendships.accepted.any? %>
-  <% current_user.friendships.accepted.each do |friendship| %>
-    <div class="request-card">
-      <%= user_photo(friendship.from_user, class: "avatar") %>
-      <h4 class="poll-username">@<%= link_to friendship.from_user.username, user_path(friendship.from_user), class: "text-dark" %></h4>
-    </div>
-  <% end %>
+  <div class="comments-container">
+    <% current_user.friendships.accepted.each do |friendship| %>
+      <div class="user-card d-flex justify-content-space-between">
+        <div class="d-flex">
+        <%= link_to user_path(friendship.from_user) do %>
+          <%= user_photo(friendship.from_user, class: "avatar-friends") %>
+        <% end %>
+          <div class="flex-column ms-2">
+            <h3><%= link_to friendship.from_user.first_name, user_path(friendship.from_user), class: "text-dark" %></h3>
+            <h4>@<%= link_to friendship.from_user.username, user_path(friendship.from_user), class: "text-dark" %></h4>
+          </div>
+        </div>
+      </div>
+      <hr>
+    <% end %>
+  </div>
 <% else %>
   <p>No friends yet.</p>
 <% end %>
