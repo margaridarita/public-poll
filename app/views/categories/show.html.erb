@@ -1,5 +1,11 @@
-<%= link_to "<", :back, style: "color: #0075FF"%>
-<h2><%= @category.title %></h2>
+
+<div class="back-link mt-4">
+  <%= link_to :back, title: "Back" do %>
+      <i class="back-icon fa-solid fa-angle-left"></i>
+  <% end %>
+  <h2 class="page-title mb-0"><%= @category.title %></h2>
+</div>
+
 <% if @category.polls.any? %>
   <div class="grid-container">
     <% @polls.each do |poll| %>
@@ -7,5 +13,5 @@
     <% end %>
   </div>
 <% else %>
-  <p class="mt-4">No '<%= @category.title %>' related polls yet. Come back soon!</p>
+  <p class="mt-5">No '<%= @category.title %>' related polls yet. Come back soon!</p>
 <% end %>
