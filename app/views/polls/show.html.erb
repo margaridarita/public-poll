@@ -2,9 +2,7 @@
 <div class="chart-title">
   <h3><%= @poll.question %></h3>
 </div>
-<div class="chart-text">
-  <p style="color: #D9D9D9"><%= "You voted #{@user_votes} like #{@same}% of people" %></p>
-</div>
+
 <% if @poll.user == current_user %>
   <%= link_to "Delete", poll_path(@poll), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} %>
 <% end %>
@@ -16,9 +14,20 @@
 
 <% if @poll.votes.pluck(:user_id).include?(current_user.id) %>
   <div class="category-text my-poll-card">
-    <div class="my-chart">
-      <%= bar_chart [[@poll.first_option,@first_percentage],[@poll.second_option,@second_percentage]], min: "0", max: "100", width: "270px", height: "150px", colors: ["rgba(0, 117, 255, 1)
-"], library: { scales: { x: { ticks: { display: false } } } }  %>
+  <div class="chart-text">
+    <p style="color: #D9D9D9"><%= "You voted #{@user_votes} like #{@same}% of people" %></p>
+  </div>
+    <div class="bar-chart">
+      <div class="bar-guide">
+        <div class="bar" style="width: <%= @first_percentage %>%">
+          <span class="text-white p-2"><%= @poll.first_option %></span>
+        </div>
+      </div>
+      <div class="bar-guide">
+        <div class="bar mt-2" style="width: <%= @second_percentage %>%">
+          <span class="text-white p-2"><%= @poll.second_option %></span>
+        </div>
+      </div>
     </div>
     <p class="total-votes d-flex justify-content-end pe-3">Total votes: <%= @total_votes_count.to_i %></p>
   </div>
@@ -28,7 +37,7 @@
     <div class="comments-container">
       <% @poll.votes.each do |v| %>
           <% v.comments.each do |c| %>
-          <div class="comment-card">
+
               <div class="user-card">
                       <% if c.user.photo.attached? %>
                         <%= cl_image_tag c.user.photo.key, class: "poll-avatar" %>
@@ -39,7 +48,7 @@
                 <h4 class="poll-username"><%= c.created_at.strftime("%d %B, %Y") %></h4>
               </div>
                 <div class="card-header"><p style="margin-left: 12px"><%= c.content %></p></div>
-            </div>
+<hr>
         <% end %>
     <% end %>
 
