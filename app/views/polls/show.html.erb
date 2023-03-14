@@ -46,10 +46,10 @@
           <div class="user-card d-flex justify-content-space-between">
             <div class="d-flex">
                   <%= user_photo(c.user, class: "poll-avatar") %>
-                  <% if poll.user == current_user %>
+                  <% if c.user == current_user %>
                   <h4 class="poll-username"><%= link_to c.user.username, dashboard_path, class: "text-dark" %></h4>
                 <% else %>
-                  <h4 class="poll-username"><%= link_to c.user.username, user_path(poll.user), class: "text-dark" %></h4>
+                  <h4 class="poll-username"><%= link_to c.user.username, user_path(c.user), class: "text-dark" %></h4>
                 <% end %>
               </div>
                 <div class="comment-time">
