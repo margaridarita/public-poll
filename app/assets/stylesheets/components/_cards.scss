@@ -83,14 +83,14 @@
 }
 
 .categories-container {
-  display: grid;
-  grid-template-columns: auto auto;
-  column-gap: 24px;
-  row-gap: 24px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  gap: 15px;
 }
 
 .category-text {
-  margin-bottom: 0px;
+  margin: 0px;
 }
 
 /* MY POLLS */
@@ -123,10 +123,7 @@
 }
 
 
-/* CHART */
-.my-chart {
-  display: flex;
-  justify-content: space-around;
+/* BARS */
 
 .bar-chart {
   width: 100%;
@@ -148,8 +145,7 @@
 }
 
 .chart-text {
-  display: flex;
-  justify-content: space-around;
+  text-align: center;
   margin-bottom: 10px;
 }
 
