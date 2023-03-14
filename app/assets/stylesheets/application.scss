@@ -20,8 +20,6 @@ body {
 }
 
 .page-container {
-  display: grid;
-  grid-template-rows: auto 1fr auto;
   margin-left: 20px;
   margin-right: 20px;
   min-height: 100vh;
@@ -36,7 +34,7 @@ h1 {
 h2 {
   font-size: 25px;
   font-weight: 500;
-  color: #80BAFF;
+  color: #D9D9D9;
   text-align: center;
 }
 
@@ -47,6 +45,7 @@ h3 {
 
 h4 {
   font-size: 14px;
+  margin-bottom: 0;
 }
 
 h5 {

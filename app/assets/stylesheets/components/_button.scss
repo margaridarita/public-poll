@@ -7,6 +7,35 @@
   border: none;
   font-size: 20px;
   font-weight: 700;
+
+  &.btn:active {
+    color: white;
+    padding: 8px 24px;
+    border-radius: 50px;
+    background: #0075FF;
+    border: none;
+    font-size: 20px;
+    font-weight: 700;
+  }
+
+  &.btn:hover {
+    color: white;
+    padding: 8px 24px;
+    border-radius: 50px;
+    background: #0075FF;
+    border: none;
+    font-size: 20px;
+    font-weight: 700;
+  }
+}
+
+.button-comment {
+  color: white;
+  border-radius: 50px;
+  background: #0075FF;
+  transition: transform 0.3s ease;
+  border: none;
+  font-size: 14px;
 }
 
 .button-dash{
@@ -32,6 +61,12 @@
 .button-blue:focus {
   color: white;
   transform: scale(1.1);
+}
+
+.button-section {
+  margin-top: 12px;
+  display: flex;
+  justify-content: flex-end;
 }
 
 .button-circle {
@@ -64,9 +99,9 @@
  }
 
 .back-link {
-margin-right: 10px;
-font-size: 20px;
-align-items: center;
-color: #80BAFF;
-font-size: 20px;
+  margin-right: 10px;
+  font-size: 20px;
+  align-items: center;
+  color: #80BAFF;
+  font-size: 20px;
 }

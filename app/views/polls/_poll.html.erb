@@ -13,25 +13,25 @@
       <h4 class="poll-username"><%= link_to poll.user.username, user_path(poll.user), class: "text-dark" %></h4>
     </div>
   <% end %>
-  <div class="poll-card">
 
+  <div class="poll-card">
     <% unless poll.user == current_user %>
       <div class="card-favourite">
         <% if poll.bookmarked_by_user?(current_user) %>
-          <%= link_to bookmark_path(poll.bookmark_by_user(current_user)), data: { turbo_method: :delete, action: "click->poll#toggleBookmark" }, class: "py-3 ps-3" do %>
-            <i class="text-primary bookmark-icon fa-solid fa-star"></i>
+          <%= link_to bookmark_path(poll.bookmark_by_user(current_user)), data: { turbo_method: :delete, action: "click->poll#toggleBookmark" }, class: "py-2 ps-3" do %>
+            <i class="icon-favourite bookmark-icon fa-solid fa-star"></i>
           <% end %>
         <% else %>
-          <%= link_to poll_bookmarks_path(poll), data: { turbo_method: :post, action: "click->poll#toggleBookmark" }, class: "py-3 ps-3" do %>
-            <i class="text-primary bookmark-icon fa-regular fa-star"></i>
+          <%= link_to poll_bookmarks_path(poll), data: { turbo_method: :post, action: "click->poll#toggleBookmark" }, class: "py-2 ps-3" do %>
+            <i class="icon-favourite bookmark-icon fa-regular fa-star"></i>
           <% end %>
         <% end %>
       </div>
     <% end %>
 
     <% if poll.user == current_user %>
-        <% if show_my_poll %>
-      <div class="d-flex justify-content-between">
+      <% if show_my_poll %>
+        <div class="d-flex justify-content-between mb-3">
           <p class="my-poll-show">My poll</p>
           <%= link_to poll_path(poll), data: { turbo_method: :delete, action: "click->poll#delete" } do %>
             <i class="fa-solid fa-xmark" style="color: #D9D9D9"></i>
@@ -39,43 +39,49 @@
         </div>
       <% else %>
         <div class="d-flex justify-content-end">
-        <%= link_to poll_path(poll), data: { turbo_method: :delete, action: "click->poll#delete" } do %>
-          <i class="fa-solid fa-xmark" style="color: #D9D9D9"></i>
-        <% end %>
+          <%= link_to poll_path(poll), data: { turbo_method: :delete, action: "click->poll#delete" } do %>
+            <i class="fa-solid fa-xmark" style="color: #D9D9D9"></i>
+          <% end %>
         </div>
       <% end %>
     <% end %>
-
-    <div class="card-header"><p style="margin-left: 12px"><%= poll.question %></p></div>
-
+    <div class="card-header">
+      <p><%= poll.question %></p>
+    </div>
     <% unless poll.votes.pluck(:user_id).include?(current_user.id)%>
       <div class="answers-card">
         <%= link_to poll_votes_path(poll, chosen_option: poll.first_option ), data: {turbo_method: :post} do %>
           <div class="button-answer">
-            <p style="margin-top: -5px"><%= poll.first_option%></p>
+            <p class="m-2"><%= poll.first_option%></p>
           </div >
         <% end %>
-
         <%= link_to poll_votes_path(poll, chosen_option: poll.second_option), data: {turbo_method: :post} do %>
           <div class="button-answer">
-            <p style="margin-top: -5px"><%= poll.second_option %></p>
+            <p class="m-2"><%= poll.second_option %></p>
           </div>
         <% end %>
       </div>
     <% else %>
       <%= link_to poll_path(poll) do %>
-        <div>
-          <p class="ms-3" style="color: #0075FF">See Results</p>
-        </div>
+        <p class="display-results">See Results</p>
       <% end %>
     <% end %>
-    <h4 style="margin-top: 10px; color: #80BAFF; text-align: right"><%= poll.votes.count %> votes</h4>
-  </div>
-
-  <% if show_buttons %>
-    <div class="button-section">
-      <a href="whatsapp://send?text=What do you think about this poll? www.publicpoll.me/polls/<%= poll.id %>" data-action="share/whatsapp/share"target="_blank"><button class="button-circle fa-solid fa-share" style=" margin-right: 10px"></button></a>
-      <button class="button-circle fa-solid fa-comment-dots"></button>
+    <div class="count-votes my-1">
+      <div class="d-flex justify-content-between align-items-center mt-3">
+        <h4 class="card-small-info" id="time-ago">
+        <%= time_ago_in_words(poll.created_at) %>
+        </h4>
+        <h4 class="card-small-info"><%= poll.votes.count %> votes</h4>
+      </div>
     </div>
-  <% end %>
+  </div>
 </div>
+
+<% if show_buttons %>
+  <div class="button-section">
+    <a href="whatsapp://send?text=What do you think about this poll? www.publicpoll.me/polls/<%= poll.id %>" data-action="share/whatsapp/share"target="_blank"><button class="button-circle fa-solid fa-share" style=" margin-right: 10px"></button></a>
+    <%= link_to poll_path(poll, anchor: :comments), class: "button-circle text-decoration-none d-flex justify-content-center align-items-center" do %>
+      <i class="fa-solid fa-comment-dots"></i>
+    <% end %>
+  </div>
+<% end %>

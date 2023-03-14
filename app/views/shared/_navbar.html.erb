@@ -1,24 +1,7 @@
-
 <div class="navbar navbar-expand-sm navbar-light navbar-lewagon">
-  <div class="icons-container">
-  <div class="icons-left">
-    <div class="sidebar">
-      <button class="navbar-toggler" type="button" onclick="openNav()">
-        <i class="navbar-icon fa-solid fa-bars"></i>
-      </button>
-      <%= render "shared/sidebar" %>
-    </div>
-  </div>
-
-    <div class="icons-right">
-      <a href="/search.html">  <i class="navbar-icon fas fa-search"></i></a>
-
-      <% if user_signed_in? %>
-        <a href="/polls.html">  <i class="navbar-icon fa-solid fa-house"></i></a>
-      <% else %>
-        <a href="/trending.html">  <i class="navbar-icon fa-solid fa-house"></i></a>
-      <% end %>
-    </div>
-
-  </div>
+  <% if user_signed_in? %>
+    <%= link_to destroy_user_session_path, data: {turbo_method: :delete} do %>
+      <i class="navbar-icon fa-solid fa-ellipsis"></i>
+    <% end %>
+  <% end %>
 </div>

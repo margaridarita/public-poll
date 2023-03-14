@@ -12,14 +12,21 @@
   </head>
 
   <body>
+    <%#= debug params.as_json %>
     <div class="page-container">
-      <% if @action_name.nil? %>
+      <% if params[:action] == "dashboard"%>
         <%= render "shared/navbar" %>
       <% end %>
+
       <%= render "shared/flashes" %>
+
       <div id="main-content">
         <%= yield %>
       </div>
     </div>
+
+    <% if params[:action] != "home" && params[:action] != "search" %>
+      <%= render "shared/footer" %>
+    <% end %>
   </body>
 </html>

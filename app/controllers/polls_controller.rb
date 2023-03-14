@@ -5,6 +5,8 @@ class PollsController < ApplicationController
   def index
     if params[:query].present?
       @polls = Poll.search_by_category_and_question(params[:query])
+      @search = Search.where(query: params[:query], user: current_user).first_or_create
+      @search.touch
     else
       @polls = Poll.all.order(created_at: :desc)
     end
