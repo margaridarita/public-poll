@@ -64,9 +64,7 @@
       </div>
     <% else %>
       <%= link_to poll_path(poll) do %>
-        <div class="display-results>
-          <p style="color: #0075FF">See Results</p>
-        </div>
+        <p class="display-results">See Results</p>
       <% end %>
     <% end %>
     <div class="d-flex justify-content-between align-items-center mt-3">
@@ -76,15 +74,6 @@
       <h4 class="card-small-info"><%= poll.votes.count %> votes</h4>
     </div>
   </div>
-
-
-    <div class="count-votes my-1">
-      <h4><%= poll.votes.count %> votes</h4>
-
-      <div class="d-flex justify-content-between align-items-center">
-        <%= time_ago_in_words(poll.created_at) %>
-      </div>
-    </div>
 
 </div>
 
