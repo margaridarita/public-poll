@@ -46,12 +46,6 @@
 
 /* COMMENTS */
 
-.comments-container {
-  align-items: center;
-  margin-top: 22px;
-  margin-bottom: 22px;
-}
-
 .comment-card {
   padding-left: 22px;
   padding-right: 22px;
@@ -136,14 +130,29 @@
 
 /* CHART */
 
-.my-chart {
-  display: flex;
-  justify-content: space-around;
+.bar-chart {
+  width: 100%;
+  font-size: .8em;
+
+  .bar-guide {
+    background: #d9d9d9;
+    height: 30px;
+    border-radius: 5px;
+  }
+
+  .bar {
+    display: flex;
+    align-items: center;
+    background: #0075FF;
+    height: 30px;
+    border-radius: 5px;
+  }
 }
 
 .chart-text {
   display: flex;
   justify-content: space-around;
+  margin-bottom: 10px;
 }
 
 .chart-title {
