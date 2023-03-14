@@ -2,17 +2,23 @@
   <div class="footer-items">
 
     <% if user_signed_in? %>
-      <a href="/polls.html">  <i class="footer-icon fa-solid fa-house"></i></a>
-      <a href="/search.html"><i class="footer-icon fas fa-search"></i></a>
+      <a href="/polls">  <i class="footer-icon fa-solid fa-house"></i></a>
+      <a href="/search"><i class="footer-icon fas fa-search"></i></a>
       <a href="/polls/new"><i class="footer-icon fa-solid fa-plus"></i></a>
       <a href="/categories"><i class="footer-icon fa-solid fa-list-ul"></i></a>
+
       <% if current_user.photo.attached? %>
-        <%= cl_image_tag current_user.photo.key, class: "avatar" %>
+        <%= link_to requested_friendships_path do %>
+          <%= cl_image_tag current_user.photo.key, class: "avatar" %>
+        <% end %>
       <% else %>
-        <a href="/dashboard"><%= image_tag "https://cdn-icons-png.flaticon.com/512/2119/2119043.png", class: "avatar" %></a>
+        <%= link_to requested_friendships_path do %>
+          <%= image_tag "https://cdn-icons-png.flaticon.com/512/2119/2119043.png", class: "avatar" %>
+        <% end %>
       <% end %>
+      
     <% else %>
-      <a href="/trending.html">  <i class="footer-icon fa-solid fa-house"></i></a>
+      <a href="/trending">  <i class="footer-icon fa-solid fa-house"></i></a>
        <a href="/users/sign_in"><i class="footer-icon fa-solid fa-circle-user"></i></a>
     <% end %>
   </div>
