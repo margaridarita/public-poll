@@ -53,33 +53,28 @@
       <p><%= poll.question %></p><!-- Main question -->
     </div>
     <% unless user_signed_in? && current_user.voted?(poll) %><!-- unless user is signed in and has voted, both options will appear able to click -->
-      <div class="answers-card" id="<%= dom_id(poll) %>">
+      <div class="answers-card d-flex flex-column" id="<%= dom_id(poll) %>">
         <%= link_to poll_votes_path(poll, chosen_option: poll.first_option ), data: {turbo_method: :post, remote: true} do %>
           <div class="button-answer">
             <i class="fa-regular fa-circle m-3"></i>
             <%= poll.first_option %><!-- first option button -->
           </div >
         <% end %>
+
         <%= link_to poll_votes_path(poll, chosen_option: poll.second_option), data: {turbo_method: :post, remote: true} do %>
           <div class="button-answer">
             <i class="fa-regular fa-circle m-3"></i>
             <%= poll.second_option %><!-- second option button -->
           </div>
         <% end %>
+
+        <%= render partial: 'polls/small_info', locals: { poll: poll } %>
       </div>
     <% else %><!-- if user is signed in and has voted, a link to poll show will appear as "See Results" -->
       <div data-controller="live-chart" data-url="<%= live_index_poll_path(poll) %>">
         <%= render partial: 'polls/chart', locals: { poll: poll } %>
       </div>
     <% end %>
-
-    <div class="d-flex justify-content-between align-items-center mt-2">
-      <h4 class="card-small-info" id="time-ago">
-      <%= time_ago_in_words(poll.created_at) %>
-      </h4>
-      <h4 class="card-small-info"><%= poll.votes.count %> votes</h4>
-    </div>
-
   </div>
 </div>
 

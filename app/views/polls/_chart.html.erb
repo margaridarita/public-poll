@@ -1,12 +1,14 @@
 <div class="bar-chart">
   <div class="bar-guide">
-    <div class="bar" style="width: <%= @first_percentage %>%">
+    <div class="bar" style="width: <%= poll.first_percentage %>%">
       <span class="text-white m-3"><%= poll.first_option %></span>
     </div>
   </div>
   <div class="bar-guide">
-    <div class="bar" style="width: <%= @second_percentage %>%">
+    <div class="bar" style="width: <%= poll.second_percentage %>%">
       <span class="text-white m-3"><%= poll.second_option %></span>
     </div>
   </div>
 </div>
+
+<%= render partial: 'polls/small_info', locals: { poll: poll } %>
