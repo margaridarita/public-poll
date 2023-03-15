@@ -38,17 +38,17 @@
   <% end %>
 
   <% if show_requested_options %><!-- being passed as a local from requested friends -->
-  <div class="d-flex">
-      <%= simple_form_for friendship do |f| %><!-- simple form holds the accept button which changes the status of the specific friendship to accepted -->
+  <div class="d-flex justify-content-center align-items-end">
+      <%= simple_form_for Friendship.find_by(to_user: current_user, from_user: @user) do |f| %>
+        <!-- accept button -->
         <%= f.input :status, as: :hidden, input_html: { value: :accepted } %>
         <button type="submit" class="btn-accept">
           <i class="fa-solid fa-check"></i>
         </button>
       <% end %>
-
-      <%= simple_form_for friendship do |f| %>
-        <%= f.input :status, as: :hidden, input_html: { value: :rejected } %><!--  decline button which changes the status of the friendship to rejected -->
-        <button type="submit" class="btn-decline">
+        <!-- reject button -->
+      <%= link_to friendship_path(Friendship.find_by(to_user: current_user, from_user: @user)), data: { turbo_method: :delete } do %>
+        <button class="btn-decline">
           <i class="fa-solid fa-xmark"></i>
         </button>
       <% end %>
