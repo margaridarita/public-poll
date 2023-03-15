@@ -1,5 +1,7 @@
 require 'faker'
 
+Friendship.destroy_all
+Search.destroy_all
 User.destroy_all
 
 polls = []
@@ -64,4 +66,3 @@ end
     Comment.create(user: voter, content: Faker::TvShows::RickAndMorty.quote, vote:)
   end
 end
-puts Poll.all
