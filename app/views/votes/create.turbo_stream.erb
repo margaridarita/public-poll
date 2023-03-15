@@ -1,0 +1,17 @@
+<%= turbo_stream.replace "#{dom_id(@poll)}" do %>
+<div class="answers-card" id="<%= dom_id(@poll) %>" data-controller="live-chart" data-url="<%= live_index_poll_path(@poll) %>">
+  <div class="button-answer <%= @poll.first_option == @vote.chosen_option ? 'bg-success' : '' %>">
+    <p class="m-2">
+      <i class="fa-solid <%= @poll.first_option == @vote.chosen_option ? 'fa-circle-dot' : 'fa-circle' %>"></i>
+      <%= @poll.first_option %>
+    </p>
+  </div>
+
+  <div class="button-answer <%= @poll.second_option == @vote.chosen_option ? 'bg-success' : '' %>">
+    <p class="m-2">
+      <i class="fa-solid <%= @poll.second_option == @vote.chosen_option ? 'fa-circle-dot' : 'fa-circle' %>"></i>
+      <%= @poll.second_option %>
+    </p>
+  </div>
+</div>
+<% end %>

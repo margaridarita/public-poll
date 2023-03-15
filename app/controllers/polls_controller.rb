@@ -1,5 +1,5 @@
 class PollsController < ApplicationController
-  before_action :set_poll, only: %i[show destroy total_votes live]
+  before_action :set_poll, only: %i[show destroy total_votes live live_index]
 
 
   def index
@@ -38,6 +38,12 @@ class PollsController < ApplicationController
     build_insane_variables
 
     render partial: "polls/poll_card", formats: [:html]
+  end
+
+  def live_index
+    build_insane_variables
+
+    render partial: "polls/chart", locals: { poll: @poll }, formats: [:html]
   end
 
   def destroy

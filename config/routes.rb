@@ -20,6 +20,7 @@ Rails.application.routes.draw do
     resources :bookmarks, only: %i[create]
     member do
       get :live
+      get :live_index
     end
   end
 
