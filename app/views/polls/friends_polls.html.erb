@@ -1,0 +1,12 @@
+<h2 class="mt-4">Friends' Polls</h2>
+<% if current_user.friendships.accepted.any? %>
+  <% @polls.each do |poll| %>
+    <%= render partial: "polls/poll",
+                locals: { poll: poll,
+                show_photo: true,
+                show_buttons: true,
+                show_my_poll: true } %>
+  <% end %>
+<% else %>
+  <p>Add friends to see their polls.</p>
+<% end %>

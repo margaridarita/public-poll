@@ -50,6 +50,13 @@ class PollsController < ApplicationController
     @poll.destroy
   end
 
+  def friends_polls
+    @polls = Poll.joins("INNER JOIN friendships ON (friendships.to_user_id = polls.user_id OR friendships.from_user_id = polls.user_id)")
+                 .where("friendships.to_user_id = ? OR friendships.from_user_id = ?", current_user, current_user)
+                 .where.not("polls.user_id = ?", current_user)
+                 .distinct
+  end
+
   private
 
   def build_insane_variables

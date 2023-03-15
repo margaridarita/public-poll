@@ -39,7 +39,7 @@
 
   <% if show_requested_options %><!-- being passed as a local from requested friends -->
   <div class="d-flex justify-content-center align-items-end">
-      <%= simple_form_for Friendship.find_by(to_user: current_user, from_user: @user) do |f| %>
+      <%= simple_form_for Friendship.find_by(to_user: current_user, from_user: friendship.from_user) do |f| %>
         <!-- accept button -->
         <%= f.input :status, as: :hidden, input_html: { value: :accepted } %>
         <button type="submit" class="btn-accept">
@@ -47,7 +47,7 @@
         </button>
       <% end %>
         <!-- reject button -->
-      <%= link_to friendship_path(Friendship.find_by(to_user: current_user, from_user: @user)), data: { turbo_method: :delete } do %>
+      <%= link_to friendship_path(Friendship.find_by(to_user: current_user, from_user: friendship.from_user)), data: { turbo_method: :delete } do %>
         <button class="btn-decline">
           <i class="fa-solid fa-xmark"></i>
         </button>
