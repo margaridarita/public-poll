@@ -1,6 +1,10 @@
-<div class="title-trending mt-4 mb-4">
-  <h2>Friends</h2>
+<div class="back-link mt-4 mb-4">
+  <%= link_to :back, title: "Back" do %>
+      <i class="back-icon fa-solid fa-angle-left"></i>
+  <% end %>
+  <h2 class="page-title mb-0">Friends</h2>
 </div>
+
 <% if Friendship.where(to_user: current_user, status: 0).any? %><!-- if any friendship requests exist, show in blue -->
   <div class="d-flex justify-content-between">
     <div class="d-flex">
@@ -33,5 +37,5 @@
     <% end %>
   </div>
 <% else %><!-- if no friends -->
-  <p class="mt-1">No friends yet.</p>
+  <p class="mt-1">You don't have any friends yet.</p>
 <% end %>

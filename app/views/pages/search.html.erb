@@ -16,12 +16,12 @@
   <% @searches.each do |search| %>
     <div class="row">
       <div class="col-10 p-2">
-        <%= link_to search.query, polls_path(query: search.query)%>
+        <%= link_to search.query, polls_path(query: search.query), style: "color: white"%>
       </div>
 
       <div class="col-2 p-2 text-far">
         <%= link_to delete_search_path(search.id), data: { turbo_method: :delete } do %>
-          <i class="fa-solid fa-xmark"></i>
+          <i class="fa-solid fa-xmark" style="color: white"></i>
         <% end %>
       </div>
     </div>
