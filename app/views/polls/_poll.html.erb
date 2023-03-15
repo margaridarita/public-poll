@@ -56,12 +56,14 @@
       <div class="answers-card" id="<%= dom_id(poll) %>">
         <%= link_to poll_votes_path(poll, chosen_option: poll.first_option ), data: {turbo_method: :post, remote: true} do %>
           <div class="button-answer">
-            <p class="m-2"><i class="fa-solid fa-circle"></i> <%= poll.first_option%></p><!-- first option button -->
+            <i class="fa-regular fa-circle m-2"></i>
+            <%= poll.first_option%><!-- first option button -->
           </div >
         <% end %>
         <%= link_to poll_votes_path(poll, chosen_option: poll.second_option), data: {turbo_method: :post, remote: true} do %>
           <div class="button-answer">
-            <p class="m-2"><i class="fa-solid fa-circle"></i> <%= poll.second_option %></p><!-- second option button -->
+            <i class="fa-regular fa-circle m-2"></i>
+            <%= poll.second_option %><!-- second option button -->
           </div>
         <% end %>
       </div>
