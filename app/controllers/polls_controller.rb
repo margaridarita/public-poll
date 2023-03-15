@@ -72,11 +72,10 @@ class PollsController < ApplicationController
 
     if Vote.find_by(poll_id: @poll.id, user_id: current_user)
       @user_votes = Vote.find_by(poll_id: @poll.id, user_id: current_user).chosen_option
-
       if Vote.find_by(poll_id: @poll.id, user_id: current_user).chosen_option == @poll.first_option
-        @same = @first_percentage
+        @same = @poll.first_percentage
       else
-        @same = @second_percentage
+        @same = @poll.second_percentage
       end
     end
   end
