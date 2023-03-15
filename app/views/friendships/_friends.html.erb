@@ -1,4 +1,5 @@
 <% show_requested_options ||= false %>
+<% show_delete ||= false %>
 
 <div class="user-card d-flex justify-content-between mb-3">
   <% if current_user == friendship.from_user %>
@@ -11,6 +12,11 @@
         <h4>@<%= link_to friendship.to_user.username, user_path(friendship.to_user), class: "text-dark" %></h4>
       </div>
     </div>
+    <% if show_delete %>
+      <%= link_to friendship_path(friendship), data: { turbo_method: :delete, turbo_confirm: "Are you sure?" } do %>
+        <i class="fa-solid fa-xmark" style="color: #B9B9B9"></i>
+      <% end %>
+    <% end %>
   <% else %>
     <div class="d-flex">
       <%= link_to user_path(friendship.from_user) do %>
@@ -21,6 +27,11 @@
         <h4>@<%= link_to friendship.from_user.username, user_path(friendship.from_user), class: "text-dark" %></h4>
       </div>
     </div>
+    <% if show_delete %>
+      <%= link_to friendship_path(friendship), data: { turbo_method: :delete, turbo_confirm: "Are you sure?" } do %>
+        <i class="fa-solid fa-xmark" style="color: #B9B9B9"></i>
+      <% end %>
+    <% end %>
   <% end %>
 
   <% if show_requested_options %>

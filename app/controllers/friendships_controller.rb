@@ -15,6 +15,12 @@ class FriendshipsController < ApplicationController
     redirect_to requested_friendships_path
   end
 
+  def destroy
+    @friendship = Friendship.find(params[:id])
+    @friendship.destroy
+    redirect_to accepted_friendships_path, status: :see_other
+  end
+
   private
 
   def friendship_params
