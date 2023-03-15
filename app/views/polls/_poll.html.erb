@@ -51,7 +51,7 @@
     <% end %>
     <div class="card-header">
       <% if user_signed_in? && current_user.voted?(poll) %>
-        <p><%= link_to poll.question, poll_path(poll), class: "text-dark" %></p><!-- Main question as a link to poll show -->
+        <p><%= link_to poll.question, poll_path(poll), class: "text-dark", rows: '2', style: "word-wrap: break-word;" %></p><!-- Main question as a link to poll show -->
       <% end %>
     </div>
     <% unless user_signed_in? && current_user.voted?(poll) %><!-- unless user is signed in and has voted, both options will appear able to click -->

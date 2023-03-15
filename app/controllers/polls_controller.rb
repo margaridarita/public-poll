@@ -70,7 +70,6 @@ class PollsController < ApplicationController
     # @first_percentage = @total_votes_count.zero? ? 0.0 : ((@first_votes_count / @total_votes_count) * 100).round
     # @second_percentage = @total_votes_count.zero? ? 0.0 : ((@second_votes_count / @total_votes_count) * 100).round
 
-
     if Vote.find_by(poll_id: @poll.id, user_id: current_user)
       @user_votes = Vote.find_by(poll_id: @poll.id, user_id: current_user).chosen_option
 
