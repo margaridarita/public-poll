@@ -7,7 +7,6 @@
 .answers-card {
   display: flex;
   flex-direction: column;
-  margin: 10px 0;
   align-items: center;
 }
 
@@ -135,22 +134,22 @@
 
 .bar-chart {
   width: 100%;
-  font-size: .8em;
+  font-size: 16px;
   margin: 10px 0;
 
   .bar-guide {
     background: #d9d9d9;
-    height: 40px;
-    border-radius: 5px;
+    border-radius: 20px;
+    margin: 10px 0;
+    height: 55px;
   }
 
   .bar {
     display: flex;
     align-items: center;
     background: #0075FF;
-    border-radius: 5px;
-    margin: 5px 0;
-    // padding: 21px 12px 20px 12px;
+    border-radius: 20px;
+    height: 55px;
   }
 }
 
