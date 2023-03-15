@@ -36,6 +36,39 @@
 
 }
 
+.button-reset {
+  color: white;
+  padding: 8px 22px;
+  border-radius: 50px;
+  background: #0075FF;
+  transition: transform 0.3s ease;
+  border: none;
+  font-size: 20px;
+  size: 20px;
+
+  &.btn:active {
+    color: white;
+    padding: 8px 24px;
+    border-radius: 50px;
+    background: #0075FF;
+    transition: transform 0.3s ease;
+    border: none;
+    font-size: 20px;
+    font-weight: 700;
+  }
+
+  &.btn:hover {
+    color: white;
+    padding: 8px 24px;
+    border-radius: 50px;
+    background: #0075FF;
+    transition: transform 0.3s ease;
+    border: none;
+    font-size: 20px;
+    font-weight: 700;
+  }
+}
+
 .button-comment {
   color: white;
   border-radius: 50px;
