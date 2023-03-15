@@ -1,5 +1,5 @@
 class PollsController < ApplicationController
-  before_action :set_poll, only: %i[show destroy total_votes live]
+  before_action :set_poll, only: %i[show destroy total_votes live live_index]
 
 
   def index
@@ -40,6 +40,12 @@ class PollsController < ApplicationController
     render partial: "polls/poll_card", formats: [:html]
   end
 
+  def live_index
+    build_insane_variables
+
+    render partial: "polls/chart", locals: { poll: @poll }, formats: [:html]
+  end
+
   def destroy
     @poll.destroy
   end
@@ -49,13 +55,13 @@ class PollsController < ApplicationController
   def build_insane_variables
     @your_vote = Vote.find_by(user: current_user, poll: @poll) if @poll.votes.pluck(:user_id).include?(current_user.id)
 
-    @first_votes_count = Vote.where(poll_id: @poll.id, chosen_option: @poll.first_option).count.to_f
-    @second_votes_count = Vote.where(poll_id: @poll.id, chosen_option: @poll.second_option).count.to_f
+    # @first_votes_count = Vote.where(poll_id: @poll.id, chosen_option: @poll.first_option).count.to_f
+    # @second_votes_count = Vote.where(poll_id: @poll.id, chosen_option: @poll.second_option).count.to_f
 
-    @total_votes_count = Vote.where(poll_id: @poll.id).count.to_f
+    # @total_votes_count = Vote.where(poll_id: @poll.id).count.to_f
 
-    @first_percentage = @total_votes_count.zero? ? 0.0 : ((@first_votes_count / @total_votes_count) * 100).round
-    @second_percentage = @total_votes_count.zero? ? 0.0 : ((@second_votes_count / @total_votes_count) * 100).round
+    # @first_percentage = @total_votes_count.zero? ? 0.0 : ((@first_votes_count / @total_votes_count) * 100).round
+    # @second_percentage = @total_votes_count.zero? ? 0.0 : ((@second_votes_count / @total_votes_count) * 100).round
 
 
     if Vote.find_by(poll_id: @poll.id, user_id: current_user)

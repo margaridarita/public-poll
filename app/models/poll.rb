@@ -37,4 +37,20 @@ class Poll < ApplicationRecord
   def bookmark_by_user(user)
     Bookmark.find_by(user:, poll: self)
   end
+
+  def first_option_votes
+    votes.where(chosen_option: first_option)
+  end
+
+  def second_option_votes
+    votes.where(chosen_option: second_option)
+  end
+
+  def first_percentage
+    votes_count.zero? ? 0.0 : (first_option_votes.count.fdiv(votes_count) * 100).round
+  end
+
+  def second_percentage
+    votes_count.zero? ? 0.0 : (second_option_votes.count.fdiv(votes_count) * 100).round
+  end
 end

@@ -1,0 +1,7 @@
+<div class="d-flex justify-content-between align-items-center mt-2 w-100">
+  <h4 class="card-small-info" id="time-ago">
+    <%= time_ago_in_words(poll.created_at) %>
+  </h4>
+
+  <h4 class="card-small-info"><%= pluralize(poll.votes.count, 'vote') %></h4>
+</div>
