@@ -77,6 +77,24 @@
   transition: transform 0.3s ease;
   border: none;
   font-size: 14px;
+
+  &.btn:active {
+  color: white;
+  border-radius: 50px;
+  background: #0075FF;
+  transition: transform 0.3s ease;
+  border: none;
+  font-size: 14px;
+  }
+
+  &.btn:hover {
+    color: white;
+    border-radius: 50px;
+    background: #0075FF;
+    transition: transform 0.3s ease;
+    border: none;
+    font-size: 14px;
+  }
 }
 
 .button-dash{
