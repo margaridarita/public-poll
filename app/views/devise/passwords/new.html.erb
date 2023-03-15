@@ -2,7 +2,7 @@
   <div class="back-link mt-5">
     <%= link_to :back, title: "Back" do %>
       <i class="back-icon fa-solid fa-angle-left"></i>
-      <h2 class="page-title mb-0">Forgot your password?</h2>
+      <h2 class="page-title mb-0">Reset password</h2>
     <% end %>
   </div>
 
@@ -22,7 +22,7 @@
       </div>
       <div class="form-actions d-flex flex-column align-items-center">
         <%= f.button :submit, "Reset", class: "button-reset" %>
-        <%= render "devise/shared/links" %>
+        <%= render "devise/shared/reset_link" %>
       </div>
     <% end %>
   </div>
