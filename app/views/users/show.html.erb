@@ -1,30 +1,36 @@
 <div class="center">
   <%= user_photo(@user, class: "avatar-dashboard mt-4") %>
-  <h1><%= @user.first_name %></h1>
+  <h1><%= @user.first_name.capitalize %></h1>
   <h5><%= '@' + @user.username %></h5>
 
-  <% if Friendship.between(current_user, @user).status == 0 %>
-    <%= simple_form_for friendship do |f| %>
-      <%= f.input :status, as: :hidden, input_html: { value: :accepted } %>
-      <button type="submit" class="btn btn-primary">
-        <i class="fa-solid fa-check" style= "color: #80BAFF"></i>
-      </button>
-    <% end %>
+  <% if user_signed_in? %>
+    <% if Friendship.between(current_user, @user).nil? %>
+      <%= simple_form_for Friendship.new do |f| %>
+        <%= f.input :to_user_id, as: :hidden, input_html: { value: @user.id } %>
+        <button type="submit" class="btn-status-friend">
+          <i class="fa-solid fa-user-plus"></i>
+        </button>
+      <% end %>
+    <% elsif Friendship.accepted.find_by(to_user: current_user, from_user: @user) || Friendship.accepted.find_by(from_user: current_user, to_user: @user) %>
+      <i class="fa-solid fa-user-group btn-status-friend" ></i>
+    <% elsif Friendship.requested.find_by(to_user: current_user, from_user: @user)%>
+      <div class="d-flex">
+        <%= simple_form_for Friendship.find_by(to_user: current_user, from_user: @user) do |f| %>
+          <%= f.input :status, as: :hidden, input_html: { value: :accepted } %>
+          <button type="submit" class="btn-accept">
+            <i class="fa-solid fa-check"></i>
+          </button>
+        <% end %>
 
-    <%= simple_form_for friendship do |f| %>
-      <%= f.input :status, as: :hidden, input_html: { value: :rejected } %>
-      <button type="submit" class="btn btn-outline-danger">
-        <i class="fa-solid fa-xmark"></i>
-      </button>
-    <% end %>
-
-  <% elsif Friendship.between(current_user, @user).status == 1 %>
-  
-  <% elsif Friendship.between(current_user, @user).status == 2 %>
-  <% else %>
-    <%= simple_form_for Friendship.new do |f| %>
-      <%= f.input :to_user_id, as: :hidden, input_html: { value: @user.id } %>
-      <%= f.submit "Add friend" %>
+        <%= simple_form_for Friendship.find_by(to_user: current_user, from_user: @user) do |f| %>
+          <%= f.input :status, as: :hidden, input_html: { value: :rejected } %>
+          <button type="submit" class="btn-decline">
+            <i class="fa-solid fa-xmark"></i>
+          </button>
+        <% end %>
+      </div>
+    <% elsif Friendship.requested.where(to_user: @user, from_user: current_user)%>
+      <i class="fa-regular fa-hourglass-half btn-status-friend"></i>
     <% end %>
   <% end %>
 </div>
