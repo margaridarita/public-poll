@@ -1,6 +1,12 @@
-<div class="center mt-4">
+<div class="back-link mt-4">
+  <%= link_to :back, title: "Back" do %>
+      <i class="back-icon fa-solid fa-angle-left"></i>
+  <% end %>
+</div>
+
+<div class="center">
   <!-- user information -->
-  <%= user_photo(@user, class: "avatar-dashboard mt-4") %>
+  <%= user_photo(@user, class: "avatar-dashboard") %>
   <h1><%= @user.first_name.capitalize %></h1>
   <h5><%= '@' + @user.username %></h5>
   <!-- until here -->
