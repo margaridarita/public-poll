@@ -18,6 +18,9 @@ Rails.application.routes.draw do
   resources :polls do
     resources :votes, only: :create
     resources :bookmarks, only: %i[create]
+    member do
+      get :live
+    end
   end
 
   resources :bookmarks, only: [:destroy]

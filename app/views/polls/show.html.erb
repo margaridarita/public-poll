@@ -20,23 +20,8 @@
 <% end %>
 
 <% if @poll.votes.pluck(:user_id).include?(current_user.id) %>
-  <div class="category-text my-poll-card">
-  <div class="chart-text">
-    <p style="color: #B9B9B9"><%= "You voted #{@user_votes} like #{@same}% of people" %></p>
-  </div>
-    <div class="bar-chart">
-      <div class="bar-guide">
-        <div class="bar" style="width: <%= @first_percentage %>%">
-          <span class="text-white p-2"><%= @poll.first_option %></span>
-        </div>
-      </div>
-      <div class="bar-guide">
-        <div class="bar mt-2" style="width: <%= @second_percentage %>%">
-          <span class="text-white p-2"><%= @poll.second_option %></span>
-        </div>
-      </div>
-    </div>
-    <p class="total-votes d-flex justify-content-end pe-3 mt-2" style="color: #B9B9B9">Total votes: <%= @total_votes_count.to_i %></p>
+  <div class="category-text my-poll-card" data-controller="live-chart" data-url="<%= live_poll_path(@poll) %>">
+    <%= render partial: 'polls/poll_card' %>
   </div>
 
   <h3 class="pt-4" style="text-align: center; color: #B9B9B9">Comments</h3>
@@ -67,7 +52,7 @@
     <div class="comment-section d-flex flex-column mb-5">
         <%= f.input :content, as: :text, placeholder: 'Write a comment', label: false, input_html: { class: "form-comment w-100", data: { controller: "textarea-autogrow" } } %>
         <%= f.button :submit, "Comment", class:"button-comment align-self-end", id: "comments"  %>
-      </div>
-    <% end %>
-  <% end %>
-</div>
+    </div>
+   <% end %>
+ </div>
+<% end %>
