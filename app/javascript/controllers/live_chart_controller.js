@@ -2,7 +2,7 @@ import { Controller } from "@hotwired/stimulus"
 
 export default class extends Controller {
   connect() {
-    setTimeout(() => this.refreshChart(), 1500);
+    setTimeout(() => this.refreshChart(), 1000);
     this.interval = setInterval(() => this.refreshChart(), 5000);
   }
 

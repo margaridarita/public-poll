@@ -57,7 +57,7 @@
         <%= link_to poll_votes_path(poll, chosen_option: poll.first_option ), data: {turbo_method: :post, remote: true} do %>
           <div class="button-answer">
             <i class="fa-regular fa-circle m-2"></i>
-            <%= poll.first_option%><!-- first option button -->
+            <%= poll.first_option %><!-- first option button -->
           </div >
         <% end %>
         <%= link_to poll_votes_path(poll, chosen_option: poll.second_option), data: {turbo_method: :post, remote: true} do %>

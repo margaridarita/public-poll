@@ -94,10 +94,11 @@
   top: 251px;
   left: 50px;
   border-radius: 20px;
-  background-color: #0075FF;
-  padding: 21px 12px 20px 20px;
-  border: none;
-  color: white;
+  border: 2px solid #0075FF;
+  border-color: #0075FF;
+  background-color: white;
+  padding: 21px 12px 20px 12px;
+  color: #0075FF;
  }
 
 .button-answer:focus {
@@ -144,4 +145,9 @@
     font-size: 20px;
     font-weight: 700;
   }
+}
+
+.selected-button {
+  background-color: #0075FF;
+  color: white;
 }
