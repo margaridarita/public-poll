@@ -83,8 +83,12 @@
     <!-- share to whatsapp -->
     <a href="whatsapp://send?text=What do you think about this poll? www.publicpoll.me/polls/<%= poll.id %>" data-action="share/whatsapp/share"target="_blank"><button class="button-circle fa-solid fa-share me-3"></button></a>
     <!-- link to comments -->
-    <%= link_to poll_path(poll, anchor: :comments), class: "button-circle text-decoration-none d-flex justify-content-center align-items-center" do %>
-      <i class="fa-solid fa-comment-dots"></i>
+    <% if user_signed_in? && current_user.voted?(poll) %>
+      <%= link_to poll_path(poll, anchor: :comments), class: "button-circle text-decoration-none d-flex justify-content-center align-items-center" do %>
+        <i class="fa-solid fa-comment-dots"></i>
+      <% end %>
+    <% else %>
+      <i class="fa-solid fa-comment-slash button-circle text-decoration-none d-flex justify-content-center align-items-center" style=" color: #B9B9B9"></i>
     <% end %>
   </div>
 <% end %>
