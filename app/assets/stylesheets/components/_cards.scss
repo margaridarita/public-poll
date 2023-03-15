@@ -172,6 +172,15 @@
     border-radius: 20px;
     height: 55px;
   }
+
+  .bar-not-full {
+    display: flex;
+    align-items: center;
+    background: #80BAFF;
+    border-top-left-radius: 20px;
+    border-bottom-left-radius: 20px;
+    height: 55px;
+  }
 }
 
 .option-text {
