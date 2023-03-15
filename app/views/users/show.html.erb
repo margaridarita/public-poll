@@ -3,10 +3,24 @@
   <h1><%= @user.first_name %></h1>
   <h5><%= '@' + @user.username %></h5>
 
-  <% if Friendship.between(current_user, @user).present? %>
-    <div class="pill">
-      <%= Friendship.between(current_user, @user).status %>
-    </div>
+  <% if Friendship.between(current_user, @user).status == 0 %>
+    <%= simple_form_for friendship do |f| %>
+      <%= f.input :status, as: :hidden, input_html: { value: :accepted } %>
+      <button type="submit" class="btn btn-primary">
+        <i class="fa-solid fa-check" style= "color: #80BAFF"></i>
+      </button>
+    <% end %>
+
+    <%= simple_form_for friendship do |f| %>
+      <%= f.input :status, as: :hidden, input_html: { value: :rejected } %>
+      <button type="submit" class="btn btn-outline-danger">
+        <i class="fa-solid fa-xmark"></i>
+      </button>
+    <% end %>
+
+  <% elsif Friendship.between(current_user, @user).status == 1 %>
+  
+  <% elsif Friendship.between(current_user, @user).status == 2 %>
   <% else %>
     <%= simple_form_for Friendship.new do |f| %>
       <%= f.input :to_user_id, as: :hidden, input_html: { value: @user.id } %>

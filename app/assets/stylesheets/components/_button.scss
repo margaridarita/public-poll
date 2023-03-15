@@ -76,6 +76,26 @@
   justify-content: flex-end;
 }
 
+.btn-accept {
+  margin-left: 12px;
+  width: 35px;
+  height: 35px;
+  background-color: #0075FF;
+  color: white;
+  border-radius: 50%;
+  border: none;
+}
+
+.btn-decline {
+  margin-left: 12px;
+  width: 35px;
+  height: 35px;
+  background-color: white;
+  color: #0075FF;
+  border-radius: 50%;
+  border: solid 2px #0075FF;
+}
+
 .button-circle {
   width: 32px;
   height: 32px;
