@@ -14,7 +14,7 @@
 
 <% else %><!-- if no search has been made -->
 
-  <h2 class="mt-4">Most Recent</h2>
+  <h2 class="mt-4">For you</h2>
 
   <% @polls.each do |poll| %><!-- polls rendered through poll partial -->
     <%= render partial: "polls/poll",
