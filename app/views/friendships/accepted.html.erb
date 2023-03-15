@@ -1,22 +1,22 @@
 <div class="title-trending mt-4 mb-4">
   <h2>Friends</h2>
 </div>
-<% if Friendship.where(to_user: current_user, status: 0).any? %>
+<% if Friendship.where(to_user: current_user, status: 0).any? %><!-- if any friendship requests exist, show in blue -->
   <div class="d-flex justify-content-between">
     <div class="d-flex">
-      <%= link_to requested_friendships_path do %>
+      <%= link_to requested_friendships_path do %><!-- sending to requested page -->
         <i class="fa-solid fa-user-plus", style= "color: #0075FF" ></i>
       <% end %>
-      <p class="ps-3"><%= link_to "Friend requests (#{Friendship.where(to_user: current_user, status: 0).count})", requested_friendships_path, style: "color: #0075FF" %></p>
+      <p class="ps-3"><%= link_to "Friend requests (#{Friendship.where(to_user: current_user, status: 0).count})", requested_friendships_path, style: "color: #0075FF" %></p><!-- counter showing how many requests -->
     </div>
     <div>
-      <%= link_to requested_friendships_path do %>
+      <%= link_to requested_friendships_path do %><!-- sending to requested page -->
         <i class="fa-solid fa-angle-right", style= "color: #0075FF"></i>
       <% end %>
     </div>
   </div>
   <hr>
-<% else %>
+<% else %><!-- if no friendship requests, show in grey -->
   <div class="d-flex justify-content-start">
     <div class="d-flex">
       <i class="fa-solid fa-user-plus", style= "color: #B9B9B9" ></i>
@@ -26,12 +26,12 @@
   <hr>
 <% end %>
 
-<% if current_user.friendships.accepted.any? %>
+<% if current_user.friendships.accepted.any? %><!-- if user has any friends, will render and iterate to show -->
   <div class="comments-container">
     <% current_user.friendships.accepted.each do |friendship| %>
       <%= render partial: 'friends', locals: { friendship: friendship, show_delete: true } %>
     <% end %>
   </div>
-<% else %>
+<% else %><!-- if no friends -->
   <p class="mt-1">No friends yet.</p>
 <% end %>
