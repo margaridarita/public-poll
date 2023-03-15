@@ -7,7 +7,7 @@ class PagesController < ApplicationController
   end
 
   def trending
-    @polls = Poll.last_week.order(votes_count: :desc).limit(20)
+    @polls = Poll.last_week.where(private: false).order(votes_count: :desc).limit(20)
   end
 
   # seach model
