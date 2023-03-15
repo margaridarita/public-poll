@@ -20,7 +20,10 @@ body {
 .page-container {
   margin-left: 20px;
   margin-right: 20px;
-  min-height: 100vh;
+}
+
+#main-content {
+  margin-bottom: 100px;
 }
 
 h1 {
@@ -37,7 +40,7 @@ h2 {
 }
 
 h3 {
-  font-size: 20px;
+  font-size: 18px;
   font-weight: 500;
 }
 
@@ -58,7 +61,6 @@ p {
 }
 
 a {
-  color: white;
   text-decoration: none;
 }
 
