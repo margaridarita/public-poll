@@ -24,7 +24,7 @@
     <i class="fa-solid fa-user-group btn-status-friend" ></i>
   <% elsif Friendship.requested.find_by(to_user: current_user, from_user: @user)%>
     <!-- if friendship has been requested to the current_user, user can accept or deny on user show page -->
-    <div class="d-flex">
+    <div class="d-flex justify-content-center align-items-end">
       <%= simple_form_for Friendship.find_by(to_user: current_user, from_user: @user) do |f| %>
         <!-- accept button -->
         <%= f.input :status, as: :hidden, input_html: { value: :accepted } %>
@@ -32,16 +32,13 @@
           <i class="fa-solid fa-check"></i>
         </button>
       <% end %>
-      <%= simple_form_for Friendship.find_by(to_user: current_user, from_user: @user) do |f| %>
         <!-- reject button -->
-        <%= f.input :status, as: :hidden, input_html: { value: :rejected } %>
-        <button type="submit" class="btn-decline">
+      <%= link_to friendship_path(Friendship.find_by(to_user: current_user, from_user: @user)), data: { turbo_method: :delete } do %>
+        <button class="btn-decline">
           <i class="fa-solid fa-xmark"></i>
         </button>
       <% end %>
     </div>
-  <% elsif Friendship.rejected.where(to_user: @user, from_user: current_user) || Friendship.rejected.where(to_user: current_user, from_user: @user) %>
-
   <% elsif Friendship.requested.where(to_user: @user, from_user: current_user)%>
     <!-- if current user made a friend request -->
     <i class="fa-regular fa-hourglass-half btn-status-friend"></i>
