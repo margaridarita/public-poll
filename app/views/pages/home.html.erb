@@ -13,9 +13,9 @@
     <div class="align-items-center flex-grow-1 d-flex flex-column justify-content-end">
       <div class="text-white text-center">
         <% if user_signed_in? %>
-          <h3>Welcome back, <br> <%= current_user.first_name.capitalize %></h3>
+          <h6>Welcome back, <br> <%= current_user.first_name.capitalize %></h6>
         <% else %>
-          <h3>Welcome to Public Poll,<br> a pool of opinions</h3>
+          <h6>Welcome to Public Poll,<br> a pool of opinions</h6>
         <% end %>
       </div>
 
