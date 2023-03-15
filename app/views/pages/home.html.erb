@@ -19,13 +19,17 @@
         <% end %>
       </div>
 
-      <%= link_to 'Dive in!', trending_path,
-        data: { action: "click->home#diveIn", home_target: "button" },
-        class: 'button-home mt-3 mb-1 text-center px-4 py-2' %>
-
       <% unless user_signed_in? %>
+        <%= link_to 'Dive in!', trending_path,
+          data: { action: "click->home#diveIn", home_target: "button" },
+          class: 'button-home mt-3 mb-1 text-center px-4 py-2' %>
+
         <%= link_to 'Log in / Sign up', new_user_session_path,
-          class: 'text-white my-3' %>
+          class: 'text-white mt-3 mb-4' %>
+      <% else %>
+        <%= link_to 'Dive in!', trending_path,
+          data: { action: "click->home#diveIn", home_target: "button" },
+          class: 'button-home mt-3 mb-4 text-center px-4 py-2' %>
       <% end %>
     </div>
   </div>
