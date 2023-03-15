@@ -29,7 +29,7 @@
 <% if current_user.friendships.accepted.any? %>
   <div class="comments-container">
     <% current_user.friendships.accepted.each do |friendship| %>
-      <%= render partial: 'friends', locals: { friendship: friendship } %>
+      <%= render partial: 'friends', locals: { friendship: friendship, show_delete: true } %>
     <% end %>
   </div>
 <% else %>
