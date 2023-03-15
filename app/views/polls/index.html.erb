@@ -7,6 +7,11 @@
     <p class="results-title mb-0">Results for <strong>" <%= params[:query]%> "</strong></p>
   </div>
 
+  <% @polls.each do |poll| %>
+    <%= render partial: "polls/poll",
+      locals: { poll: poll, show_photo: true, show_buttons: true, show_my_poll: true } %>
+  <% end %>
+
 <% else %>
 
   <h2 class="mt-4">Most Recent</h2>
@@ -15,5 +20,5 @@
     <%= render partial: "polls/poll",
       locals: { poll: poll, show_photo: true, show_buttons: true, show_my_poll: true } %>
   <% end %>
-  
+
 <% end %>
