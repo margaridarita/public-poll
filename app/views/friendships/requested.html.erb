@@ -4,11 +4,7 @@
 <% if current_user.friendships_requested.any? %>
   <% current_user.friendships_requested.each do |friendship| %>
   <div class="d-flex justify-content-around">
-    <% if friendship.from_user.photo.attached? %>
-      <%= cl_image_tag friendship.from_user.photo.key, class: "avatar" %>
-    <% else %>
-      <%= image_tag "https://cdn-icons-png.flaticon.com/512/2119/2119043.png", class: "avatar" %>
-    <% end %>
+    <%= user_photo(friendship.from_user, class: "avatar") %>
     <h4 class="poll-username">@<%= link_to friendship.from_user.username, user_path(friendship.from_user), class: "text-dark" %></h4>
 
     <%= simple_form_for friendship do |f| %>
