@@ -1,4 +1,4 @@
-<div class="title-trending">
+<div class="title-trending mt-4 mb-3">
   <h2>Requested</h2>
 </div>
 <% if current_user.friendships_requested.any? %>
@@ -23,5 +23,5 @@
   </div>
   <% end %>
 <% else %>
-  <p>No requests yet.</p>
+  <p class="mt-4">No requests yet.</p>
 <% end %>
