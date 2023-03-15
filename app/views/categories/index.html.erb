@@ -1,7 +1,11 @@
 <h2 class="mt-4">All Categories</h2>
+<p style="text-align: center; margin-bottom: 25px;">select which category you want to see</p>
 
-<p style="text-align: center; margin-bottom: 32px;">select which category you want to see</p>
 <div class="categories-container">
+    <%= link_to trending_path, class: "trending-card" do %>
+    <i class="fa-solid fa-arrow-trend-up"></i>
+    <p>Trending</p>
+   <% end %>
   <% @categories.each do |category| %>
     <%= link_to category_path(category.id), class: "category-card" do %>
       <i class="<%= category.icon_class%>"></i>
