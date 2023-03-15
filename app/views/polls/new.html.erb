@@ -10,9 +10,9 @@
     <div class="form-inputs">
       <%= f.label :"Category *", class: "category-label" %>
       <%= f.collection_select :category_id, Category.all, :id, :title, { prompt: 'Select category',  }, { class: 'form-control category-field' } %>
-      <%= f.input :question, placeholder: 'Your question' %>
-      <%= f.input :first_option, placeholder: 'Option 1' %>
-      <%= f.input :second_option, placeholder: 'Option 2' %>
+      <%= f.input :question, placeholder: 'Your question', maxlength: '50' %>
+      <%= f.input :first_option, placeholder: 'Option 1', maxlength: '24' %>
+      <%= f.input :second_option, placeholder: 'Option 2', maxlength: '24' %>
       <div class="text-center">
         <%= f.submit class: 'button-blue mt-2' %>
       </div>
