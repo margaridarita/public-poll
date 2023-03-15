@@ -50,7 +50,7 @@
       <% end %>
     <% end %>
     <div class="card-header">
-      <p><%= link_to poll.question, poll_path(poll), class: "text-dark" %></p><!-- Main question -->
+      <p><%= link_to poll.question, poll_path(poll), class: "text-dark", rows: '2', style: "word-wrap: break-word;" %></p><!-- Main question -->
     </div>
     <% unless user_signed_in? && current_user.voted?(poll) %><!-- unless user is signed in and has voted, both options will appear able to click -->
       <div class="answers-card d-flex flex-column" id="<%= dom_id(poll) %>">
