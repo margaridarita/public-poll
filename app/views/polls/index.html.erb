@@ -1,19 +1,13 @@
-<% if params[:query].present? %>
-
-  <div class="back-link mt-4">
-    <%= link_to :back, title: "Back" do %>
-        <i class="back-icon fa-solid fa-angle-left"></i>
-    <% end %>
-    <p class="results-title mb-0">Results for <strong>" <%= params[:query]%> "</strong></p>
-  </div>
-
-<% else %>
-
-  <h2 class="mt-4">Most Recent</h2>
-
-  <% @polls.each do |poll| %>
-    <%= render partial: "polls/poll",
-      locals: { poll: poll, show_photo: true, show_buttons: true, show_my_poll: true } %>
+<div class="back-link mt-4">
+  <%= link_to :back, title: "Back" do %>
+      <i class="back-icon fa-solid fa-angle-left"></i>
   <% end %>
-  
+  <p class="results-title mb-0">Results for <strong>" <%= params[:query]%> "</strong></p>
+</div>
+
+<h2 class="mt-4">Most Recent</h2>
+
+<% @polls.each do |poll| %>
+  <%= render partial: "polls/poll",
+    locals: { poll: poll, show_photo: true, show_buttons: true, show_my_poll: true } %>
 <% end %>
