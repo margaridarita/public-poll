@@ -1,26 +1,39 @@
-
 <div class="center">
-  <%= user_photo(current_user, class: "avatar-dashboard mt-1") %>
+  <%= user_photo(current_user, class: "avatar-dashboard") %><!-- helper setting user photo -->
   <h1><%= @user.first_name %></h1>
   <h5><%= '@' + @user.username %></h5>
-  <%= link_to accepted_friendships_path do %>
-    <i class="fa-solid fa-user-group", style= "color: #80BAFF" ></i></i>
+  <%= link_to accepted_friendships_path do %><!-- button to user friends -->
+    <i class="fa-solid fa-user-group", style= "color: #80BAFF" ></i>
   <% end %>
-  <div>
-    <p><%= link_to "Edit Profile", edit_user_registration_path, style: "color: #80BAFF" %></p>
-  </div>
 </div>
 
-<div data-controller="dashboard">
+<div data-controller="dashboard"><!-- buttons to run through dashboard options (logic made in dashboard stimulus controller) -->
   <div class="pt-3 d-flex justify-content-center">
     <button data-dashboard-target="createdBtn" class="center button-dash active" data-action="click->dashboard#showCreated">Created</button>
     <button data-dashboard-target="votedBtn" class="center button-dash" data-action="click->dashboard#showVoted">Voted</button>
     <button data-dashboard-target="savedBtn" class="center button-dash" data-action="click->dashboard#showSaved">Saved</button>
   </div>
 
-  <div>
+  <div><!-- renders -->
     <div data-dashboard-target="created"><%= render "my_polls" %></div>
     <div data-dashboard-target="voted" class="d-none"><%= render "my_voted_polls" %></div>
     <div data-dashboard-target="saved" class="d-none"><%= render "my_favorite_polls" %></div>
+  </div>
+</div>
+
+
+<!-- bottombar pop-up -->
+<div class="offcanvas offcanvas-bottom" tabindex="-1" id="offcanvasBottom" aria-labelledby="offcanvasBottomLabel">
+  <div class="canvas-elements p-3">
+    <div class="offcanvas-header pt-4">
+      <p style="font-size: 18px; color: #5F9FF8">Profile</p>
+    </div>
+    <div class="offcanvas-body small pt-0">
+      <h3><%= link_to "Edit Profile", edit_user_registration_path, style: "color: white" %></h3>
+      <h3><%= link_to "Log out", destroy_user_session_path, data: {turbo_method: :delete}, style: "color: white" %></h3>
+    </div>
+  </div>
+  <div id="close-search">
+    <button type="button" class="btn button-white" data-bs-dismiss="offcanvas" aria-label="Close">Close</button>
   </div>
 </div>

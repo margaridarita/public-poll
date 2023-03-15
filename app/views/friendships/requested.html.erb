@@ -1,27 +1,16 @@
-<div class="title-trending">
-  <h2>Requested</h2>
+<div class="back-link mt-4 mb-4">
+  <%= link_to :back, title: "Back" do %>
+      <i class="back-icon fa-solid fa-angle-left"></i>
+  <% end %>
+  <h2 class="page-title mb-0">Requests</h2>
 </div>
+
 <% if current_user.friendships_requested.any? %>
-  <% current_user.friendships_requested.each do |friendship| %>
-  <div class="d-flex justify-content-around">
-    <%= user_photo(friendship.from_user, class: "avatar") %>
-    <h4 class="poll-username">@<%= link_to friendship.from_user.username, user_path(friendship.from_user), class: "text-dark" %></h4>
-
-    <%= simple_form_for friendship do |f| %>
-      <%= f.input :status, as: :hidden, input_html: { value: :accepted } %>
-      <button type="submit" class="btn btn-primary">
-        <i class="fa-solid fa-check" style= "color: #80BAFF"></i>
-      </button>
-    <% end %>
-
-    <%= simple_form_for friendship do |f| %>
-      <%= f.input :status, as: :hidden, input_html: { value: :rejected } %>
-      <button type="submit" class="btn btn-outline-danger">
-        <i class="fa-solid fa-xmark"></i>
-      </button>
+  <div class="comments-container">
+    <% current_user.friendships_requested.each do |friendship| %>
+      <%= render partial: 'friends', locals: { friendship: friendship, show_requested_options: true } %>
     <% end %>
   </div>
-  <% end %>
 <% else %>
-  <p>No requests yet.</p>
+  <p class="mt-1">You don't have any requests yet.</p>
 <% end %>

@@ -1,3 +1,4 @@
+
 .button-blue {
   color: white;
   padding: 8px 24px;
@@ -34,6 +35,39 @@
 
   // DO NOT DELETE, THIS IS THE FIX TO THE DEMON BUTTON
 
+}
+
+.button-reset {
+  color: white;
+  padding: 8px 22px;
+  border-radius: 50px;
+  background: #0075FF;
+  transition: transform 0.3s ease;
+  border: none;
+  font-size: 20px;
+  size: 20px;
+
+  &.btn:active {
+    color: white;
+    padding: 8px 24px;
+    border-radius: 50px;
+    background: #0075FF;
+    transition: transform 0.3s ease;
+    border: none;
+    font-size: 20px;
+    font-weight: 700;
+  }
+
+  &.btn:hover {
+    color: white;
+    padding: 8px 24px;
+    border-radius: 50px;
+    background: #0075FF;
+    transition: transform 0.3s ease;
+    border: none;
+    font-size: 20px;
+    font-weight: 700;
+  }
 }
 
 .button-comment {
@@ -74,6 +108,32 @@
   margin-top: 12px;
   display: flex;
   justify-content: flex-end;
+}
+
+.btn-accept {
+  margin-left: 12px;
+  width: 35px;
+  height: 35px;
+  background-color: #0075FF;
+  color: white;
+  border-radius: 50%;
+  border: none;
+}
+
+.btn-status-friend {
+  background-color: white;
+  color: #0075FF;
+  border: none;
+}
+
+.btn-decline {
+  margin-left: 12px;
+  width: 35px;
+  height: 35px;
+  background-color: white;
+  color: #0075FF;
+  border-radius: 50%;
+  border: solid 2px #0075FF;
 }
 
 .button-circle {

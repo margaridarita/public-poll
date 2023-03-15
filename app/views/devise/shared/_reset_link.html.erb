@@ -1,0 +1,6 @@
+<%- if devise_mapping.registerable? && controller_name != 'registrations' %>
+  <div class="text-center d-flex justify-content-around" id="account-prompt">
+    No account yet?
+    <%= link_to "Sign up", new_registration_path(resource_name) %><br />
+  </div>
+<% end %>

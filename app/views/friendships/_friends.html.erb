@@ -1,0 +1,57 @@
+<!-- defining locals passed when rendered as true if passed or false -->
+<% show_requested_options ||= false %>
+<% show_delete ||= false %>
+
+<div class="user-card d-flex justify-content-between mb-3">
+  <% if current_user == friendship.from_user %><!-- if the current user requested friendships -->
+    <div class="d-flex">
+      <%= link_to user_path(friendship.to_user) do %><!-- photo linking to the user that received current user's request -->
+        <%= user_photo(friendship.to_user, class: "avatar-friends") %>
+      <% end %>
+      <div class="flex-column ms-2">
+        <!-- first name and username linking to user that received current user's request -->
+        <h3><%= link_to friendship.to_user.first_name, user_path(friendship.to_user), class: "text-dark" %></h3>
+        <h4>@<%= link_to friendship.to_user.username, user_path(friendship.to_user), class: "text-dark" %></h4>
+      </div>
+    </div>
+    <% if show_delete %><!-- being passed as a local from accepted friends (within different condition)-->
+      <%= link_to friendship_path(friendship), data: { turbo_method: :delete, turbo_confirm: "Are you sure?" } do %>
+        <i class="fa-solid fa-xmark" style="color: #B9B9B9"></i>
+      <% end %>
+    <% end %>
+  <% else %><!-- if the current user received friendships -->
+    <div class="d-flex">
+      <%= link_to user_path(friendship.from_user) do %><!-- photo linking to the user that requested friendship with the current user -->
+        <%= user_photo(friendship.from_user, class: "avatar-friends") %>
+      <% end %>
+      <div class="flex-column ms-2">
+        <!-- first name and username linking to user that requested current user's friendship -->
+        <h3><%= link_to friendship.from_user.first_name, user_path(friendship.from_user), class: "text-dark" %></h3>
+        <h4>@<%= link_to friendship.from_user.username, user_path(friendship.from_user), class: "text-dark" %></h4>
+      </div>
+    </div>
+    <% if show_delete %><!-- being passed as a local from accepted friends (within different condition)-->
+      <%= link_to friendship_path(friendship), data: { turbo_method: :delete, turbo_confirm: "Are you sure?" } do %>
+        <i class="fa-solid fa-xmark" style="color: #B9B9B9"></i>
+      <% end %>
+    <% end %>
+  <% end %>
+
+  <% if show_requested_options %><!-- being passed as a local from requested friends -->
+  <div class="d-flex">
+      <%= simple_form_for friendship do |f| %><!-- simple form holds the accept button which changes the status of the specific friendship to accepted -->
+        <%= f.input :status, as: :hidden, input_html: { value: :accepted } %>
+        <button type="submit" class="btn-accept">
+          <i class="fa-solid fa-check"></i>
+        </button>
+      <% end %>
+
+      <%= simple_form_for friendship do |f| %>
+        <%= f.input :status, as: :hidden, input_html: { value: :rejected } %><!--  decline button which changes the status of the friendship to rejected -->
+        <button type="submit" class="btn-decline">
+          <i class="fa-solid fa-xmark"></i>
+        </button>
+      <% end %>
+    </div>
+  <% end %>
+</div>

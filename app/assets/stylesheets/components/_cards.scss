@@ -70,7 +70,7 @@
 /* CATEGORIES */
 
 .category-card {
-  width: 150px;
+  width: 160px;
   height: 104px;
   left: 200px;
   top: 516px;
@@ -95,6 +95,27 @@
   flex-wrap: wrap;
   justify-content: space-around;
   gap: 15px;
+}
+
+.trending-card {
+  width: 355px;
+  height: 104px;
+  left: 200px;
+  top: 516px;
+  background-color: white;
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+  border-radius: 20px;
+  color: #0075FF;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  border: none;
+}
+
+.trending-card:focus {
+  background-color:#0075FF;
+  color: white;
 }
 
 .category-text {
@@ -198,4 +219,11 @@
 
 .request-card {
   background-color: red;
+}
+
+.offcanvas {
+  background-color: #0075FF;
+  color: white;
+  border-top-right-radius: 30px;
+  border-top-left-radius: 30px;
 }

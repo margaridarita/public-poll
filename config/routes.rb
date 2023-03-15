@@ -30,7 +30,7 @@ Rails.application.routes.draw do
     resources :comments, only: %i[create]
   end
 
-  resources :friendships, only: %i[create update] do
+  resources :friendships, only: %i[create update destroy] do
     collection do
       get :requested
       get :accepted
