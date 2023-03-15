@@ -1,10 +1,21 @@
 <% if user_signed_in? %>
   <div class="footer-container">
     <div class="footer-items">
-      <a href="/polls.html">  <i class="footer-icon fa-solid fa-house"></i></a>
-      <a href="/search.html"><i class="footer-icon fas fa-search"></i></a>
-      <a href="/polls/new"><i class="footer-icon fa-solid fa-plus"></i></a>
-      <a href="/categories"><i class="footer-icon fa-solid fa-list-ul"></i></a>
+      <%= link_to polls_path do %>
+        <i class="footer-icon fa-solid fa-house <%= params[:controller] == 'polls' && params[:action] == 'index' ? 'text-primary' : '' %>"></i>
+      <% end %>
+
+      <%= link_to search_path do %>
+        <i class="footer-icon fas fa-search <%= params[:controller] == 'pages' && params[:action] == 'search' ? 'text-primary' : '' %>"></i>
+      <% end %>
+
+      <%= link_to new_poll_path do %>
+        <i class="footer-icon fa-solid fa-plus <%= params[:controller] == 'polls' && params[:action] == 'new' ? 'text-primary' : '' %>"></i>
+      <% end %>
+
+      <%= link_to categories_path do %>
+        <i class="footer-icon fa-solid fa-list-ul <%= params[:controller] == 'categories' && params[:action] == 'index' ? 'text-primary' : '' %>"></i>
+      <% end %>
 
       <% if current_user.photo.attached? %>
         <%= link_to dashboard_path do %>
@@ -15,7 +26,6 @@
           <%= image_tag "https://cdn-icons-png.flaticon.com/512/2119/2119043.png", class: "avatar" %>
         <% end %>
       <% end %>
-
     </div>
   </div>
-<% end %>
+<% end%>
