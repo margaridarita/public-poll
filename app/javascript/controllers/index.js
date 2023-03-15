@@ -21,3 +21,6 @@ application.register('user', UserController);
 
 import HomeController from "./home_controller"
 application.register("home", HomeController);
+
+import LiveChartController from './live_chart_controller';
+application.register('live-chart', LiveChartController);

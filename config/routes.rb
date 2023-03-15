@@ -18,6 +18,9 @@ Rails.application.routes.draw do
   resources :polls do
     resources :votes, only: :create
     resources :bookmarks, only: %i[create]
+    member do
+      get :live
+    end
   end
 
   resources :bookmarks, only: [:destroy]
@@ -26,7 +29,7 @@ Rails.application.routes.draw do
     resources :comments, only: %i[create]
   end
 
-  resources :friendships, only: %i[create update] do
+  resources :friendships, only: %i[create update destroy] do
     collection do
       get :requested
       get :accepted

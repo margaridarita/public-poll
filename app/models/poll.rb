@@ -16,8 +16,8 @@ class Poll < ApplicationRecord
   pg_search_scope :search_by_category_and_question,
   against: [:question, :first_option, :second_option],
   associated_against: {
-    category: [ :title ],
-    user: [ :username, :first_name ]
+    category: [:title],
+    user: [:username, :first_name]
   },
   using: {
     tsearch: { prefix: true }

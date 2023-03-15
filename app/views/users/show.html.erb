@@ -1,21 +1,48 @@
-<div class="center">
+<div class="center mt-4">
+  <!-- user information -->
   <%= user_photo(@user, class: "avatar-dashboard mt-4") %>
-  <h1><%= @user.first_name %></h1>
+  <h1><%= @user.first_name.capitalize %></h1>
   <h5><%= '@' + @user.username %></h5>
+  <!-- until here -->
 
-  <% if Friendship.between(current_user, @user).present? %>
-    <div class="pill">
-      <%= Friendship.between(current_user, @user).status %>
-    </div>
-  <% else %>
-    <%= simple_form_for Friendship.new do |f| %>
+  <!-- Friend status icon logic -->
+  <% if Friendship.between(current_user, @user).nil? %><!-- if no friendship exists -->
+    <%= simple_form_for Friendship.new do |f| %><!-- simple form holds add user button -->
       <%= f.input :to_user_id, as: :hidden, input_html: { value: @user.id } %>
-      <%= f.submit "Add friend" %>
+      <button type="submit" class="btn-status-friend">
+        <i class="fa-solid fa-user-plus"></i>
+      </button>
     <% end %>
+  <% elsif Friendship.accepted.find_by(to_user: current_user, from_user: @user) || Friendship.accepted.find_by(from_user: current_user, to_user: @user) %>
+    <!-- if friendship has been accepted by the current user or by the other user-->
+    <i class="fa-solid fa-user-group btn-status-friend" ></i>
+  <% elsif Friendship.requested.find_by(to_user: current_user, from_user: @user)%>
+    <!-- if friendship has been requested to the current_user, user can accept or deny on user show page -->
+    <div class="d-flex">
+      <%= simple_form_for Friendship.find_by(to_user: current_user, from_user: @user) do |f| %>
+        <!-- accept button -->
+        <%= f.input :status, as: :hidden, input_html: { value: :accepted } %>
+        <button type="submit" class="btn-accept">
+          <i class="fa-solid fa-check"></i>
+        </button>
+      <% end %>
+      <%= simple_form_for Friendship.find_by(to_user: current_user, from_user: @user) do |f| %>
+        <!-- reject button -->
+        <%= f.input :status, as: :hidden, input_html: { value: :rejected } %>
+        <button type="submit" class="btn-decline">
+          <i class="fa-solid fa-xmark"></i>
+        </button>
+      <% end %>
+    </div>
+  <% elsif Friendship.rejected.where(to_user: @user, from_user: current_user) || Friendship.rejected.where(to_user: current_user, from_user: @user) %>
+
+  <% elsif Friendship.requested.where(to_user: @user, from_user: current_user)%>
+    <!-- if current user made a friend request -->
+    <i class="fa-regular fa-hourglass-half btn-status-friend"></i>
   <% end %>
 </div>
 
-<div data-controller="user">
+<div data-controller="user"><!-- tabs with rendered pages for created and voted polls of other users (logic done in user stimulus controller) -->
   <div class="pt-3 d-flex justify-content-center">
     <button data-user-target="createdBtn" class="center button-dash active" data-action="click->user#showCreated">Created</button>
     <button data-user-target="votedBtn" class="center button-dash" data-action="click->user#showVoted">Voted</button>
@@ -23,6 +50,6 @@
 
   <div>
     <div data-user-target="created"><%= render partial: "pages/created_polls" %></div>
-    <div data-user-target="voted" class="d-none"><%= render partial: "pages/voted_polls" %></div> %>
+    <div data-user-target="voted" class="d-none"><%= render partial: "pages/voted_polls" %></div>
   </div>
 </div>

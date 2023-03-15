@@ -1,5 +1,5 @@
 class PollsController < ApplicationController
-  before_action :set_poll, only: %i[show destroy total_votes]
+  before_action :set_poll, only: %i[show destroy total_votes live]
 
 
   def index
@@ -31,6 +31,22 @@ class PollsController < ApplicationController
     @comment = Comment.new
     @vote = Vote.new
     @bookmark = Bookmark.new
+    build_insane_variables
+  end
+
+  def live
+    build_insane_variables
+
+    render partial: "polls/poll_card", formats: [:html]
+  end
+
+  def destroy
+    @poll.destroy
+  end
+
+  private
+
+  def build_insane_variables
     @your_vote = Vote.find_by(user: current_user, poll: @poll) if @poll.votes.pluck(:user_id).include?(current_user.id)
 
     @first_votes_count = Vote.where(poll_id: @poll.id, chosen_option: @poll.first_option).count.to_f
@@ -52,12 +68,6 @@ class PollsController < ApplicationController
       end
     end
   end
-
-  def destroy
-    @poll.destroy
-  end
-
-  private
 
   def set_poll
     @poll = Poll.find(params[:id])

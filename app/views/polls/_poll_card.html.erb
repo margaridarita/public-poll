@@ -1,0 +1,20 @@
+<div class="chart-text">
+  <p style="color: #D9D9D9">
+    <%= "You voted #{@user_votes} like #{@same}% of people" %>
+  </p>
+</div>
+
+<div class="bar-chart">
+  <div class="bar-guide">
+    <div class="bar" style="width: <%= @first_percentage %>%">
+      <span class="text-white p-2"><%= @poll.first_option %></span>
+    </div>
+  </div>
+  <div class="bar-guide">
+    <div class="bar mt-2" style="width: <%= @second_percentage %>%">
+      <span class="text-white p-2"><%= @poll.second_option %></span>
+    </div>
+  </div>
+</div>
+
+<p class="total-votes d-flex justify-content-end pe-3">Total votes: <%= @total_votes_count.to_i %></p>
