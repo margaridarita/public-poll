@@ -4,13 +4,19 @@
   <% end %>
 </div>
 
-<div class="chart-title">
+<div class="chart-title mb-4">
   <h3 rows='2', style="word-wrap: break-word;" ><%= @poll.question %></h3><!-- poll title -->
 </div>
 
-<% if @poll.user == current_user %><!-- if own poll, button allowing delete -->
-  <%= link_to "Delete", poll_path(@poll), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} %>
-<% end %>
+<div class="user-card">
+  <%= user_photo(@poll.user, class: "poll-avatar") %>
+
+  <% if @poll.user == current_user %> <!-- logic making the username a link to either the dashboard, if you press on your profile, or to the user's profile -->
+    <h4 class="poll-username"><%= link_to @poll.user.username, dashboard_path, class: "text-dark" %></h4>
+  <% else %>
+    <h4 class="poll-username"><%= link_to @poll.user.username, user_path(@poll.user), class: "text-dark" %></h4>
+  <% end %>
+</div>
 
 <% unless @poll.votes.pluck(:user_id).include?(current_user.id) %>
   <!-- unless the user has already voted, links to vote will be available -->
@@ -24,7 +30,7 @@
     <%= render partial: 'polls/poll_card' %>
   </div>
 
-  <h3 class="pt-4" style="text-align: center; color: #B9B9B9">Comments</h3>
+  <h3 class="mt-5 mb-3" style="text-align: center; color: #B9B9B9">Comments</h3>
     <div class="comments-container">
       <% @poll.votes.each do |v| %><!-- iterating through all votes from the current poll -->
         <% v.comments.each do |c| %><!-- iterating through all comments of each vote -->
@@ -48,12 +54,12 @@
     <% end %>
   </div>
 
-<div class="pb-5">
+
   <%= simple_form_for [@your_vote, @comment] do |f| %><!-- adding a new comment -->
     <div class="comment-section d-flex flex-column mb-5">
         <%= f.input :content, as: :text, placeholder: 'Write a comment', label: false, input_html: { class: "form-comment w-100", data: { controller: "textarea-autogrow" } } %>
         <%= f.button :submit, "Comment", class:"button-comment align-self-end", id: "comments"  %>
     </div>
-   <% end %>
- </div>
+    <% end %>
+
 <% end %>

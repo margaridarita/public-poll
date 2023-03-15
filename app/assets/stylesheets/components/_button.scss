@@ -77,6 +77,24 @@
   transition: transform 0.3s ease;
   border: none;
   font-size: 14px;
+
+  &.btn:active {
+  color: white;
+  border-radius: 50px;
+  background: #0075FF;
+  transition: transform 0.3s ease;
+  border: none;
+  font-size: 14px;
+  }
+
+  &.btn:hover {
+    color: white;
+    border-radius: 50px;
+    background: #0075FF;
+    transition: transform 0.3s ease;
+    border: none;
+    font-size: 14px;
+  }
 }
 
 .button-dash{
@@ -154,10 +172,8 @@
   top: 251px;
   left: 50px;
   border-radius: 20px;
-  border: 2px solid #0075FF;
-  border-color: #0075FF;
-  background-color: white;
-  color: #0075FF;
+  background-color: #0075FF;
+  color: white;
  }
 
 .button-answer:focus {

@@ -10,6 +10,7 @@ Rails.application.routes.draw do
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
   get "/dashboard", to: "pages#dashboard"
   get "/trending", to: "pages#trending"
+  get "/friends_polls", to: "polls#friends_polls"
   get "/search", to: "pages#search"
   delete "/searches/:id", to: "pages#delete_search", as: :delete_search
 

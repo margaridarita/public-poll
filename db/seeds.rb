@@ -1,8 +1,8 @@
 require 'faker'
 
+Friendship.destroy_all
+Search.destroy_all
 User.destroy_all
-
-polls = []
 
 margarida = User.create(email: "margarida@gmail.com", password: "pombinho222", first_name: "margarida", last_name: "rita", username: "mrita")
 maria = User.create(email: "maria@gmail.com", password: "pombinho222", first_name: "maria", last_name: "salgado", username: "msalgado")
@@ -64,4 +64,3 @@ end
     Comment.create(user: voter, content: Faker::TvShows::RickAndMorty.quote, vote:)
   end
 end
-puts Poll.all
