@@ -6,16 +6,29 @@
 </div>
 
 <div class="bar-chart">
-  <div class="bar-guide">
-    <div class="bar" style="width: <%= @poll.first_percentage %>%">
-      <span class="text-white m-3"><%= @poll.first_option %></span>
+  <% if (@poll.first_percentage >= 93) || (@poll.second_percentage >= 93)%>
+    <div class="bar-guide">
+      <div class="bar d-flex" style="width: <%= @poll.first_percentage %>%">
+        <span class="text-white m-3 option-text"><%= @poll.first_option %></span>
+      </div>
     </div>
-  </div>
-  <div class="bar-guide">
-    <div class="bar" style="width: <%= @poll.second_percentage %>%">
-      <span class="text-white m-3"><%= @poll.second_option %></span>
+    <div class="bar-guide">
+      <div class="bar d-flex" style="width: <%= @poll.second_percentage %>%">
+        <span class="text-white m-3 option-text"><%= @poll.second_option %></span>
+      </div>
     </div>
-  </div>
+  <% else %>
+    <div class="bar-guide">
+      <div class="bar-not-full d-flex" style="width: <%= @poll.first_percentage %>%">
+        <span class="text-white m-3 option-text"><%= @poll.first_option %></span>
+      </div>
+    </div>
+    <div class="bar-guide">
+      <div class="bar-not-full d-flex" style="width: <%= @poll.second_percentage %>%">
+        <span class="text-white m-3 option-text"><%= @poll.second_option %></span>
+      </div>
+    </div>
+  <% end %>
 </div>
 
 <h4 class="d-flex justify-content-end" style="color: #B9B9B9">total votes: <%= @poll.votes_count %></h4>

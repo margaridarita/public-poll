@@ -51,11 +51,11 @@
     <% end %>
     <div class="card-header">
       <% if user_signed_in? && current_user.voted?(poll) %>
-        <p><%= link_to poll.question, poll_path(poll), class: "text-dark" %></p><!-- Main question as a link to poll show -->
+        <p><%= link_to poll.question, poll_path(poll), class: "text-dark", rows: '2', style: "word-wrap: break-word;" %></p><!-- Main question as a link to poll show -->
       <% end %>
     </div>
     <% unless user_signed_in? && current_user.voted?(poll) %><!-- unless user is signed in and has voted, both options will appear able to click -->
-      <p><%= poll.question %></p><!-- Main question if not voted or not signed in (not a link)-->
+      <p rows= "2", style="word-wrap: break-word;"><%= poll.question %></p><!-- Main question if not voted or not signed in (not a link)-->
       <div class="answers-card d-flex flex-column" id="<%= dom_id(poll) %>">
         <%= link_to poll_votes_path(poll, chosen_option: poll.first_option ), data: {turbo_method: :post, remote: true} do %>
           <div class="button-answer">

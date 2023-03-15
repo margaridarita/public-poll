@@ -8,7 +8,12 @@ class PollsController < ApplicationController
       @search = Search.where(query: params[:query], user: current_user).first_or_create
       @search.touch
     else
-      @polls = Poll.all.order(created_at: :desc)
+      @polls = Poll.joins("INNER JOIN friendships ON (friendships.to_user_id = polls.user_id OR friendships.from_user_id = polls.user_id)")
+                   .where("friendships.to_user_id = ? OR friendships.from_user_id = ?", current_user, current_user)
+                   .where.not("polls.user_id = ?", current_user)
+                   .or(Poll.where(user_id: current_user))
+                   .or(Poll.where(private: false))
+                   .order(created_at: :desc).distinct
     end
   end
 
@@ -50,6 +55,13 @@ class PollsController < ApplicationController
     @poll.destroy
   end
 
+  def friends_polls
+    @polls = Poll.joins("INNER JOIN friendships ON (friendships.to_user_id = polls.user_id OR friendships.from_user_id = polls.user_id)")
+                 .where("friendships.to_user_id = ? OR friendships.from_user_id = ?", current_user, current_user)
+                 .where.not("polls.user_id = ?", current_user)
+                 .or(Poll.where(user_id: current_user)).distinct
+  end
+
   private
 
   def build_insane_variables
@@ -63,14 +75,12 @@ class PollsController < ApplicationController
     # @first_percentage = @total_votes_count.zero? ? 0.0 : ((@first_votes_count / @total_votes_count) * 100).round
     # @second_percentage = @total_votes_count.zero? ? 0.0 : ((@second_votes_count / @total_votes_count) * 100).round
 
-
     if Vote.find_by(poll_id: @poll.id, user_id: current_user)
       @user_votes = Vote.find_by(poll_id: @poll.id, user_id: current_user).chosen_option
-
       if Vote.find_by(poll_id: @poll.id, user_id: current_user).chosen_option == @poll.first_option
-        @same = @first_percentage
+        @same = @poll.first_percentage
       else
-        @same = @second_percentage
+        @same = @poll.second_percentage
       end
     end
   end
@@ -80,6 +90,6 @@ class PollsController < ApplicationController
   end
 
   def poll_params
-    params.require(:poll).permit(:question, :first_option, :second_option, :category_id)
+    params.require(:poll).permit(:question, :first_option, :second_option, :category_id, :private)
   end
 end
