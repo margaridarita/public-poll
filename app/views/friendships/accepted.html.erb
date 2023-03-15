@@ -1,19 +1,59 @@
-<div class="title-trending">
+<div class="title-trending mt-4 mb-4">
   <h2>Friends</h2>
 </div>
-<% if Friendship.where(to_user: current_user).any? %>
-  <%= link_to requested_friendships_path do %>
-    <i class="fa-solid fa-person-swimming", style= "color: #80BAFF" ></i>
-  <% end %>
+<% if Friendship.where(to_user: current_user, status: 0).any? %>
+  <div class="d-flex justify-content-between">
+    <div class="d-flex">
+      <%= link_to requested_friendships_path do %>
+        <i class="fa-solid fa-user-plus", style= "color: #0075FF" ></i>
+      <% end %>
+      <p class="ps-3"><%= link_to "Friend requests (#{Friendship.where(to_user: current_user, status: 0).count})", requested_friendships_path, style: "color: #0075FF" %></p>
+    </div>
+    <div>
+      <%= link_to requested_friendships_path do %>
+        <i class="fa-solid fa-angle-right", style= "color: #0075FF"></i>
+      <% end %>
+    </div>
+  </div>
+  <hr>
+<% else %>
+  <div class="d-flex justify-content-start">
+    <div class="d-flex">
+      <i class="fa-solid fa-user-plus", style= "color: #B9B9B9" ></i>
+      <p class="ps-3" style= "color: #B9B9B9">Friend requests (0)</p>
+    </div>
+  </div>
+  <hr>
 <% end %>
 
 <% if current_user.friendships.accepted.any? %>
-  <% current_user.friendships.accepted.each do |friendship| %>
-    <div class="request-card">
-      <%= user_photo(friendship.from_user, class: "avatar") %>
-      <h4 class="poll-username">@<%= link_to friendship.from_user.username, user_path(friendship.from_user), class: "text-dark" %></h4>
-    </div>
-  <% end %>
+  <div class="comments-container">
+    <% current_user.friendships.accepted.each do |friendship| %>
+      <div class="user-card d-flex justify-content-space-between mb-3">
+        <% if current_user == friendship.from_user %>
+          <div class="d-flex">
+            <%= link_to user_path(friendship.to_user) do %>
+              <%= user_photo(friendship.to_user, class: "avatar-friends") %>
+            <% end %>
+            <div class="flex-column ms-2">
+              <h3><%= link_to friendship.to_user.first_name, user_path(friendship.to_user), class: "text-dark" %></h3>
+              <h4>@<%= link_to friendship.to_user.username, user_path(friendship.to_user), class: "text-dark" %></h4>
+            </div>
+          </div>
+        <% else %>
+          <div class="d-flex">
+            <%= link_to user_path(friendship.from_user) do %>
+              <%= user_photo(friendship.from_user, class: "avatar-friends") %>
+            <% end %>
+            <div class="flex-column ms-2">
+              <h3><%= link_to friendship.from_user.first_name, user_path(friendship.from_user), class: "text-dark" %></h3>
+              <h4>@<%= link_to friendship.from_user.username, user_path(friendship.from_user), class: "text-dark" %></h4>
+            </div>
+          </div>
+        <% end %>
+      </div>
+    <% end %>
+  </div>
 <% else %>
-  <p>No friends yet.</p>
+  <p class="mt-1">No friends yet.</p>
 <% end %>
