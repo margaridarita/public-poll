@@ -1,6 +1,6 @@
 <% if @user.bookmarks.any? %>
   <div class="grid-container">
-    <% @user.bookmarks.each do |bookmark| %>
+    <% @user.bookmarks.order(created_at: :desc).each do |bookmark| %>
       <%= render partial: "polls/poll", locals: { poll: bookmark.poll } %>
     <% end %>
   </div>
