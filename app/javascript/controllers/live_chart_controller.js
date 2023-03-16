@@ -10,13 +10,22 @@ export default class extends Controller {
     const url = this.element.dataset.url;
 
     fetch(url, { headers: { "Content-Type": "text/plain" } })
-      .then((data) => data.text())
       .then((response) => {
-        this.element.innerHTML = response;
-    });
+        if (!response.ok) {
+          throw new Error('GREAT ERROR');
+        }
+
+        return response.text();
+      })
+      .then((json) => this.element.innerHTML = json)
+      .catch((error) => console.log('---'))
   }
 
   disconnect() {
+    clearInterval(this.interval);
+  }
+
+  stopUpdates() {
     clearInterval(this.interval);
   }
 }
