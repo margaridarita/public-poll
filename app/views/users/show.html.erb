@@ -21,7 +21,7 @@
     <% end %>
   <% elsif Friendship.accepted.find_by(to_user: current_user, from_user: @user) || Friendship.accepted.find_by(from_user: current_user, to_user: @user) %>
     <!-- if friendship has been accepted by the current user or by the other user-->
-    <i class="fa-solid fa-user-group btn-status-friend" ></i>
+    <i class="fa-solid fa-user-group btn-status-friend mt-3" ></i>
   <% elsif Friendship.requested.find_by(to_user: current_user, from_user: @user)%>
     <!-- if friendship has been requested to the current_user, user can accept or deny on user show page -->
     <div class="d-flex justify-content-center align-items-end">
@@ -41,7 +41,7 @@
     </div>
   <% elsif Friendship.requested.where(to_user: @user, from_user: current_user)%>
     <!-- if current user made a friend request -->
-    <i class="fa-regular fa-hourglass-half btn-status-friend"></i>
+    <i class="fa-regular fa-hourglass-half btn-status-friend mt-3"></i>
   <% end %>
 </div>
 
