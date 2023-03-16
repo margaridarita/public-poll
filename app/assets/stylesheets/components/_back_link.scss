@@ -2,6 +2,14 @@
   position: relative;
 }
 
+.results-title {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  color: #B9B9B9;
+}
+
 .back-icon {
   color: #B9B9B9;
   font-size: 22px;
@@ -12,12 +20,4 @@
   top: 0;
   left: 50%;
   transform: translateX(-50%);
-}
-
-.results-title {
-  position: absolute;
-  top: 0;
-  left: 50%;
-  transform: translateX(-50%);
-  color: #B9B9B9;
 }
