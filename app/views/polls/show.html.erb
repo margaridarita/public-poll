@@ -8,14 +8,22 @@
   <h3 rows='2', style="word-wrap: break-word;" ><%= @poll.question %></h3><!-- poll title -->
 </div>
 
-<div class="user-card">
-  <%= user_photo(@poll.user, class: "poll-avatar") %>
+<div class="d-flex justify-content-between">
+  <div class="user-card align">
+    <%= user_photo(@poll.user, class: "poll-avatar") %>
 
-  <% if @poll.user == current_user %> <!-- logic making the username a link to either the dashboard, if you press on your profile, or to the user's profile -->
-    <h4 class="poll-username"><%= link_to @poll.user.username, dashboard_path, class: "text-dark" %></h4>
-  <% else %>
-    <h4 class="poll-username"><%= link_to @poll.user.username, user_path(@poll.user), class: "text-dark" %></h4>
-  <% end %>
+    <% if @poll.user == current_user %> <!-- logic making the username a link to either the dashboard, if you press on your profile, or to the user's profile -->
+      <h4 class="poll-username"><%= link_to @poll.user.username, dashboard_path, class: "text-dark" %></h4>
+    <% else %>
+      <h4 class="poll-username"><%= link_to @poll.user.username, user_path(@poll.user), class: "text-dark" %></h4>
+    <% end %>
+  </div>
+
+  <div class="d-flex justify-content-end align-items-center pb-2">
+    <h4 id="time-ago">
+      <%= time_ago_in_words(@poll.created_at) %> ago
+    </h4>
+  </div>
 </div>
 
 <% unless @poll.votes.pluck(:user_id).include?(current_user.id) %>
