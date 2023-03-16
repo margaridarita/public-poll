@@ -36,10 +36,15 @@
         <% v.comments.each do |c| %><!-- iterating through all comments of each vote -->
           <div class="user-card d-flex justify-content-space-between">
             <div class="d-flex">
-              <%= user_photo(c.user, class: "poll-avatar") %><!-- helper defining user photo -->
               <% if c.user == current_user %><!-- if user selects their own name, they will be directed to the dashboard -->
+                <%= link_to dashboard_path do %>
+                  <%= user_photo(c.user, class: "poll-avatar") %><!-- helper defining user photo -->
+                <% end %>
                 <h4 class="poll-username"><%= link_to c.user.username, dashboard_path, class: "text-dark" %></h4>
               <% else %><!-- if they select other names, they will be directed to the user show -->
+                <%= link_to user_path(c.user) do %>
+                  <%= user_photo(c.user, class: "poll-avatar") %><!-- helper defining user photo -->
+                <% end %>
                 <h4 class="poll-username"><%= link_to c.user.username, user_path(c.user), class: "text-dark" %></h4>
               <% end %>
             </div>
