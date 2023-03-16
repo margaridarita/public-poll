@@ -14,7 +14,10 @@
 
 <% else %><!-- if no search has been made -->
 
-  <h2 class="mt-4">For you</h2>
+<div class="mt-4 d-flex justify-content-center">
+  <h2>For you</h2>
+  <h3 style="color: #B9B9B9;"><i class="fa-solid fa-angle-down ms-2 mt-2" data-bs-toggle="offcanvas" data-bs-target="#offcanvasBottom" aria-controls="offcanvasBottom"></i></h3>
+</div>
 
   <% @polls.each do |poll| %><!-- polls rendered through poll partial -->
     <%= render partial: "polls/poll",
@@ -23,4 +26,18 @@
 
 <% end %>
 
-
+<div class="offcanvas offcanvas-bottom" tabindex="-1" id="offcanvasBottom" aria-labelledby="offcanvasBottomLabel">
+  <div class="canvas-elements p-3">
+    <div class="offcanvas-header pt-4">
+      <p style="font-size: 18px; color: #5F9FF8"></p>
+    </div>
+    <div class="offcanvas-body small pt-0">
+      <h3 style="color: #5F9FF8;"><i class="fa-solid fa-hand-peace me-3 mb-2"></i>For you</h3>
+      <h3><i class="fa-solid fa-arrow-trend-up me-2 mb-2"></i><%= link_to "Trending", trending_path, style: "color: white" %></h3>
+      <h3><i class="fa-solid fa-user-group me-2 mb-2"></i><%= link_to "Friends Polls", friends_polls_path, style: "color: white" %></h3>
+    </div>
+  </div>
+  <div id="close-search">
+    <button type="button" class="btn button-white" data-bs-dismiss="offcanvas" aria-label="Close">Close</button>
+  </div>
+</div>
