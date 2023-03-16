@@ -31,4 +31,9 @@
   <% end %>
 </div>
 
-<h4 class="d-flex justify-content-end" style="color: #B9B9B9">total votes: <%= @poll.votes_count %></h4>
+<div class="d-flex justify-content-between">
+  <%= link_to category_path(@poll.category.id) do %>
+    <i class="pe-3 fa-solid fa-<%= @poll.category.icon_class%>" style="color: #0075FF"></i>
+  <% end %>
+  <h4 style="color: #B9B9B9">total votes: <%= @poll.votes_count %></h4>
+</div>
