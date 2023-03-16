@@ -2,10 +2,10 @@
 
 <div class="home-container d-flex flex-column" data-controller="home">
   <div id="animation">
-    <%= video_tag("https://res.cloudinary.com/dethx39b9/video/upload/v1678873905/animation_cxn8oh.mp4", data: { home_target: "video" }, width: '100%') %>
+    <%= video_tag("https://res.cloudinary.com/dethx39b9/video/upload/v1678958792/animation_homepage_h18nql.mp4", data: { home_target: "video" }, width: '100%') %>
   </div>
 
-  <div class="home d-flex flex-column" data-home-target="controls">
+  <div class="home d-flex flex-column mb-4" data-home-target="controls">
     <div class="text-center mt-4">
       <img class= "logo" src="<%= asset_path('logo_publicpoll.png') %>"/>
     </div>
@@ -25,7 +25,7 @@
           class: 'button-home mt-3 mb-1 text-center px-4 py-2' %>
 
         <%= link_to 'Log in / Sign up', new_user_session_path,
-          class: 'text-white mt-3 mb-4' %>
+          class: 'text-white mt-3' %>
       <% else %>
         <%= link_to 'Dive in!', trending_path,
           data: { action: "click->home#diveIn", home_target: "button" },
