@@ -4,7 +4,6 @@
 <% show_my_poll ||= false %>
 
 <div class="card-container" data-controller="poll" data-poll-add-url-value="<%= poll_bookmarks_path(poll) %>">
-
   <% if show_photo %> <!-- being passed as a local to show username and photos on index, trending, categories -->
     <div class="user-card">
       <%= user_photo(poll.user, class: "poll-avatar") %>
@@ -18,7 +17,6 @@
   <% end %>
 
   <div class="poll-card">
-
     <% unless poll.user == current_user || !user_signed_in? %> <!-- logic hiding favorite button if user not signed in -->
       <div class="card-favourite">
         <% if poll.bookmarked_by_user?(current_user) %> <!-- nested logic displaying whether the poll is bookmarked or not -->
@@ -33,15 +31,18 @@
       </div>
     <% end %>
 
-    <% if poll.user == current_user %><!-- showing custom actions for own polls -->
-      <% if show_my_poll %> <!-- being passed as a local to show my poll tag and delete button on index, trending, categories -->
+
+    <% if show_my_poll %> <!-- being passed as a local to show my poll tag and delete button on index, trending, categories -->
+      <% if poll.user == current_user %><!-- showing custom actions for own polls -->
         <div class="d-flex justify-content-between mb-3">
           <p class="my-poll-show">My poll</p><!-- my poll tag -->
           <%= link_to poll_path(poll), data: { turbo_method: :delete, action: "click->poll#delete" } do %>
             <i class="fa-solid fa-xmark" style="color: #B9B9B9"></i>
           <% end %>
         </div>
-      <% else %><!-- if my poll but not showing my poll tag, delete button is still visible -->
+      <% end %>
+    <% else %><!-- if my poll but not showing my poll tag, delete button is still visible -->
+      <% if poll.user == current_user %>
         <div class="d-flex justify-content-end">
           <%= link_to poll_path(poll), data: { turbo_method: :delete, action: "click->poll#delete" } do %>
             <i class="fa-solid fa-xmark" style="color: #B9B9B9"></i>
@@ -49,6 +50,8 @@
         </div>
       <% end %>
     <% end %>
+
+
     <div class="card-header">
       <% if user_signed_in? && current_user.voted?(poll) %>
         <p><%= link_to poll.question, poll_path(poll), class: "text-dark", rows: '2', style: "word-wrap: break-word;" %></p><!-- Main question as a link to poll show -->
