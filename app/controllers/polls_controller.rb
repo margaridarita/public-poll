@@ -13,11 +13,13 @@ class PollsController < ApplicationController
                      .or(Poll.where(private: false))
                      .order(created_at: :desc).distinct
       else
-        @polls = Poll.joins("INNER JOIN friendships ON (friendships.to_user_id = polls.user_id OR friendships.from_user_id = polls.user_id)")
-                     .where("friendships.to_user_id = ? OR friendships.from_user_id = ?", current_user, current_user)
-                     .or(Poll.where(user_id: current_user))
-                     .or(Poll.where(private: false))
+        public_polls = Poll.where(private: false).order(created_at: :desc)
+
+        friend_polls = Poll.joins("INNER JOIN friendships ON (friendships.to_user_id = polls.user_id OR friendships.from_user_id = polls.user_id)")
+                     .where("friendships.to_user_id = :user OR friendships.from_user_id = :user", user: current_user)
                      .order(created_at: :desc).distinct
+
+        @polls = (public_polls + friend_polls).uniq
       end
     end
   end
