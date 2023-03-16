@@ -32,13 +32,19 @@
   <%= link_to @poll.second_option, poll_votes_path(@poll, chosen_option: @poll.second_option), data: {turbo_method: :post}  %><!-- option 2 -->
 <% end %>
 
+
 <% if @poll.votes.pluck(:user_id).include?(current_user.id) %>
   <!-- if user has already voted, a chart will be displayed with the results -->
   <div class="category-text my-poll-card" data-controller="live-chart" data-url="<%= live_poll_path(@poll) %>">
     <%= render partial: 'polls/poll_card' %>
   </div>
 
-  <h3 class="mt-5 mb-3" style="text-align: center; color: #B9B9B9">Comments</h3>
+  <div class="d-flex justify-content-end" style="margin-top: 10px;">
+    <div class="button-circle text-decoration-none d-flex justify-content-center align-items-center ">
+      <i class="fa-solid fa-qrcode" data-bs-toggle="offcanvas" data-bs-target="#offcanvasBottom" aria-controls="offcanvasBottom"></i>
+    </div>
+  </div>
+  <h3 class="mt-4 mb-3" style="text-align: center; color: #B9B9B9">Comments</h3>
     <div class="comments-container">
       <% @poll.votes.each do |v| %><!-- iterating through all votes from the current poll -->
         <% v.comments.each do |c| %><!-- iterating through all comments of each vote -->
@@ -74,5 +80,17 @@
         <%= f.button :submit, "Comment", class:"button-comment align-self-end", id: "comments"  %>
     </div>
     <% end %>
-
 <% end %>
+
+<div class="offcanvas offcanvas-bottom h-75 d-flex align-items-center" tabindex="-1" id="offcanvasBottom" aria-labelledby="offcanvasBottomLabel">
+  <div class="canvas-elements">
+    <div class="offcanvas-body small">
+      <div class="qr-code-container pt-3">
+        <%= @svg.html_safe %>
+      </div>
+    </div>
+  </div>
+  <div id="close-search">
+    <button type="button" class="btn button-white" data-bs-dismiss="offcanvas" aria-label="Close">Close</button>
+  </div>
+</div>
