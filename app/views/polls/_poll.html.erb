@@ -42,13 +42,13 @@
         </div>
       <% end %>
       <% if poll.private %>
-        
+
       <% end %>
     <% else %><!-- if my poll but not showing my poll tag, delete button is still visible -->
       <% if poll.user == current_user %>
         <div class="d-flex justify-content-end">
           <%= link_to poll_path(poll), data: { turbo_method: :delete, action: "click->poll#delete" } do %>
-            <i class="fa-solid fa-xmark" style="color: #B9B9B9"></i>
+            <i class="fa-solid  fa-xmark" style="color: #B9B9B9"></i>
           <% end %>
         </div>
       <% end %>
@@ -85,8 +85,8 @@
       </div>
     <% end %>
   </div>
-</div>
 
-<% if show_buttons %><!-- being passed as a local to show comment and share buttons on index, trending, categories -->
-  <%= render partial: 'polls/bottom_buttons', locals: { poll: poll } %>
-<% end %>
+  <% if show_buttons %><!-- being passed as a local to show comment and share buttons on index, trending, categories -->
+    <%= render partial: 'polls/bottom_buttons', locals: { poll: poll } %>
+  <% end %>
+</div>
