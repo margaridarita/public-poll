@@ -1,7 +1,7 @@
 <div id="<%= "#{dom_id(poll)}_buttons" %>">
   <div class="button-section">
     <!-- share to whatsapp -->
-    <a href="whatsapp://send?text=What do you think about this poll? www.publicpoll.me/polls/<%= poll.id %>" data-action="share/whatsapp/share"target="_blank"><button class="button-circle fa-solid fa-share me-3"></button></a>
+    <a href="whatsapp://send?text=What do you think about this poll? www.publicpoll.me/polls/<%= poll.id %>" data-action="share/whatsapp/share"target="_blank" class="button-circle fa-solid fa-share d-flex justify-content-center align-items-center me-3"></a>
     <!-- link to comments -->
     <% if user_signed_in? && current_user.voted?(poll) %>
       <%= link_to poll_path(poll, anchor: :comments), class: "button-circle text-decoration-none d-flex justify-content-center align-items-center" do %>

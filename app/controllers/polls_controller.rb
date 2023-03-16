@@ -1,7 +1,6 @@
 class PollsController < ApplicationController
   before_action :set_poll, only: %i[show destroy total_votes live live_index]
 
-
   def index
     if params[:query].present?
       @polls = Poll.search_by_category_and_question(params[:query])
@@ -31,6 +30,7 @@ class PollsController < ApplicationController
     @poll = Poll.new(poll_params)
     @poll.user = current_user
     if @poll.save
+
       redirect_to polls_path
       # path to the poll page that was just created
     else
@@ -42,6 +42,14 @@ class PollsController < ApplicationController
     @comment = Comment.new
     @vote = Vote.new
     @bookmark = Bookmark.new
+    @qr_code = RQRCode::QRCode.new(@poll.qr_code)
+    @svg = @qr_code.as_svg(
+      offset: 0,
+      color: 'ffffff',
+      shape_rendering: 'crispEdges',
+      standalone: true,
+      module_size: 8
+    )
     build_insane_variables
   end
 
@@ -96,6 +104,6 @@ class PollsController < ApplicationController
   end
 
   def poll_params
-    params.require(:poll).permit(:question, :first_option, :second_option, :category_id, :private)
+    params.require(:poll).permit(:question, :first_option, :second_option, :category_id, :private, :qr_code)
   end
 end

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_03_15_161324) do
+ActiveRecord::Schema[7.0].define(version: 2023_03_16_145322) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -88,6 +88,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_15_161324) do
     t.bigint "category_id", null: false
     t.integer "votes_count", default: 0
     t.boolean "private", default: false
+    t.string "qr_code"
     t.index ["category_id"], name: "index_polls_on_category_id"
     t.index ["user_id"], name: "index_polls_on_user_id"
   end
