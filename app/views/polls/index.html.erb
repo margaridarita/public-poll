@@ -6,10 +6,13 @@
       <p class="mb-0 w-75 text-center results-title">Results for <strong>" <%= params[:query]%> "</strong></p>
     <% end %>
   </div>
-
-  <% @polls.each do |poll| %><!-- polls rendered through poll partial -->
-    <%= render partial: "polls/poll",
-      locals: { poll: poll, show_photo: true, show_buttons: true, show_my_poll: true } %>
+  <% if @polls.empty? %>
+    <p class="mt-4">No results found.</p>
+  <% else %>
+    <% @polls.each do |poll| %><!-- polls rendered through poll partial -->
+      <%= render partial: "polls/poll",
+        locals: { poll: poll, show_photo: true, show_buttons: true, show_my_poll: true } %>
+    <% end %>
   <% end %>
 
 <% else %><!-- if no search has been made -->
