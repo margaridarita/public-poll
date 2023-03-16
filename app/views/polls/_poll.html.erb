@@ -32,7 +32,7 @@
     <% end %>
 
 
-    <% if show_my_poll %> <!-- being passed as a local to show my poll tag and delete button on index, trending, categories -->
+    <% if show_my_poll %> <!-- being passed as a local to show my poll tag and private poll tag and delete button on index, trending, categories -->
       <% if poll.user == current_user %><!-- showing custom actions for own polls -->
         <div class="d-flex justify-content-between mb-3">
           <p class="my-poll-show">My poll</p><!-- my poll tag -->
@@ -40,6 +40,9 @@
             <i class="fa-solid fa-xmark" style="color: #B9B9B9"></i>
           <% end %>
         </div>
+      <% end %>
+      <% if poll.private %>
+        
       <% end %>
     <% else %><!-- if my poll but not showing my poll tag, delete button is still visible -->
       <% if poll.user == current_user %>

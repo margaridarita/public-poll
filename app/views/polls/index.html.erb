@@ -3,13 +3,16 @@
   <div class="back-link mt-4">
     <%= link_to :back, title: "Back" do %>
         <i class="back-icon fa-solid fa-angle-left"></i>
+      <p class="mb-0 w-75 text-center results-title">Results for <strong>" <%= params[:query]%> "</strong></p>
     <% end %>
-    <p class="results-title mb-0">Results for <strong>" <%= params[:query]%> "</strong></p>
   </div>
-
-  <% @polls.each do |poll| %><!-- polls rendered through poll partial -->
-    <%= render partial: "polls/poll",
-      locals: { poll: poll, show_photo: true, show_buttons: true, show_my_poll: true } %>
+  <% if @polls.empty? %>
+    <p class="mt-4">No results found.</p>
+  <% else %>
+    <% @polls.each do |poll| %><!-- polls rendered through poll partial -->
+      <%= render partial: "polls/poll",
+        locals: { poll: poll, show_photo: true, show_buttons: true, show_my_poll: true } %>
+    <% end %>
   <% end %>
 
 <% else %><!-- if no search has been made -->
