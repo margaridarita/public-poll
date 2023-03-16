@@ -58,14 +58,14 @@
       <p class="mb-2" rows= "2", style="word-wrap: break-word;"><%= poll.question %></p><!-- Main question if not voted or not signed in (not a link)-->
       <div class="answers-card d-flex flex-column" id="<%= dom_id(poll) %>">
         <%= link_to poll_votes_path(poll, chosen_option: poll.first_option ), data: {turbo_method: :post, remote: true} do %>
-          <div class="button-answer">
+          <div class="button-answer w-100">
             <i class="fa-regular fa-circle m-3"></i>
             <%= poll.first_option %><!-- first option button -->
           </div >
         <% end %>
 
         <%= link_to poll_votes_path(poll, chosen_option: poll.second_option), data: {turbo_method: :post, remote: true} do %>
-          <div class="button-answer">
+          <div class="button-answer w-100">
             <i class="fa-regular fa-circle m-3"></i>
             <%= poll.second_option %><!-- second option button -->
           </div>
