@@ -13,3 +13,7 @@
     <%= render partial: "polls/small_info", locals: { poll: @poll } %>
   </div>
 <% end %>
+
+<%= turbo_stream.replace "#{dom_id(@poll)}_buttons" do %>
+  <%= render partial: 'polls/bottom_buttons', locals: { poll: @poll } %>
+<% end %>
