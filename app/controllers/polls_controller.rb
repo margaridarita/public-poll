@@ -15,7 +15,6 @@ class PollsController < ApplicationController
       else
         @polls = Poll.joins("INNER JOIN friendships ON (friendships.to_user_id = polls.user_id OR friendships.from_user_id = polls.user_id)")
                      .where("friendships.to_user_id = ? OR friendships.from_user_id = ?", current_user, current_user)
-                     .where.not("polls.user_id = ?", current_user)
                      .or(Poll.where(user_id: current_user))
                      .or(Poll.where(private: false))
                      .order(created_at: :desc).distinct
