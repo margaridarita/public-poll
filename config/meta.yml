@@ -1,0 +1,6 @@
+# config/meta.yml
+
+meta_product_name: "Public Poll"
+meta_title: "Public Poll - dive into the public opinion "
+meta_description: "Public poll is a community where people can create public polls to quickly get the mass opinon on any topic."
+meta_image: "logo_publicpoll.png" # should exist in `app/assets/images/`
