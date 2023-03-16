@@ -1,5 +1,7 @@
 <% if @user.polls.exists? %>
-  <%= render @user.polls %>
+  <% @user.polls.order(created_at: :desc).each do |poll| %>
+      <%= render partial: 'polls/poll', locals: { poll: poll }%>
+    <% end%>
 <% else %>
   <p class="mt-4"><%= @user.first_name %> hasn't made any polls yet.</p>
 <% end %>

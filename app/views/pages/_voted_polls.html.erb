@@ -1,6 +1,6 @@
 <% if @user.votes.exists? %>
   <div class="grid-container">
-    <% @user.votes.each do |vote| %>
+    <% @user.votes.order(created_at: :desc).each do |vote| %>
       <%= render partial: 'polls/poll', locals: { poll: vote.poll }%>
     <% end%>
   </div>
