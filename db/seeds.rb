@@ -2,14 +2,14 @@ require 'faker'
 
 Friendship.destroy_all
 Search.destroy_all
-User.destroy_all
+# User.destroy_all
 
-margarida = User.create(email: "margarida@gmail.com", password: "pombinho222", first_name: "margarida", last_name: "rita", username: "mrita")
-maria = User.create(email: "maria@gmail.com", password: "pombinho222", first_name: "maria", last_name: "salgado", username: "msalgado")
-clarissa = User.create(email: "clarissa@gmail.com", password: "pombinho222", first_name: "clarissa", last_name: "batista", username: "cbatista")
-sofia = User.create(email: "sofia@gmail.com", password: "pombinho222", first_name: "sofia", last_name: "clara", username: "sclara")
+# margarida = User.create(email: "margarida@gmail.com", password: "pombinho222", first_name: "margarida", last_name: "rita", username: "mrita")
+# maria = User.create(email: "maria@gmail.com", password: "pombinho222", first_name: "maria", last_name: "salgado", username: "msalgado")
+# clarissa = User.create(email: "clarissa@gmail.com", password: "pombinho222", first_name: "clarissa", last_name: "batista", username: "cbatista")
+# sofia = User.create(email: "sofia@gmail.com", password: "pombinho222", first_name: "sofia", last_name: "clara", username: "sclara")
 
-users = [maria, margarida, clarissa, sofia]
+# users = [maria, margarida, clarissa, sofia]
 
 puts "Destroy Cat"
 
@@ -22,7 +22,7 @@ categories = [{ title: "Arts", icon_class: "masks-theater" },
               { title: "Movies", icon_class: "clapperboard" },
               { title: "Food", icon_class: "burger" },
               { title: "Games", icon_class: "gamepad" },
-              { title: "Health", icon_class:"suitcase-medical" },
+              { title: "Health", icon_class: "suitcase-medical" },
               { title: "Music", icon_class: "music" },
               { title: "News", icon_class: "newspaper" },
               { title: "Politics", icon_class: "landmark" },
