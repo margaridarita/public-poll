@@ -43,7 +43,7 @@ class PollsController < ApplicationController
     @comment = Comment.new
     @vote = Vote.new
     @bookmark = Bookmark.new
-    @qr_code = RQRCode::QRCode.new(@poll.qr_code)
+    @qr_code = RQRCode::QRCode.new(poll_url(@poll))
     @svg = @qr_code.as_svg(
       offset: 0,
       color: 'ffffff',
