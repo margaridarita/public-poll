@@ -1,7 +1,7 @@
 ## Public Poll
 ![logo_publicpoll (2)](https://github.com/margaridarita/public-poll/assets/110779743/6dd67d7e-e8f5-47bb-ad05-93b18d8fe37a)
 
-This is a mobile-first web application where users can make any question and get the public's opinion on it. 
+This is a mobile-first web application where users can make any question and get the public's opinion on it!
 It was created in 2 weeks for Le Wagon's Web Development bootcamp. 
 
 ## Demo
